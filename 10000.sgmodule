@@ -1,5 +1,5 @@
 #!name=京东价格返利
-#!desc=需要下载京粉APP（首次使用需打开一次京粉）
+#!desc=源自https://github.com/chavyleung/scripts/tree/master/10000
 
 [MITM]
 hostname = wapside.189.cn:9001
