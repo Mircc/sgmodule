@@ -1,0 +1,74 @@
+#!name=脚本合集
+#!desc=去广告+解锁脚本
+#!system=ios
+
+# 分割线——————————————————————————
+
+[Rule]
+# > 爱奇艺 去暂停广告
+DOMAIN-SUFFIX, cupid.iqiyi.com,𝙍𝙀𝙅𝙀𝘾𝙏
+# > 人人视频 去广告
+AND,((USER-AGENT,PUClient*), (NOT,((DOMAIN-SUFFIX,rr.tv)))),𝙍𝙀𝙅𝙀𝘾𝙏
+URL-REGEX,^https?:\/\/api\.rr\.tv\/(?:ad\/getAll$|storage/business/rootName/app/homePage),𝙍𝙀𝙅𝙀𝘾𝙏
+# > 优酷 去广告
+DOMAIN, iyes.youku.com,𝙍𝙀𝙅𝙀𝘾𝙏
+URL-REGEX,^http:\/\/.*\.cp31\.ott\.cibntv\.net\/youku\/,𝙍𝙀𝙅𝙀𝘾𝙏-𝙏𝙄𝙉𝙔𝙂𝙄𝙁
+# > 京东 去广告
+URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,𝙍𝙀𝙅𝙀𝘾𝙏-𝙏𝙄𝙉𝙔𝙂𝙄𝙁
+# > 网易代理
+DOMAIN-SUFFIX,music.163.com,𝙋𝙍𝙊𝙓𝙔
+DOMAIN-SUFFIX,movie.xeton.dev,𝙋𝙍𝙊𝙓𝙔
+# > Surge提交Ck捷径
+IP-CIDR6,112.226.139.216,𝘿𝙄𝙍𝙀𝘾𝙏
+
+# 分割线——————————————————————————
+
+[URL Rewrite]
+# > TikTok换区
+//(更换307后面JP JP=日本 KR=韩国 HK=香港 US=美国）
+//(?<=&mcc_mnc=)4 2 307
+//(?<=_region=)CN(?=&) JP 307
+//(^https?:\/\/*\.\w{4}okv.com\/.+&.+)(\d{2}\.3\.\d)(.+) $118.0$3 302
+//^(https?:\/\/(tnc|dm)[\w-]+\.\w+\.com\/.+)(\?)(.+) $1$3 302
+
+# 分割线——————————————————————————
+
+[Script]
+
+# > 新浪微博 去广告
+微博广告 = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js,type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua)
+微博广告 = type=http-response,requires-body=1,max-size=-1,pattern=^https?://m?api\.weibo\.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/photos/pic_recommend_status|video/tiny_stream_video_list),script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
+# > 金山WPS vip
+WPS破解 = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Wps.js,type=http-response,pattern=^https://account.wps.*/api/users/
+
+bilbii搜索 = type=http-request,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/search\/type\?.+?%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)&,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
+# > YouTube去广告
+油管视频 = type=http-request,pattern=^https?:\/\/.+?\.googlevideo\.com\/.+&(oad|ctier)=(?!A),script-path=https://choler.github.io/Surge/Script/YouTube.js
+# > Endel解锁 https://raw.githubusercontent.com/cpphut/surge_module/main/endel.sgmodule
+EndelVIP = requires-body=1,script-path=https://raw.githubusercontent.com/cpphut/scripts/main/js/endel.js,type=http-response,pattern=^https?:\/\/api-production.endel.io\/v3\/call
+# > 百度云盘 解锁
+百度云盘 = type=http-response,pattern=https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/bdcloud.js,script-update-interval=0
+
+# > 人人视频 去广告
+人人视频 = type=http-response,requires-body=true,pattern=^https?:\/\/api\.rr\.tv\/watch\/v\d\/get_movie_info,script-path=https://Choler.github.io/Surge/Script/rrsp.js
+人人视频 = type=http-response,requires-body=true,pattern=^https?:\/\/api\.rr\.tv\/v\dplus\/index\/channel,script-path=https://Choler.github.io/Surge/Script/rrsp.js
+
+# > vsco解锁
+vsco解锁 = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v\d\/subscribers\/\d+$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/githubdulong/Script/master/vsco.js,script-update-interval=0
+# > 微信跳转
+微信跳转 = type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/asset/UnblockURLinWeChat.js
+# > 百度跳转
+百度跳转 = type=http-response,pattern=^https\:\/\/boxer\.baidu\.com\/scheme\?scheme,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/baidu-no-redirect.js
+
+# > 模块订阅(单独添加)
+//爬虫复写去广告 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Surge/Advertising/Advertising.sgmodule
+//什么值得买去广告 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.sgmodule
+//贴吧去除广告https://raw.githubusercontent.com/app2smile/rules/master/module/tieba.sgmodule
+//spotify解锁https://raw.githubusercontent.com/app2smile/rules/master/module/spotify.module
+//哔哩哔哩去广告https://raw.githubusercontent.com/yjqiang/surge_scripts/main/modules/bilibili/bilibili_big.sgmodule
+//Siri与搜索https://github.com/VirgilClyne/iRingo/blob/main/sgmodule/Siri_Suggestions_noRuleSet.sgmodule?raw=true
+
+# 分割线——————————————————————————
+
+[MITM]
+hostname = %INSERT% -*.amemv.com, -*.snssdk.com, *.googlevideo.com, api.m.jd.com, trade-acs.m.taobao.com, api.rr.tv, account.wps.cn, ap*.intsig.net, dayone.*, ios-*.prod.ftl.netflix.com,ios.prod.ftl.netflix.com, *.lagoapps.com, api.meiyan.com, mb3admin.com, raw.githubusercontent.com, spclient.wg.spotify.com, testflight.apple.com, ap?.bilibili.com, api-production.endel.io, pan.baidu.com, btrace.qq.com, bmall.camera360.com, api.revenuecat.com, api.revenuecat.com, img.zuoyebang.cc, security.wechat.com, weixin110.qq.com, boxer.baidu.com,  api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, weather-data.apple.com, notability.com
