@@ -1,0 +1,212 @@
+{
+  "id": "blackmatrix7.app.sub",
+  "name": "blackmatrix7 应用订阅",
+  "author": "@blackmatrix7",
+  "icon": "https://avatars.githubusercontent.com/u/27717518?v=4",
+  "repo": "https://github.com/blackmatrix7/ios_rule_script",
+  "apps": [
+     {
+      "id": "blackmatrix7.bilibili",
+      "name": "哔哩哔哩去广告",
+      "keys": ["bilibili_story_aid", "bilibili_feed_black"],
+      "settings": [
+        {
+          "id": "bilibili_feed_black",
+          "name": "首页UP主黑名单",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "UP主名称1;UP主名称2",
+          "autoGrow": true,
+          "rows": 5,
+          "desc": "以英文逗号分隔多个号码"
+        }
+      ],
+      "author": "@blackmatrix7",
+      "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/bilibili",
+      "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/bilibili.png", "https://raw.githubusercontent.com/Orz-3/mini/master/Color/bilibili.png"]
+    },
+
+    {
+      "id": "blackmatrix7.famijia",
+      "name": "Fa米家",
+      "keys": ["famijia_checkin_cookie", "famijia_device_id", "famijia_black_box"],
+      "author": "@blackmatrix7",
+      "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/famijia",
+      "icons": ["https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/famijia/famijia.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/famijia/famijia.png"],
+      "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/famijia/famijia_checkin.js"
+    },
+   
+    {
+      "id": "blackmatrix7.manmanbuy",
+      "name": "慢慢买",
+      "keys": ["manmanbuy_checkin_cookie", "manmanbuy_login_body", "manmanbuy_username", "manmanbuy_deviceid"],
+      "author": "@blackmatrix7",
+      "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/manmanbuy",
+      "icons": ["https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanmai.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanmai.png"],
+      "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/manmanbuy/manmanbuy_checkin.js"
+    },
+  
+    {
+      "id": "blackmatrix7.smzdm",
+      "name": "什么值得买",
+      "keys": ["smzdm_cookie", "smzdm_session"],
+      "author": "@blackmatrix7",
+      "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/smzdm",
+      "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/smzdm.png", "https://raw.githubusercontent.com/Orz-3/mini/master/Color/smzdm.png"],
+      "scripts": [
+        {
+          "name": "每日自动任务",
+          "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_mission.js"
+        },
+        {
+          "name": "每日自动签到",
+          "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_signin.js"
+        }
+      ]
+    },
+    {
+      "id": "blackmatrix7.tieba",
+      "name": "百度贴吧",
+      "keys": ["tieba_checkin_cookie"],
+      "author": "@blackmatrix7",
+      "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/tieba",
+      "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/tieba.png", "https://raw.githubusercontent.com/Orz-3/mini/master/Color/tieba.png"],
+      "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/tieba/tieba_checkin.js"
+    },
+    {
+      "id": "blackmatrix7.wanda",
+      "name": "万达电影",
+      "keys": ["wanda_checkin_cookie", "wanda_activitycode"],
+      "author": "@blackmatrix7",
+      "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/wanda",
+      "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/wanda.png", "https://raw.githubusercontent.com/Orz-3/mini/master/Color/wanda.png"],
+      "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/wanda/wanda_checkin.js"
+    },
+    {
+      "id": "blackmatrix7.zhihu",
+      "name": "知乎助手",
+      "keys": ["zhihu_blocked_users", "zhihu_current_userinfo", "zhihu_keyword_block"],
+      "author": "@blackmatrix7",
+      "repo": "https://github.com/blackmatrix7/ios_rule_script/tree/master/script/zhihu",
+      "icons": ["https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.png", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.png"],
+      "descs_html": ["<h4 align=\"left\">具体功能说明查看<a href=\"https://github.com/blackmatrix7/ios_rule_script/tree/master/script/zhihu#readme\">README.md</a></h4>", "<h4 align=\"left\">✨为Plus版本专属功能，❓为已过时或即将淘汰功能</h4>", "<h4 align=\"left\">切换Lite、Plus版本，或出现异常请执行数据清理</h4>"],
+      "scripts": [
+        {
+          "name": "知乎助手数据清理",
+          "script": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.js"
+        }
+      ],
+      "settings": [
+        {
+          "id": "zhihu_settings_recommend_stream",
+          "name": "屏蔽推荐页流媒体",
+          "val": false,
+          "type": "boolean",
+          "desc": "屏蔽推荐页中的视频、直播等流媒体信息"
+        },
+        {
+          "id": "zhihu_settings_moments_stream",
+          "name": "屏蔽关注页流媒体",
+          "val": false,
+          "type": "boolean",
+          "desc": "屏蔽关注页中的“最新视频”"
+        },
+        {
+          "id": "zhihu_settings_hot_list",
+          "name": "热榜去广告",
+          "val": true,
+          "type": "boolean",
+          "desc": "去除知乎热榜页面的广告"
+        },
+        {
+          "id": "zhihu_settings_fake_vip",
+          "name": "显示为盐选会员",
+          "val": false,
+          "type": "boolean",
+          "desc": "非会员用户显示为盐选会员，仅自己可见，无实际效果"
+        },
+        {
+          "id": "zhihu_settings_preset_words",
+          "name": "屏蔽预置关键词广告",
+          "val": false,
+          "type": "boolean",
+          "desc": "屏蔽搜索页中的预置关键词广告"
+        },
+        {
+          "id": "zhihu_settings_blocked_users",
+          "name": "黑名单屏蔽效果增强✨",
+          "val": true,
+          "type": "boolean",
+          "desc": "增强知乎APP黑名单用户屏蔽效果"
+        },
+        {
+          "id": "zhihu_settings_blocked_keywords",
+          "name": "推荐页关键词过滤✨",
+          "val": true,
+          "type": "boolean",
+          "desc": "除普通关键词外还支持正则表达式过滤"
+        },
+        {
+          "id": "zhihu_settings_sys_msg",
+          "name": "屏蔽官方账号推广消息✨",
+          "val": false,
+          "type": "boolean",
+          "desc": "屏蔽消息页内的官方账号推广消息"
+        },
+        {
+          "id": "zhihu_settings_answer_tip",
+          "name": "付费内容/营销推广/购物推广提醒✨",
+          "val": true,
+          "type": "boolean",
+          "desc": "在知乎回答中提示付费或营销内容"
+        },
+        {
+          "id": "zhihu_settings_remove_yanxuan",
+          "name": "屏蔽“盐选推荐”❓",
+          "val": true,
+          "type": "boolean",
+          "desc": "屏蔽推荐页中的“盐选推荐”"
+        },
+        {
+          "id": "zhihu_settings_app_conf",
+          "name": "去除推荐页多余标签❓",
+          "val": false,
+          "type": "boolean",
+          "desc": "知乎7.x及以上版本无效"
+        },
+        {
+          "id": "zhihu_settings_hot_search",
+          "name": "知乎热搜去广告❓",
+          "val": false,
+          "type": "boolean",
+          "desc": "知乎7.x及以上版本无效"
+        },
+        {
+          "id": "magicjs_loglevel",
+          "name": "日志等级",
+          "val": "INFO",
+          "type": "radios",
+          "items": [
+            {
+              "key": "INFO",
+              "label": "INFO"
+            },
+            {
+              "key": "WARNING",
+              "label": "WARNING"
+            },
+            {
+              "key": "ERROR",
+              "label": "ERROR"
+            },
+            {
+              "key": "DEBUG",
+              "label": "DEBUG"
+            }
+          ],
+          "desc": "出现异常时请选择DEBUG提交日志"
+        }
+      ]
+    },
+  ]
+}
