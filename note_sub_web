@@ -1,0 +1,3 @@
+docker build -t subweb-local:latest . 
+docker run -d -p 58080:80 --restart always --name subweb subweb-local:latest
+docker cp cee0ea3e3e96:/usr/share/nginx/html /home/xxxx/文档/vswork/git_code/html
