@@ -1,3 +1,12 @@
 docker build -t subweb-local:latest . 
 docker run -d -p 58080:80 --restart always --name subweb subweb-local:latest
 docker cp cee0ea3e3e96:/usr/share/nginx/html /home/xxxx/文档/vswork/git_code/html
+
+
+#upload
+git clone https://github.com/Mircc/sub_html.git
+cp -r /home/lead01/文档/vswork/git_code/html/html/* /home/lead01/文档/vswork/git_code/sub_html/
+cd /home/lead01/文档/vswork/git_code/sub_html/
+git add .  
+git commit -m "update_2024"
+git push origin main
