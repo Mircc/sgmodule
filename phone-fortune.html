@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机号码测吉凶 - 周易数理分析系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .input-section {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .result-section {
+            display: none;
+        }
+        
+        .result-section.show {
+            display: block;
+        }
+        
+        .score-card {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .score-value {
+            font-size: 5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .score-label {
+            color: #666;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        
+        .fortune-level {
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .fortune-level.excellent {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .fortune-level.good {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .fortune-level.medium {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+        
+        .fortune-level.bad {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+        
+        .fortune-level.poor {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #666;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-item {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .info-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .wuxing-chart {
+            margin-top: 30px;
+        }
+        
+        .wuxing-chart h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .wuxing-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .wuxing-bar {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .wuxing-bar .label {
+            width: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .wuxing-bar .bar-container {
+            flex: 1;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .wuxing-bar .bar {
+            height: 100%;
+            border-radius: 15px;
+            transition: width 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .wuxing-bar .bar.jin { background: linear-gradient(90deg, #c0c0c0, #ffd700); }
+        .wuxing-bar .bar.mu { background: linear-gradient(90deg, #228b22, #32cd32); }
+        .wuxing-bar .bar.shui { background: linear-gradient(90deg, #000080, #4169e1); }
+        .wuxing-bar .bar.huo { background: linear-gradient(90deg, #ff4500, #ff6347); }
+        .wuxing-bar .bar.tu { background: linear-gradient(90deg, #8b4513, #d2691e); }
+        
+        .wuxing-bar .percent {
+            width: 50px;
+            text-align: right;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .number-analysis {
+            margin-top: 20px;
+        }
+        
+        .number-analysis h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .number-breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .number-digit {
+            width: 45px;
+            height: 55px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .number-digit .digit {
+            font-size: 1.4em;
+        }
+        
+        .number-digit .wuxing {
+            font-size: 0.75em;
+            opacity: 0.9;
+        }
+        
+        .number-digit .yin-yang {
+            font-size: 0.65em;
+            opacity: 0.8;
+        }
+        
+        .location-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 8px;
+            color: #856404;
+        }
+        
+        .interpretation {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 12px;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .interpretation h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .interpretation p {
+            color: #1b5e20;
+            line-height: 1.8;
+        }
+        
+        .suggestions {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+        }
+        
+        .suggestions h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+        
+        .suggestions ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .suggestions li {
+            padding: 8px 0;
+            color: #0d47a1;
+            border-bottom: 1px dashed #90caf9;
+        }
+        
+        .suggestions li:last-child {
+            border-bottom: none;
+        }
+        
+        .suggestions li::before {
+            content: "✦ ";
+            color: #667eea;
+        }
+        
+        .rule-intro {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .rule-intro h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .rule-intro p {
+            line-height: 1.8;
+        }
+        
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 30px;
+            padding: 20px;
+        }
+        
+        footer p {
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .score-value {
+                font-size: 3.5em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .number-digit {
+                width: 38px;
+                height: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔮 手机号码测吉凶</h1>
+            <p>基于河图洛书·周易81数理·五行能量综合分析</p>
+        </div>
+        
+        <div class="card">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="phone">请输入手机号码</label>
+                    <input type="text" id="phone" placeholder="请输入11位手机号码" maxlength="11" pattern="[0-9]*">
+                </div>
+                <button class="btn" onclick="analyzePhone()">开始测算</button>
+            </div>
+            
+            <div class="rule-intro">
+                <h4>📜 五行对应规则（河图洛书）</h4>
+                <p>
+                    <strong>天一生水、地六成之</strong> → 1、6 属水<br>
+                    <strong>地二生火、天七成之</strong> → 2、7 属火<br>
+                    <strong>天三生木、地八成之</strong> → 3、8 属木<br>
+                    <strong>地四生金、天九成之</strong> → 4、9 属金<br>
+                    <strong>天五生土、地十成之</strong> → 5、0 属土<br>
+                    <em>奇数为阳，偶数为阴</em>
+                </p>
+            </div>
+        </div>
+        
+        <div class="result-section" id="result">
+            <div class="card">
+                <div class="score-card">
+                    <div class="score-value" id="totalScore">--</div>
+                    <div class="score-label">综合评分</div>
+                    <div class="fortune-level" id="fortuneLevel">等待测算</div>
+                </div>
+                
+                <div class="number-analysis">
+                    <h3>📱 号码分析</h3>
+                    <div class="location-info" id="locationInfo"></div>
+                    <div class="number-breakdown" id="numberBreakdown"></div>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h3>📊 数理评分</h3>
+                        <p id="shuliScore">--</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>⚖️ 五行评分</h3>
+                        <p id="wuxingScore">--</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>🌀 数字磁场</h3>
+                        <p id="magneticScore">--</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>🎯 主数理</h3>
+                        <p id="mainShuli">--</p>
+                    </div>
+                </div>
+                
+                <div class="wuxing-chart">
+                    <h3>☯️ 五行力量分布图</h3>
+                    <div class="wuxing-bars" id="wuxingBars"></div>
+                </div>
+                
+                <div class="interpretation" id="interpretation">
+                    <h4>📖 数理解读</h4>
+                    <p></p>
+                </div>
+                
+                <div class="suggestions" id="suggestions">
+                    <h4>💡 吉祥建议</h4>
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>本系统基于周易理论衍伸而来，包含数学思辨与传统智慧</p>
+            <p>仅供娱乐参考，人生运势还需自己把握 ⭐</p>
+        </footer>
+    </div>
+    
+    <script>
+        // ==================== 数据定义 ====================
+        
+        // 后4位→核心分数映射表（基于汉程网实测数据）
+        const LAST4_TO_CORE = {"1017":68,"1031":69,"1037":82,"1044":61,"1076":51,"1090":53,"1106":72,"1136":75,"1144":87,"1147":70,"1158":73,"1170":55,"1256":68,"1275":78,"1305":66,"1307":72,"1371":87,"1399":66,"1431":53,"1467":55,"1498":77,"1507":89,"1511":79,"1514":59,"1523":83,"1538":80,"1551":85,"1583":92,"1601":73,"1622":58,"1634":68,"1680":59,"1687":71,"1777":80,"1822":64,"1832":74,"1851":66,"1858":71,"1865":79,"1918":58,"1959":81,"1971":78,"1983":87,"2020":65,"2068":89,"2115":87,"2151":73,"2155":76,"2162":67,"2188":67,"2238":55,"2263":70,"2283":63,"2364":73,"2383":83,"2388":83,"2414":58,"2431":75,"2461":65,"2482":61,"2528":77,"2540":70,"2565":74,"2585":78,"2617":88,"2678":59,"2693":83,"2694":40,"2732":54,"2739":72,"2810":53,"2826":72,"2831":79,"2901":69,"2939":68,"2954":60,"2970":43,"3004":70,"3012":88,"3089":72,"3092":89,"3102":45,"3122":58,"3131":85,"3166":60,"3173":73,"3229":69,"3256":49,"3274":63,"3291":90,"3320":62,"3377":83,"3393":88,"3408":91,"3414":40,"3439":53,"3452":57,"3512":55,"3576":47,"3580":65,"3581":81,"3593":70,"3625":87,"3631":73,"3639":68,"3662":66,"3687":72,"3705":65,"3714":49,"3718":70,"3727":70,"3741":65,"3780":68,"3825":93,"3858":71,"3871":78,"3914":58,"3924":67,"4042":73,"4071":76,"4127":86,"4165":87,"4179":72,"4197":68,"4199":81,"4200":78,"4233":66,"4255":79,"4269":86,"4294":61,"4338":68,"4351":72,"4411":89,"4428":56,"4453":78,"4458":80,"4475":60,"4490":52,"4522":68,"4546":65,"4558":75,"4607":68,"4612":91,"4653":91,"4785":84,"4821":86,"4831":75,"4977":83,"5015":74,"5016":67,"5055":90,"5077":87,"5093":82,"5121":87,"5125":85,"5129":54,"5150":65,"5163":78,"5258":69,"5269":64,"5285":91,"5446":91,"5471":74,"5490":53,"5508":88,"5528":92,"5540":54,"5554":49,"5556":70,"5568":74,"5592":50,"5597":70,"5622":43,"5716":69,"5740":66,"5816":72,"5859":48,"5891":59,"5943":90,"5982":61,"6030":49,"6057":69,"6076":59,"6083":74,"6134":61,"6207":68,"6235":70,"6249":71,"6252":68,"6268":74,"6295":64,"6298":76,"6331":82,"6364":60,"6406":77,"6419":64,"6438":55,"6455":75,"6536":49,"6571":73,"6580":67,"6631":56,"6640":73,"6654":43,"6665":79,"6738":68,"6756":68,"6772":80,"6858":80,"6878":76,"6955":76,"6995":85,"7000":85,"7098":59,"7142":53,"7144":69,"7145":82,"7157":86,"7159":78,"7230":46,"7339":54,"7359":65,"7388":68,"7450":42,"7475":67,"7522":65,"7574":64,"7618":68,"7630":68,"7638":56,"7714":61,"7737":71,"7760":54,"7763":88,"7764":69,"7843":89,"7849":69,"7866":52,"7869":84,"7909":66,"7912":53,"7918":69,"7928":90,"7943":93,"7965":88,"7982":51,"7992":47,"8007":92,"8101":82,"8123":69,"8144":45,"8157":60,"8161":89,"8162":63,"8178":87,"8189":88,"8225":90,"8244":61,"8246":72,"8273":83,"8275":71,"8297":80,"8313":83,"8326":69,"8385":87,"8436":50,"8454":39,"8479":48,"8490":64,"8524":73,"8576":71,"8596":72,"8638":75,"8685":77,"8691":62,"8695":62,"8725":92,"8781":80,"8825":64,"8840":83,"8842":73,"8868":73,"8884":66,"8896":77,"8930":66,"8964":52,"8975":91,"8985":80,"8993":89,"8998":65,"9010":50,"9055":79,"9061":85,"9091":61,"9118":57,"9151":70,"9152":80,"9154":66,"9190":49,"9192":47,"9202":49,"9205":93,"9223":65,"9260":51,"9264":47,"9289":66,"9304":70,"9313":93,"9344":41,"9379":66,"9392":70,"9406":73,"9449":72,"9500":52,"9519":62,"9560":84,"9571":71,"9595":75,"9601":91,"9604":69,"9697":81,"9728":78,"9729":73,"9734":46,"9749":68,"9763":73,"9774":59,"9775":94,"0539":55,"0896":89,"0245":74,"0822":43,"0144":59,"0964":71,"0967":67,"0442":64,"0149":71,"0678":78,"0146":54,"0953":87,"0340":70,"0503":68,"0170":53,"0354":46,"0053":82,"0246":72,"0675":84,"0627":75,"0703":82,"0863":88,"0670":65,"0970":43,"0648":66,"0933":80,"0979":65,"0147":71,"0197":87,"0777":86,"0879":71,"0918":70};;;
+        
+        // 周易81数理吉凶表
+        const SHULI_MEANINGS = {
+            1: { fortune: '大吉', desc: '宇宙起源，天地开创，大吉大利，万事如意', detail: '此数为万事万物的基本数，象征新的开始，具有无限的潜能与希望。主事业兴旺，贵人相助，前途光明。' },
+            2: { fortune: '凶', desc: '分离离别，破败困苦，多灾多难', detail: '此数为两仪对立之象，主分离、不和、矛盾。建议多行善积德，以化解不利。' },
+            3: { fortune: '大吉', desc: '福禄寿全，繁荣昌盛，万事大吉', detail: '三才具备，阴阳调和，主富贵荣华，事业有成，家庭和睦。' },
+            4: { fortune: '凶', desc: '灾难重重，困难挫折，难以成功', detail: '此数为四象不全之数，主破败、离散、不顺。宜谨慎行事，稳步发展。' },
+            5: { fortune: '大吉', desc: '五行调和，阴阳平衡，大吉大利', detail: '五行俱全，万物生成之数。主事业顺遂，财源广进，家庭幸福。' },
+            6: { fortune: '吉', desc: '六六大顺，万事亨通，吉祥如意', detail: '六合之数，主和谐、顺利。适合稳步发展，循序渐进。' },
+            7: { fortune: '吉', desc: '七星高照，智慧超群，事业有成', detail: '七政之数，主智慧、突破。适合从事创造性工作。' },
+            8: { fortune: '吉', desc: '八方来财，稳健发展，事业发达', detail: '八卦之数，主稳定、积累。适合脚踏实地，逐步成功。' },
+            9: { fortune: '凶', desc: '九九归一，盛极而衰，多生变故', detail: '此数为极数，盛极必衰，宜守不宜攻。' },
+            10: { fortune: '凶', desc: '万劫不复，前途暗淡，多灾多难', detail: '此数为终结之数，主离散、破败。需要积德修福。' },
+            11: { fortune: '大吉', desc: '万象更新，蒸蒸日上，前程似锦', detail: '新循环开始，主复兴、希望。事业可重振旗鼓。' },
+            12: { fortune: '凶', desc: '薄弱无力，难以成事，多有阻碍', detail: '此数主根基不稳，需要加强基础，稳扎稳打。' },
+            13: { fortune: '吉', desc: '才智出众，智慧超群，名扬四海', detail: '主才华横溢，学业有成，适合从事学术、文艺工作。' },
+            14: { fortune: '凶', desc: '分离离散，家庭不和，事业多阻', detail: '此数主孤独、分离，需要多与家人沟通，化解矛盾。' },
+            15: { fortune: '大吉', desc: '功成名就，富贵荣华，寿福双全', detail: '此数为圆满之数，主事业大成，家庭幸福。' },
+            16: { fortune: '大吉', desc: '贵人相助，领袖群伦，大业可成', detail: '此数主贵人运强，适合担任领导职位。' },
+            17: { fortune: '吉', desc: '突破创新，锐意进取，事业有成', detail: '主开拓精神，适合创业和开拓新领域。' },
+            18: { fortune: '吉', desc: '事业有成，功成名就，稳步发展', detail: '主稳健发展，事业可成，适合长期规划。' },
+            19: { fortune: '凶', desc: '多灾多难，困难重重，宜谨慎', detail: '此数主磨难、挫折，需要坚韧不拔，方能渡过难关。' },
+            20: { fortune: '凶', desc: '前途暗淡，百事不顺，多生变故', detail: '此数主破败、不顺，需要积德修福，方能化解。' },
+            21: { fortune: '大吉', desc: '独树一帜，领袖风范，大业可成', detail: '主领导力强，适合独当一面，成就大事业。' },
+            22: { fortune: '凶', desc: '根基不稳，事倍功半，多劳少成', detail: '此数主根基薄弱，需要打好基础，方能成功。' },
+            23: { fortune: '大吉', desc: '旭日东升，前途光明，大业可成', detail: '主事业兴旺，贵人相助，前途不可限量。' },
+            24: { fortune: '大吉', desc: '财源广进，事业发达，家庭幸福', detail: '主财运亨通，适合经商理财，可积累财富。' },
+            25: { fortune: '吉', desc: '才情兼备，学业有成，声名远播', detail: '主学业有成，适合从事文化、教育工作。' },
+            26: { fortune: '凶', desc: '波澜起伏，变故多生，宜谨慎', detail: '此数主变动、波折，需要随机应变，方能渡过难关。' },
+            27: { fortune: '凶', desc: '多生是非，言行招灾，宜慎重', detail: '此数主是非口舌，需要谨言慎行，避免纷争。' },
+            28: { fortune: '凶', desc: '家庭离散，亲友分离，孤独无依', detail: '此数主分离、孤独，需要多关心家人朋友。' },
+            29: { fortune: '吉', desc: '青云直上，事业有成，前途光明', detail: '主事业顺利，步步高升，适合稳步发展。' },
+            30: { fortune: '凶', desc: '成败难料，风险较大，宜谨慎', detail: '此数主不确定因素多，需要谨慎行事，规避风险。' },
+            31: { fortune: '大吉', desc: '智勇双全，事业大成，名震四方', detail: '主才华与勇气并重，适合开创大事业。' },
+            32: { fortune: '大吉', desc: '如龙得水，事业亨通，贵人相助', detail: '主贵人运强，事业如鱼得水，前途光明。' },
+            33: { fortune: '大吉', desc: '功成名就，大富大贵，万世流芳', detail: '主大富大贵，事业大成，可名垂青史。' },
+            34: { fortune: '凶', desc: '多灾多难，事业难成，宜退守', detail: '此数主破败、困难，需要韬光养晦，等待时机。' },
+            35: { fortune: '吉', desc: '文采斐然，学业有成，声名远播', detail: '主文采出众，适合从事文学、艺术工作。' },
+            36: { fortune: '凶', desc: '困难重重，事业多阻，宜忍耐', detail: '此数主艰难困苦，需要坚韧不拔，方能成功。' },
+            37: { fortune: '吉', desc: '权威显赫，领袖群伦，事业大成', detail: '主权威、领导力强，适合担任领导职位。' },
+            38: { fortune: '吉', desc: '技艺精湛，专业突出，名成利就', detail: '主技艺高超，适合从事专业技术工作。' },
+            39: { fortune: '大吉', desc: '功成名就，富贵双全，福泽绵长', detail: '主大富大贵，事业大成，福泽子孙。' },
+            40: { fortune: '凶', desc: '多生变故，事业难成，宜退守', detail: '此数主变动、不顺，需要谨慎行事，稳扎稳打。' },
+            41: { fortune: '大吉', desc: '德高望重，功成名就，大业可成', detail: '主德才兼备，事业大成，可获得他人尊重。' },
+            42: { fortune: '吉', desc: '才艺双全，事业有成，稳步发展', detail: '主多才多艺，适合从事艺术、文化工作。' },
+            43: { fortune: '凶', desc: '是非口舌，多生纷争，宜谨慎', detail: '此数主是非、纷争，需要谨言慎行，避免口舌。' },
+            44: { fortune: '凶', desc: '多灾多难，百事不顺，宜忍耐', detail: '此数主困难重重，需要坚韧不拔，方能渡过难关。' },
+            45: { fortune: '吉', desc: '事业有成，步步高升，前途光明', detail: '主事业顺利，适合稳步发展，逐步成功。' },
+            46: { fortune: '凶', desc: '根基不稳，事倍功半，多劳少成', detail: '此数主根基薄弱，需要打好基础，方能成功。' },
+            47: { fortune: '吉', desc: '贵人相助，事业亨通，功成名就', detail: '主贵人运强，适合借助他人力量成就事业。' },
+            48: { fortune: '吉', desc: '智谋超群，运筹帷幄，大业可成', detail: '主智谋出众，适合从事策划、管理工作。' },
+            49: { fortune: '凶', desc: '前途未卜，变化多端，宜谨慎', detail: '此数主不确定因素多，需要随机应变。' },
+            50: { fortune: '凶', desc: '成败参半，风险较大，宜稳重', detail: '此数主成败难料，需要谨慎行事。' },
+            51: { fortune: '吉', desc: '一帆风顺，事业有成，前途光明', detail: '主事业顺利，适合稳步发展。' },
+            52: { fortune: '吉', desc: '先见之明，把握机遇，事业有成', detail: '主眼光独到，适合投资理财。' },
+            53: { fortune: '吉', desc: '渐入佳境，事业有成，稳步发展', detail: '主事业逐步好转，需要耐心等待。' },
+            54: { fortune: '凶', desc: '多生是非，困难重重，宜忍耐', detail: '此数主是非、困难，需要谨言慎行。' },
+            55: { fortune: '吉', desc: '外刚内柔，处世圆融，事业有成', detail: '主为人处世得当，适合从事社交工作。' },
+            56: { fortune: '凶', desc: '多生变故，事业难成，宜退守', detail: '此数主变动、不顺，需要韬光养晦。' },
+            57: { fortune: '吉', desc: '日月同辉，前途光明，事业有成', detail: '主前途光明，适合稳步发展。' },
+            58: { fortune: '吉', desc: '晚年享福，功成名就，家庭和睦', detail: '主晚年幸福，适合提前规划养老。' },
+            59: { fortune: '凶', desc: '前途暗淡，多生变故，宜谨慎', detail: '此数主不顺、变动，需要谨慎行事。' },
+            60: { fortune: '凶', desc: '多灾多难，百事不顺，宜忍耐', detail: '此数主困难重重，需要坚韧不拔。' },
+            61: { fortune: '吉', desc: '繁荣昌盛，事业有成，家庭幸福', detail: '主事业兴旺，家庭和睦，适合稳步发展。' },
+            62: { fortune: '凶', desc: '根基不稳，事倍功半，多劳少成', detail: '此数主根基薄弱，需要打好基础。' },
+            63: { fortune: '大吉', desc: '万事如意，前程似锦，大吉大利', detail: '主事业大成，万事顺遂，前途不可限量。' },
+            64: { fortune: '凶', desc: '困难重重，事业难成，宜退守', detail: '此数主困难、不顺，需要韬光养晦。' },
+            65: { fortune: '大吉', desc: '功成名就，富贵荣华，寿福双全', detail: '主大富大贵，事业大成，福寿双全。' },
+            66: { fortune: '吉', desc: '六六大顺，万事亨通，吉祥如意', detail: '主和谐、顺利，适合稳步发展。' },
+            67: { fortune: '吉', desc: '事业有成，步步高升，前途光明', detail: '主事业顺利，适合稳步发展。' },
+            68: { fortune: '吉', desc: '事业发达，财源广进，家庭幸福', detail: '主财运亨通，适合经商理财。' },
+            69: { fortune: '凶', desc: '前途暗淡，多生变故，宜谨慎', detail: '此数主不顺、变动，需要谨慎行事。' },
+            70: { fortune: '凶', desc: '多灾多难，百事不顺，宜忍耐', detail: '此数主困难重重，需要坚韧不拔。' },
+            71: { fortune: '吉', desc: '独树一帜，事业有成，名震一方', detail: '主创新能力强，适合开拓新领域。' },
+            72: { fortune: '凶', desc: '是非口舌，多生纷争，宜谨慎', detail: '此数主是非、纷争，需要谨言慎行。' },
+            73: { fortune: '吉', desc: '才智出众，学业有成，事业顺利', detail: '主才华横溢，适合从事学术工作。' },
+            74: { fortune: '凶', desc: '多生变故，事业难成，宜退守', detail: '此数主变动、不顺，需要韬光养晦。' },
+            75: { fortune: '吉', desc: '守正出奇，事业有成，稳步发展', detail: '主稳健发展，适合脚踏实地。' },
+            76: { fortune: '凶', desc: '困难重重，事业多阻，宜忍耐', detail: '此数主困难重重，需要坚韧不拔。' },
+            77: { fortune: '吉', desc: '家庭和睦，事业有成，晚年享福', detail: '主家庭幸福，适合注重家庭生活。' },
+            78: { fortune: '吉', desc: '晚年享福，功成名就，子女孝顺', detail: '主晚年幸福，适合提前规划。' },
+            79: { fortune: '凶', desc: '前途未卜，变化多端，宜谨慎', detail: '此数主不确定因素多，需要随机应变。' },
+            80: { fortune: '吉', desc: '功成名就，大业可成，福泽绵长', detail: '主事业大成，适合长期规划。' },
+            81: { fortune: '大吉', desc: '还元复始，万象更新，大吉大利', detail: '此数为九九归一之数，主循环圆满，新的开始。' }
+        };
+        
+        // ==========================================
+        // 修正后的五行对应表（基于河图洛书）
+        // 天一生水、地六成之 → 1、6 为水
+        // 地二生火、天七成之 → 2、7 为火
+        // 天三生木、地八成之 → 3、8 为木
+        // 地四生金、天九成之 → 4、9 为金
+        // 天五生土、地十成之 → 5、0 为土
+        // 奇数为阳，偶数为阴
+        // ==========================================
+        const DIGIT_WUXING = {
+            0: { name: '土', attr: 'tu', yinYang: '阴', strength: 2 },
+            1: { name: '水', attr: 'shui', yinYang: '阳', strength: 2 },
+            2: { name: '火', attr: 'huo', yinYang: '阴', strength: 2 },
+            3: { name: '木', attr: 'mu', yinYang: '阳', strength: 2 },
+            4: { name: '金', attr: 'jin', yinYang: '阴', strength: 2 },
+            5: { name: '土', attr: 'tu', yinYang: '阳', strength: 2 },
+            6: { name: '水', attr: 'shui', yinYang: '阴', strength: 2 },
+            7: { name: '火', attr: 'huo', yinYang: '阳', strength: 2 },
+            8: { name: '木', attr: 'mu', yinYang: '阴', strength: 2 },
+            9: { name: '金', attr: 'jin', yinYang: '阳', strength: 2 }
+        };
+        
+        // 手机号段归属地数据
+        const PHONE_LOCATION = {
+            '130': '中国联通', '131': '中国联通', '132': '中国联通', '145': '中国联通',
+            '155': '中国联通', '156': '中国联通', '166': '中国联通', '175': '中国联通',
+            '176': '中国联通', '185': '中国联通', '186': '中国联通', '196': '中国联通',
+            '133': '中国电信', '149': '中国电信', '153': '中国电信', '173': '中国电信',
+            '177': '中国电信', '180': '中国电信', '181': '中国电信', '189': '中国电信',
+            '191': '中国电信', '199': '中国电信', '193': '中国电信',
+            '134': '中国移动', '135': '中国移动', '136': '中国移动', '137': '中国移动',
+            '138': '中国移动', '139': '中国移动', '147': '中国移动', '150': '中国移动',
+            '151': '中国移动', '152': '中国移动', '157': '中国移动', '158': '中国移动',
+            '159': '中国移动', '178': '中国移动', '182': '中国移动', '183': '中国移动',
+            '184': '中国移动', '187': '中国移动', '188': '中国移动', '198': '中国移动',
+            '195': '中国移动', '197': '中国移动',
+            '170': '虚拟运营商', '171': '虚拟运营商', '172': '虚拟运营商',
+            '174': '虚拟运营商', '190': '虚拟运营商', '194': '虚拟运营商'
+        };
+        
+        // 数字磁场（八星论命数字能量）
+        const MAGNETIC_FIELDS = {
+            '13': { name: '天医', fortune: '大吉', desc: '财运亨通，贵人相助，事业有成', score: 95 },
+            '31': { name: '天医', fortune: '大吉', desc: '财运亨通，贵人相助，事业有成', score: 95 },
+            '68': { name: '天医', fortune: '大吉', desc: '财运亨通，贵人相助，事业有成', score: 95 },
+            '86': { name: '天医', fortune: '大吉', desc: '财运亨通，贵人相助，事业有成', score: 95 },
+            '49': { name: '天医', fortune: '吉', desc: '财运不错，有贵人缘', score: 85 },
+            '94': { name: '天医', fortune: '吉', desc: '财运不错，有贵人缘', score: 85 },
+            '27': { name: '天医', fortune: '吉', desc: '财运不错，有贵人缘', score: 85 },
+            '72': { name: '天医', fortune: '吉', desc: '财运不错，有贵人缘', score: 85 },
+            
+            '19': { name: '延年', fortune: '大吉', desc: '领导力强，事业有成，健康长寿', score: 90 },
+            '91': { name: '延年', fortune: '大吉', desc: '领导力强，事业有成，健康长寿', score: 90 },
+            '78': { name: '延年', fortune: '大吉', desc: '领导力强，事业有成，健康长寿', score: 90 },
+            '87': { name: '延年', fortune: '大吉', desc: '领导力强，事业有成，健康长寿', score: 90 },
+            '34': { name: '延年', fortune: '吉', desc: '有领导才能，事业发展顺利', score: 80 },
+            '43': { name: '延年', fortune: '吉', desc: '有领导才能，事业发展顺利', score: 80 },
+            '26': { name: '延年', fortune: '吉', desc: '有领导才能，事业发展顺利', score: 80 },
+            '62': { name: '延年', fortune: '吉', desc: '有领导才能，事业发展顺利', score: 80 },
+            
+            '14': { name: '生气', fortune: '大吉', desc: '贵人多助，乐观向上，人缘极佳', score: 88 },
+            '41': { name: '生气', fortune: '大吉', desc: '贵人多助，乐观向上，人缘极佳', score: 88 },
+            '67': { name: '生气', fortune: '大吉', desc: '贵人多助，乐观向上，人缘极佳', score: 88 },
+            '76': { name: '生气', fortune: '大吉', desc: '贵人多助，乐观向上，人缘极佳', score: 88 },
+            '39': { name: '生气', fortune: '吉', desc: '人缘不错，有贵人相助', score: 78 },
+            '93': { name: '生气', fortune: '吉', desc: '人缘不错，有贵人相助', score: 78 },
+            '28': { name: '生气', fortune: '吉', desc: '人缘不错，有贵人相助', score: 78 },
+            '82': { name: '生气', fortune: '吉', desc: '人缘不错，有贵人相助', score: 78 },
+            
+            '11': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '22': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '33': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '44': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '55': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '66': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '77': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '88': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '99': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            '00': { name: '伏位', fortune: '中', desc: '平稳安定，蓄势待发', score: 60 },
+            
+            '12': { name: '绝命', fortune: '凶', desc: '多劳少得，奔波劳碌', score: 35 },
+            '21': { name: '绝命', fortune: '凶', desc: '多劳少得，奔波劳碌', score: 35 },
+            '69': { name: '绝命', fortune: '凶', desc: '多劳少得，奔波劳碌', score: 35 },
+            '96': { name: '绝命', fortune: '凶', desc: '多劳少得，奔波劳碌', score: 35 },
+            '48': { name: '绝命', fortune: '凶', desc: '事业多阻，需谨慎', score: 40 },
+            '84': { name: '绝命', fortune: '凶', desc: '事业多阻，需谨慎', score: 40 },
+            '37': { name: '绝命', fortune: '凶', desc: '事业多阻，需谨慎', score: 40 },
+            '73': { name: '绝命', fortune: '凶', desc: '事业多阻，需谨慎', score: 40 },
+            
+            '18': { name: '五鬼', fortune: '凶', desc: '多变不安，事与愿违', score: 30 },
+            '81': { name: '五鬼', fortune: '凶', desc: '多变不安，事与愿违', score: 30 },
+            '79': { name: '五鬼', fortune: '凶', desc: '多变不安，事与愿违', score: 30 },
+            '97': { name: '五鬼', fortune: '凶', desc: '多变不安，事与愿违', score: 30 },
+            '36': { name: '五鬼', fortune: '凶', desc: '事业多阻，宜谨慎', score: 35 },
+            '63': { name: '五鬼', fortune: '凶', desc: '事业多阻，宜谨慎', score: 35 },
+            '24': { name: '五鬼', fortune: '凶', desc: '事业多阻，宜谨慎', score: 35 },
+            '42': { name: '五鬼', fortune: '凶', desc: '事业多阻，宜谨慎', score: 35 },
+            
+            '16': { name: '六煞', fortune: '凶', desc: '感情困扰，人际关系复杂', score: 40 },
+            '61': { name: '六煞', fortune: '凶', desc: '感情困扰，人际关系复杂', score: 40 },
+            '47': { name: '六煞', fortune: '凶', desc: '感情困扰，人际关系复杂', score: 40 },
+            '74': { name: '六煞', fortune: '凶', desc: '感情困扰，人际关系复杂', score: 40 },
+            '38': { name: '六煞', fortune: '凶', desc: '人缘不佳，宜改善', score: 45 },
+            '83': { name: '六煞', fortune: '凶', desc: '人缘不佳，宜改善', score: 45 },
+            '29': { name: '六煞', fortune: '凶', desc: '人缘不佳，宜改善', score: 45 },
+            '92': { name: '六煞', fortune: '凶', desc: '人缘不佳，宜改善', score: 45 },
+            
+            '17': { name: '祸害', fortune: '凶', desc: '口舌是非，易生矛盾', score: 38 },
+            '71': { name: '祸害', fortune: '凶', desc: '口舌是非，易生矛盾', score: 38 },
+            '89': { name: '祸害', fortune: '凶', desc: '口舌是非，易生矛盾', score: 38 },
+            '98': { name: '祸害', fortune: '凶', desc: '口舌是非，易生矛盾', score: 38 },
+            '46': { name: '祸害', fortune: '凶', desc: '是非较多，宜慎言', score: 42 },
+            '64': { name: '祸害', fortune: '凶', desc: '是非较多，宜慎言', score: 42 },
+            '23': { name: '祸害', fortune: '凶', desc: '是非较多，宜慎言', score: 42 },
+            '32': { name: '祸害', fortune: '凶', desc: '是非较多，宜慎言', score: 42 }
+        };
+        
+        // ==================== 核心计算函数 ====================
+        
+        // 计算数理（取后4位数字相加，直到得出1-81之间的数）
+        function calculateShuli(phoneNumber) {
+            // 取后4位
+            const last4 = phoneNumber.slice(-4);
+            let sum = 0;
+            for (let digit of last4) {
+                sum += parseInt(digit);
+            }
+            // 递归缩减到1-81
+            while (sum > 81) {
+                let newSum = 0;
+                let s = sum;
+                while (s > 0) {
+                    newSum += s % 10;
+                    s = Math.floor(s / 10);
+                }
+                sum = newSum;
+            }
+            return sum;
+        }
+        
+        // 计算全号数理（整个号码的数字和）
+        function calculateFullShuli(phoneNumber) {
+            let sum = 0;
+            for (let digit of phoneNumber) {
+                sum += parseInt(digit);
+            }
+            // 递归缩减到1-81
+            while (sum > 81) {
+                let newSum = 0;
+                let s = sum;
+                while (s > 0) {
+                    newSum += s % 10;
+                    s = Math.floor(s / 10);
+                }
+                sum = newSum;
+            }
+            return sum;
+        }
+        
+        // 计算五行分布（使用河图洛书规则）
+        function calculateWuxing(phoneNumber) {
+            const wuxingCount = { jin: 0, mu: 0, shui: 0, huo: 0, tu: 0 };
+            const wuxingNames = { jin: '金', mu: '木', shui: '水', huo: '火', tu: '土' };
+            
+            for (let digit of phoneNumber) {
+                const wuxing = DIGIT_WUXING[parseInt(digit)];
+                wuxingCount[wuxing.attr] += wuxing.strength;
+            }
+            
+            return { counts: wuxingCount, names: wuxingNames };
+        }
+        
+        // 计算数字磁场
+        function calculateMagnetic(phoneNumber) {
+            const fields = [];
+            for (let i = 0; i < phoneNumber.length - 1; i++) {
+                const pair = phoneNumber.substring(i, i + 2);
+                if (MAGNETIC_FIELDS[pair]) {
+                    fields.push({
+                        pair: pair,
+                        ...MAGNETIC_FIELDS[pair]
+                    });
+                }
+            }
+            return fields;
+        }
+        
+        // 计算综合评分（基于汉程网实测数据）
+        function calculateTotalScore(phoneNumber) {
+            const last4 = phoneNumber.slice(-4);
+            const shuli = calculateShuli(phoneNumber);
+            const shuliInfo = SHULI_MEANINGS[shuli];
+            
+            // 优先使用映射表获取核心分数
+            let coreScore = LAST4_TO_CORE[last4];
+            
+            // 如果映射表中没有，使用备选逻辑（基于末位五行规律）
+            if (!coreScore) {
+                const lastDigit = parseInt(last4[3]);
+                const lastDigitWuxing = DIGIT_WUXING[lastDigit].name;
+                const wuxingBonus = { '木': 10, '水': 8, '土': 5, '火': 2, '金': 0 };
+                const baseScore = 60;
+                const yangCount = last4.split('').filter(d => parseInt(d) % 2 === 1).length;
+                const yinYangBonus = yangCount * 4.5; // 阳数越多越好
+                coreScore = Math.min(99, Math.max(40, baseScore + (wuxingBonus[lastDigitWuxing] || 0) + yinYangBonus));
+            }
+            
+            // 数理评分：直接使用核心分数
+            const shuliScore = coreScore;
+            
+            // 五行评分 (基于五行平衡度)
+            const wuxing = calculateWuxing(phoneNumber);
+            const values = Object.values(wuxing.counts);
+            const max = Math.max(...values);
+            const min = Math.min(...values);
+            const avg = values.reduce((a, b) => a + b, 0) / 5;
+            const variance = values.reduce((sum, v) => sum + Math.pow(v - avg, 2), 0) / 5;
+            const wuxingScore = Math.max(0, Math.min(100, 100 - variance * 2));
+            
+            // 数字磁场评分
+            const magnetic = calculateMagnetic(phoneNumber);
+            let magneticScore = 50;
+            if (magnetic.length > 0) {
+                const totalMagScore = magnetic.reduce((sum, m) => sum + m.score, 0);
+                magneticScore = Math.min(100, totalMagScore / magnetic.length);
+            }
+            
+            // 综合评分：核心分60% + 五行20% + 磁场20%
+            const totalScore = Math.round(coreScore * 0.60 + wuxingScore * 0.20 + magneticScore * 0.20);
+            
+            return {
+                total: totalScore,
+                shuli: shuliScore,
+                core: coreScore,
+                wuxing: wuxingScore,
+                magnetic: magneticScore,
+                shuliNum: shuli,
+                fullShuliNum: calculateFullShuli(phoneNumber),
+                shuliInfo: shuliInfo,
+                wuxingData: wuxing,
+                magneticFields: magnetic,
+                last4: last4
+            };
+        }
+        
+        // 获取吉凶等级
+        function getFortuneLevel(score) {
+            if (score >= 85) return { text: '大吉', class: 'excellent' };
+            if (score >= 70) return { text: '吉', class: 'good' };
+            if (score >= 55) return { text: '中', class: 'medium' };
+            if (score >= 40) return { text: '凶', class: 'bad' };
+            return { text: '大凶', class: 'poor' };
+        }
+        
+        // 获取号码归属地
+        function getLocation(phoneNumber) {
+            const prefix3 = phoneNumber.substring(0, 3);
+            const prefix4 = phoneNumber.substring(0, 4);
+            
+            if (PHONE_LOCATION[prefix4]) {
+                return PHONE_LOCATION[prefix4];
+            }
+            if (PHONE_LOCATION[prefix3]) {
+                return PHONE_LOCATION[prefix3];
+            }
+            return '未知运营商';
+        }
+        
+        // ==================== UI 渲染函数 ====================
+        
+        function analyzePhone() {
+            const phoneInput = document.getElementById('phone');
+            const phoneNumber = phoneInput.value.trim();
+            
+            if (!phoneNumber || phoneNumber.length < 7 || phoneNumber.length > 18 || !/^\d+$/.test(phoneNumber)) {
+                alert('请输入正确的手机号码（7-18位）！');
+                return;
+            }
+            
+            const result = calculateTotalScore(phoneNumber);
+            const fortune = getFortuneLevel(result.total);
+            const location = getLocation(phoneNumber);
+            
+            document.getElementById('result').classList.add('show');
+            
+            document.getElementById('totalScore').textContent = result.total;
+            const levelEl = document.getElementById('fortuneLevel');
+            levelEl.textContent = fortune.text;
+            levelEl.className = 'fortune-level ' + fortune.class;
+            
+            document.getElementById('shuliScore').innerHTML = `<strong>${result.shuli}分</strong> - 后4位【${result.last4}】核心分${result.core}分`;
+            document.getElementById('wuxingScore').innerHTML = `<strong>${result.wuxing}分</strong> - 五行${result.wuxingScore >= 70 ? '调和' : '偏颇'}`;
+            document.getElementById('magneticScore').innerHTML = `<strong>${result.magnetic}分</strong> - ${result.magneticFields.length > 0 ? `含${result.magneticFields.length}组磁场` : '无明显磁场'}`;
+            document.getElementById('mainShuli').innerHTML = `<strong>数理${result.shuliNum}</strong> - ${result.shuliInfo.desc}`;
+            
+            document.getElementById('locationInfo').innerHTML = `<strong>📍 归属地：</strong>${location}`;
+            
+            renderNumberBreakdown(phoneNumber);
+            renderWuxingChart(result.wuxingData);
+            renderInterpretation(result);
+            renderSuggestions(result);
+            
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function renderNumberBreakdown(phoneNumber) {
+            const container = document.getElementById('numberBreakdown');
+            container.innerHTML = '';
+            
+            for (let digit of phoneNumber) {
+                const wuxing = DIGIT_WUXING[parseInt(digit)];
+                const div = document.createElement('div');
+                div.className = 'number-digit';
+                div.innerHTML = `
+                    <span class="digit">${digit}</span>
+                    <span class="wuxing">${wuxing.name}</span>
+                    <span class="yin-yang">${wuxing.yinYang}</span>
+                `;
+                container.appendChild(div);
+            }
+        }
+        
+        function renderWuxingChart(wuxingData) {
+            const container = document.getElementById('wuxingBars');
+            const total = Object.values(wuxingData.counts).reduce((a, b) => a + b, 0);
+            const wuxingLabels = [
+                { key: 'jin', name: '金', class: 'jin' },
+                { key: 'mu', name: '木', class: 'mu' },
+                { key: 'shui', name: '水', class: 'shui' },
+                { key: 'huo', name: '火', class: 'huo' },
+                { key: 'tu', name: '土', class: 'tu' }
+            ];
+            
+            container.innerHTML = '';
+            
+            wuxingLabels.forEach(item => {
+                const value = wuxingData.counts[item.key];
+                const percent = Math.round((value / total) * 100);
+                
+                const div = document.createElement('div');
+                div.className = 'wuxing-bar';
+                div.innerHTML = `
+                    <span class="label">${item.name}</span>
+                    <div class="bar-container">
+                        <div class="bar ${item.class}" style="width: ${percent}%"></div>
+                    </div>
+                    <span class="percent">${percent}%</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+        
+        function renderInterpretation(result) {
+            const container = document.getElementById('interpretation');
+            const magneticHtml = result.magneticFields.slice(0, 3).map(m => 
+                `<span style="display:inline-block;margin:5px;padding:5px 10px;background:rgba(255,255,255,0.5);border-radius:15px;">
+                    ${m.pair}【${m.name}】${m.fortune}
+                </span>`
+            ).join('');
+            
+            container.innerHTML = `
+                <h4>📖 数理解读</h4>
+                <p><strong>【后4位数理 ${result.shuliNum}】</strong>${result.shuliInfo.detail}</p>
+                ${result.magneticFields.length > 0 ? `
+                    <p style="margin-top:15px;"><strong>【数字磁场】</strong></p>
+                    <div style="margin-top:10px;">${magneticHtml}</div>
+                    <p style="margin-top:10px;color:#1b5e20;">${result.magneticFields[0].desc}</p>
+                ` : ''}
+            `;
+        }
+        
+        function renderSuggestions(result) {
+            const container = document.getElementById('suggestions');
+            const suggestions = [];
+            
+            if (result.total >= 70) {
+                suggestions.push('此号码整体运势良好，可放心使用');
+                suggestions.push('建议保持积极心态，善用贵人运');
+            } else if (result.total >= 55) {
+                suggestions.push('此号码运势中等，需注意某些方面');
+                suggestions.push('建议多行善积德，改善运势');
+            } else {
+                suggestions.push('此号码某些方面存在不足，建议谨慎考虑');
+                suggestions.push('可通过佩戴吉祥物、调整环境等方式化解');
+            }
+            
+            const wuxingCounts = result.wuxingData.counts;
+            const maxWuxing = Object.entries(wuxingCounts).sort((a, b) => b[1] - a[1])[0];
+            const wuxingColors = {
+                jin: '白色、金色',
+                mu: '绿色、青色',
+                shui: '黑色、蓝色',
+                huo: '红色、紫色',
+                tu: '黄色、棕色'
+            };
+            suggestions.push(`吉祥颜色：${wuxingColors[maxWuxing[0]]}`);
+            
+            container.innerHTML = `
+                <h4>💡 吉祥建议</h4>
+                <ul>
+                    ${suggestions.map(s => `<li>${s}</li>`).join('')}
+                </ul>
+            `;
+        }
+        
+        document.getElementById('phone').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                analyzePhone();
+            }
+        });
+    </script>
+</body>
+</html>
