@@ -1,15 +1,15 @@
 # Stash | Whitelist | Loon/Surge habits + Accademia-style DNS
 # 1) Replace YOUR-AIRPORT-SUBSCRIPTION-URL below
 # 2) Import this file in Stash, enable TUN
-# Unmatched foreign traffic -> Proxy (whitelist)
+# Unmatched foreign traffic -> Proxy/Fast (whitelist) | AI/Google/PayPal/Spotify/Telegram fixed region | others -> Fast
 
 mixed-port: 7890
 mode: rule
 ipv6: false
 log-level: warning
 allow-lan: false
-unified-delay: true
-tcp-concurrent: false
+unified-delay: false
+tcp-concurrent: true
 keep-alive-interval: 60
 find-process-mode: strict
 
@@ -77,7 +77,11 @@ proxy-providers:
     interval: 86400
     path: ./providers/airport.yaml
     health-check:
-      enable: false
+      enable: true
+      url: http://cp.cloudflare.com/generate_204
+      interval: 600
+      lazy: true
+      timeout: 3000
 
 proxy-groups:
   - name: Manual
@@ -86,85 +90,120 @@ proxy-groups:
       - airport
 
   - name: HK
-    type: select
+    type: url-test
     use:
       - airport
     filter: '(?i)(港|HK|Hong|hkg)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+    lazy: true
+    timeout: 3000
+    tolerance: 50
+    max-failed-times: 3
 
   - name: TW
-    type: select
+    type: url-test
     use:
       - airport
     filter: '(?i)(台|TW|Tai|tpe|HiNet)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+    lazy: true
+    timeout: 3000
+    tolerance: 50
+    max-failed-times: 3
 
   - name: JP
-    type: select
+    type: url-test
     use:
       - airport
     filter: '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|tyo)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+    lazy: true
+    timeout: 3000
+    tolerance: 50
+    max-failed-times: 3
 
   - name: KR
-    type: select
+    type: url-test
     use:
       - airport
     filter: '(?i)(KR|Korea|KOR|首尔|韩)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+    lazy: true
+    timeout: 3000
+    tolerance: 50
+    max-failed-times: 3
 
   - name: US
-    type: select
+    type: url-test
     use:
       - airport
     filter: '(?i)(美|US|United States|lax|LAX|na-)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+    lazy: true
+    timeout: 3000
+    tolerance: 50
+    max-failed-times: 3
 
   - name: SG
-    type: select
+    type: url-test
     use:
       - airport
     filter: '(?i)(新加坡|坡|狮城|SG|Singapore|sin)'
-
-  - name: Available
-    type: fallback
-    url: http://www.apple.com/library/test/success.html
-    interval: 900
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
     lazy: true
-    timeout: 5000
-    proxies:
-      - JP
-      - US
-      - SG
-      - TW
-      - HK
-      - KR
+    timeout: 3000
+    tolerance: 50
+    max-failed-times: 3
+
+  - name: Fast
+    type: url-test
+    use:
+      - airport
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+    lazy: true
+    timeout: 3000
+    tolerance: 100
+    max-failed-times: 3
 
   - name: Proxy
     type: select
     proxies:
-      - Available
-      - US
-      - JP
-      - SG
-      - TW
+      - Fast
       - HK
+      - TW
+      - JP
       - KR
+      - US
+      - SG
       - Manual
       - DIRECT
+
+  - name: Google
+    type: select
+    proxies:
+      - US
+      - Manual
 
   - name: Apple
     type: select
     proxies:
       - DIRECT
-      - Proxy
+      - Fast
       - US
-      - JP
-      - SG
 
   - name: Microsoft
     type: select
     proxies:
       - DIRECT
-      - Proxy
+      - Fast
       - US
-      - JP
-      - SG
 
   - name: OpenAI
     type: select
@@ -172,9 +211,7 @@ proxy-groups:
       - US
       - JP
       - SG
-      - Available
       - Manual
-      - Proxy
 
   - name: Gemini
     type: select
@@ -182,86 +219,61 @@ proxy-groups:
       - SG
       - US
       - JP
-      - Available
       - Manual
 
   - name: TikTok
     type: select
     proxies:
+      - Fast
       - JP
-      - SG
-      - US
-      - Available
       - Manual
 
   - name: PayPal
     type: select
     proxies:
       - US
-      - Available
       - Manual
 
   - name: Spotify
     type: select
     proxies:
       - SG
-      - US
-      - JP
-      - Available
       - Manual
 
   - name: YouTube
     type: select
     proxies:
-      - Available
-      - US
-      - JP
-      - SG
+      - Fast
       - Manual
 
   - name: Telegram
     type: select
     proxies:
       - SG
-      - JP
-      - US
-      - Available
       - Manual
 
   - name: Netflix
     type: select
     proxies:
-      - Proxy
-      - US
-      - SG
-      - JP
+      - Fast
       - Manual
 
   - name: Disney
     type: select
     proxies:
-      - Proxy
-      - US
-      - SG
-      - JP
+      - Fast
       - Manual
 
   - name: GlobalMedia
     type: select
     proxies:
-      - Proxy
-      - US
-      - JP
-      - SG
+      - Fast
       - Manual
 
   - name: GitHub
     type: select
     proxies:
-      - Proxy
-      - US
-      - JP
-      - SG
+      - Fast
       - Manual
 
 rule-providers:
@@ -393,6 +405,14 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
     path: ./rules/github.yaml
 
+  google:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml
+    path: ./rules/google.yaml
+
   china:
     type: http
     behavior: classical
@@ -423,6 +443,7 @@ rules:
   - RULE-SET,chinamedia,DIRECT
   - RULE-SET,globalmedia,GlobalMedia
   - RULE-SET,github,GitHub
+  - RULE-SET,google,Google
   - RULE-SET,china,DIRECT
   - GEOIP,LAN,DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
