@@ -1,0 +1,473 @@
+# Stash | Blacklist | Loon/Surge habits + Accademia-style DNS
+# 1) Replace YOUR-AIRPORT-SUBSCRIPTION-URL below
+# 2) Import this file in Stash, enable TUN
+# GFW list -> Proxy | China -> DIRECT | Final -> Available (can pick DIRECT)
+
+mixed-port: 7890
+mode: rule
+ipv6: false
+log-level: warning
+allow-lan: false
+unified-delay: true
+tcp-concurrent: false
+keep-alive-interval: 60
+find-process-mode: strict
+
+profile:
+  store-selected: true
+
+geodata-loader: memconservative
+geo-auto-update: true
+geo-update-interval: 24
+
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  enhanced-mode: fake-ip
+  follow-rule: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+  fake-ip-filter:
+    - '+.lan'
+    - '+.local'
+    - '+.apple.com'
+    - '+.icloud.com'
+    - '+.wechat.com'
+    - '+.qq.com'
+    - '+.wechatapp.com'
+    - '+.qpic.cn'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - '+.xboxlive.com'
+
+sniffer:
+  enable: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+    TLS:
+      ports: [443, 8443]
+  skip-domain:
+    - '+.apple.com'
+    - '+.icloud.com'
+    - '+.wechat.com'
+    - '+.qq.com'
+
+proxy-providers:
+  airport:
+    type: http
+    url: 'https://YOUR-AIRPORT-SUBSCRIPTION-URL'
+    interval: 86400
+    path: ./providers/airport.yaml
+    health-check:
+      enable: false
+
+proxy-groups:
+  - name: Manual
+    type: select
+    use:
+      - airport
+
+  - name: HK
+    type: select
+    use:
+      - airport
+    filter: '(?i)(港|HK|Hong|hkg)'
+
+  - name: TW
+    type: select
+    use:
+      - airport
+    filter: '(?i)(台|TW|Tai|tpe|HiNet)'
+
+  - name: JP
+    type: select
+    use:
+      - airport
+    filter: '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|tyo)'
+
+  - name: KR
+    type: select
+    use:
+      - airport
+    filter: '(?i)(KR|Korea|KOR|首尔|韩)'
+
+  - name: US
+    type: select
+    use:
+      - airport
+    filter: '(?i)(美|US|United States|lax|LAX|na-)'
+
+  - name: SG
+    type: select
+    use:
+      - airport
+    filter: '(?i)(新加坡|坡|狮城|SG|Singapore|sin)'
+
+  - name: Available
+    type: fallback
+    url: http://www.apple.com/library/test/success.html
+    interval: 900
+    lazy: true
+    timeout: 5000
+    proxies:
+      - JP
+      - US
+      - SG
+      - TW
+      - HK
+      - KR
+
+  - name: Proxy
+    type: select
+    proxies:
+      - Available
+      - US
+      - JP
+      - SG
+      - TW
+      - HK
+      - KR
+      - Manual
+      - DIRECT
+
+  - name: Apple
+    type: select
+    proxies:
+      - DIRECT
+      - Proxy
+      - US
+      - JP
+      - SG
+
+  - name: Microsoft
+    type: select
+    proxies:
+      - DIRECT
+      - Proxy
+      - US
+      - JP
+      - SG
+
+  - name: OpenAI
+    type: select
+    proxies:
+      - US
+      - JP
+      - SG
+      - Proxy
+      - Available
+      - Manual
+
+  - name: Gemini
+    type: select
+    proxies:
+      - SG
+      - US
+      - JP
+      - Proxy
+      - Available
+      - Manual
+
+  - name: TikTok
+    type: select
+    proxies:
+      - JP
+      - SG
+      - US
+      - Proxy
+      - Available
+      - Manual
+
+  - name: PayPal
+    type: select
+    proxies:
+      - US
+      - Proxy
+      - Available
+      - Manual
+
+  - name: Spotify
+    type: select
+    proxies:
+      - SG
+      - US
+      - JP
+      - Proxy
+      - Available
+      - Manual
+
+  - name: YouTube
+    type: select
+    proxies:
+      - Available
+      - Proxy
+      - US
+      - JP
+      - SG
+      - Manual
+
+  - name: Telegram
+    type: select
+    proxies:
+      - SG
+      - JP
+      - US
+      - Proxy
+      - Available
+      - Manual
+
+  - name: Netflix
+    type: select
+    proxies:
+      - Proxy
+      - US
+      - SG
+      - JP
+      - Manual
+
+  - name: Disney
+    type: select
+    proxies:
+      - Proxy
+      - US
+      - SG
+      - JP
+      - Manual
+
+  - name: GlobalMedia
+    type: select
+    proxies:
+      - Proxy
+      - US
+      - JP
+      - SG
+      - Manual
+
+  - name: GitHub
+    type: select
+    proxies:
+      - Proxy
+      - US
+      - JP
+      - SG
+      - Manual
+
+  - name: Final
+    type: select
+    proxies:
+      - Available
+      - DIRECT
+      - Proxy
+      - US
+      - JP
+      - SG
+      - Manual
+
+rule-providers:
+  reject-ad:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanEasyList.yaml
+    path: ./rules/reject-ad.yaml
+
+  reject-cn:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanEasyListChina.yaml
+    path: ./rules/reject-cn.yaml
+
+  lan:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+    path: ./rules/lan.yaml
+
+  apple:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.yaml
+    path: ./rules/apple.yaml
+
+  microsoft:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
+    path: ./rules/microsoft.yaml
+
+  openai:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
+    path: ./rules/openai.yaml
+
+  gemini:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml
+    path: ./rules/gemini.yaml
+
+  tiktok:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/TikTok/TikTok.yaml
+    path: ./rules/tiktok.yaml
+
+  paypal:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/PayPal/PayPal.yaml
+    path: ./rules/paypal.yaml
+
+  spotify:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml
+    path: ./rules/spotify.yaml
+
+  youtube:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml
+    path: ./rules/youtube.yaml
+
+  telegram:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
+    path: ./rules/telegram.yaml
+
+  netflix:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Netflix/Netflix.yaml
+    path: ./rules/netflix.yaml
+
+  disney:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml
+    path: ./rules/disney.yaml
+
+  bilibili:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
+    path: ./rules/bilibili.yaml
+
+  chinamedia:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+    path: ./rules/chinamedia.yaml
+
+  globalmedia:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+    path: ./rules/globalmedia.yaml
+
+  github:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
+    path: ./rules/github.yaml
+
+  proxy:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Proxy/Proxy.yaml
+    path: ./rules/proxy.yaml
+
+  china:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/China/China.yaml
+    path: ./rules/china.yaml
+
+rules:
+  - RULE-SET,lan,DIRECT
+  - RULE-SET,reject-ad,REJECT
+  - RULE-SET,reject-cn,REJECT
+  - IP-CIDR,208.54.0.0/16,US,no-resolve
+  - DOMAIN-SUFFIX,t-mobile.com,US
+  - DOMAIN-SUFFIX,bing.com,JP
+  - DOMAIN-SUFFIX,apphousekitchen.com,US
+  - DOMAIN-KEYWORD,apple-relay,OpenAI
+  - RULE-SET,apple,Apple
+  - RULE-SET,microsoft,Microsoft
+  - RULE-SET,openai,OpenAI
+  - RULE-SET,gemini,Gemini
+  - RULE-SET,tiktok,TikTok
+  - RULE-SET,paypal,PayPal
+  - RULE-SET,spotify,Spotify
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,telegram,Telegram
+  - RULE-SET,netflix,Netflix
+  - RULE-SET,disney,Disney
+  - RULE-SET,bilibili,DIRECT
+  - RULE-SET,chinamedia,DIRECT
+  - RULE-SET,globalmedia,GlobalMedia
+  - RULE-SET,github,GitHub
+  - RULE-SET,proxy,Proxy
+  - RULE-SET,china,DIRECT
+  - GEOIP,LAN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve
+  - MATCH,Final
