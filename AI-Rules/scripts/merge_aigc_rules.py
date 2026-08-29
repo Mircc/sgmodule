@@ -3,11 +3,13 @@
 """
 AIGC Rules Merger - 合并去重归类 AIGC 分流规则
 支持输入: Clash rule-provider yaml / Clash config rules / QuantumultX yaml filter /
-         QuantumultX legacy list / Surge list / Loon .lsr / 混合文本 / 远程 URL 列表文件
+         QuantumultX legacy list / Surge list / Surge domainset / Loon .lsr /
+         混合文本 / 远程 URL 列表文件
 输出 (文件名规范 v2):
-  Cl_Ai.yaml      (Clash classical rule-provider)
-  Sg_Ai.list      (Surge RULE-SET)
-  Ai_qx.list      (QuantumultX 原生 filter, 两字段无策略位)
+  Cl_Ai.yaml        (Clash classical rule-provider)
+  Sg_Ai.domainset   (Surge DOMAIN-SET 高性能域名集, 预建索引, 性能优于 classical)
+  Sg_Ai.list        (Surge RULE-SET, 仅装 domainset 装不下的 KEYWORD/REGEX/IP 规则)
+  Ai_qx.list        (QuantumultX 原生 filter, 两字段无策略位)
   Cl_Ai_domain.mrs  / Cl_Ai_ipcidr.mrs  (Clash Meta/mihomo 二进制规则集, 移动端省电; 需 PATH 有 mihomo)
   report.md
 仅依赖 Python 标准库, 可被任何工具(Cursor/Claude/Codex)与 GitHub Actions 直接调用。
@@ -30,8 +32,8 @@ import urllib.request
 
 # ---------------- 输出文件名规范 (v2: 客户端前缀标识) ----------------
 def output_filenames(name):
-    """返回 (clash, surge, qx, mrs_domain, mrs_ipcidr) 五个输出文件名"""
-    return (f"Cl_{name}.yaml", f"Sg_{name}.list", f"{name}_qx.list",
+    """返回 (clash, surge_classical, surge_domainset, qx, mrs_domain, mrs_ipcidr) 六个输出文件名"""
+    return (f"Cl_{name}.yaml", f"Sg_{name}.list", f"Sg_{name}.domainset", f"{name}_qx.list",
             f"Cl_{name}_domain.mrs", f"Cl_{name}_ipcidr.mrs")
 
 # ---------------- 规则类型 ----------------
@@ -304,9 +306,12 @@ def parse_rule_line(line):
         rest = parts[2:]
         no_resolve = any(p.lower() == "no-resolve" for p in rest)
     else:
-        # 纯域名行(裸 host)
-        if re.fullmatch(r"[A-Za-z0-9_*.-]+\.[A-Za-z]{2,}", s.split()[0]):
-            first = s.split()[0]
+        # Surge domainset 行: ".example.com" = 域名及全部子域 (DOMAIN-SUFFIX 语义)
+        first = s.split()[0]
+        if first.startswith(".") and re.fullmatch(r"\.[A-Za-z0-9_*-]+(\.[A-Za-z0-9_*-]+)+", first):
+            return ("DOMAIN-SUFFIX", first[1:], False)
+        # 纯域名行(裸 host) = 精确域名 (DOMAIN 语义; Surge domainset 裸行同义)
+        if re.fullmatch(r"[A-Za-z0-9_*.-]+\.[A-Za-z]{2,}", first):
             if "*" in first:
                 return ("DOMAIN-WILDCARD", first, False)
             return ("DOMAIN", first, False)
@@ -480,7 +485,7 @@ def build_outputs(keep, removed, args):
     outdir = args.output
     os.makedirs(outdir, exist_ok=True)
     items = sorted(keep.items(), key=order_key)
-    clash_fn, surge_fn, qx_fn, mrs_dom_fn, mrs_ip_fn = output_filenames(args.name)
+    clash_fn, surge_fn, ds_fn, qx_fn, mrs_dom_fn, mrs_ip_fn = output_filenames(args.name)
 
     # ---- Cl_Ai.yaml (Clash classical rule-provider; QX 亦可经单向兼容直接订阅) ----
     yaml_lines = [
@@ -502,15 +507,40 @@ def build_outputs(keep, removed, args):
     with open(os.path.join(outdir, clash_fn), "w", encoding="utf-8") as f:
         f.write("\n".join(yaml_lines) + "\n")
 
-    # ---- Sg_Ai.list (Surge) ----
-    list_lines = [
-        f"# {args.name} AIGC Rules (Surge RULE-SET)",
+    # ---- Sg_Ai.domainset (Surge DOMAIN-SET, 高性能域名集) ----
+    # Surge domainset 行格式: 裸域=精确(DOMAIN) / ".域"=域名及全部子域(DOMAIN-SUFFIX)
+    # 集合被 Surge 预建索引, 官方为超大列表设计, 匹配性能远优于 classical RULE-SET
+    # 注意: KEYWORD/REGEX/WILDCARD/IP 无法进 domainset, 由 Sg_Ai.list (RULE-SET) 补充
+    ds_items = [it for it in items if it[0][0] in ("DOMAIN", "DOMAIN-SUFFIX")]
+    ds_lines = [
+        f"# {args.name} AIGC Rules (Surge DOMAIN-SET, 高性能域名集)",
         f"# UPDATED: {today}",
-        f"# COUNT: {len(keep)}",
+        f"# COUNT: {len(ds_items)} (裸行=精确域名, .前缀行=域名及全部子域)",
+        f"# 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组",
         "",
     ]
     last_cat = None
-    for (t, v), rec in items:
+    for (t, v), rec in ds_items:
+        cat = classify(v, t)
+        if cat != last_cat:
+            ds_lines.append(f"# >> {cat}")
+            last_cat = cat
+        ds_lines.append(v if t == "DOMAIN" else "." + v)
+    with open(os.path.join(outdir, ds_fn), "w", encoding="utf-8") as f:
+        f.write("\n".join(ds_lines) + "\n")
+
+    # ---- Sg_Ai.list (Surge RULE-SET, 仅装 domainset 装不下的非域名规则) ----
+    # DOMAIN-KEYWORD / DOMAIN-REGEX / DOMAIN-WILDCARD / IP-CIDR(6) / IP-ASN / GEOIP
+    rest_items = [it for it in items if it[0][0] not in ("DOMAIN", "DOMAIN-SUFFIX")]
+    list_lines = [
+        f"# {args.name} AIGC Rules (Surge RULE-SET, classical 补充集)",
+        f"# UPDATED: {today}",
+        f"# COUNT: {len(rest_items)} (仅 KEYWORD/REGEX/WILDCARD/IP 类, 域名规则在 Sg_Ai.domainset)",
+        f"# 建议与 DOMAIN-SET 配合使用, 两条规则各写一行",
+        "",
+    ]
+    last_cat = None
+    for (t, v), rec in rest_items:
         cat = classify(v, t)
         if cat != last_cat:
             list_lines.append(f"# >> {cat}")
@@ -561,7 +591,8 @@ def build_outputs(keep, removed, args):
         "",
         f"- 保留规则: **{len(keep)}** 条",
         f"- 去重删除: **{len(removed)}** 条",
-        f"- 输出: `{clash_fn}` (Clash) / `{surge_fn}` (Surge) / "
+        f"- 输出: `{clash_fn}` (Clash) / `{ds_fn}` (Surge DOMAIN-SET 高性能域名集, {len(ds_items)} 条) + "
+        f"`{surge_fn}` (Surge RULE-SET classical 补充, {len(rest_items)} 条) / "
         f"`{qx_fn}` (QuantumultX 原生, 其中跳过 {qx_skipped} 条 QX 不支持的规则类型)",
         f"- mrs: `{mrs_dom_fn}` ({mrs_dom_cnt} 条域名规则) + `{mrs_ip_fn}` ({mrs_ip_cnt} 条 IP 规则); "
         f"另有 {mrs_skipped} 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效",
@@ -715,7 +746,8 @@ def main():
     files = []
     if args.cumulative:
         # 累积模式: 上一轮输出回灌为基底输入(置于最前, 报告中来源显示为基底文件)
-        base_names = list(output_filenames(args.name)[:3])
+        # 取前四个文本产物: Cl yaml / Sg classical list / Sg domainset / Ai_qx list (mrs 为二进制跳过)
+        base_names = list(output_filenames(args.name)[:4])
         for bn in base_names:
             bp = os.path.join(args.output, bn)
             if os.path.isfile(bp):
@@ -734,7 +766,7 @@ def main():
             for root, _, names in os.walk(p):
                 for n in names:
                     if n.lower().endswith((".yaml", ".yml", ".list", ".txt", ".conf",
-                                           ".rule", ".rules", ".lsr")):
+                                           ".rule", ".rules", ".lsr", ".domainset")):
                         files.append(os.path.join(root, n))
         elif os.path.isfile(p):
             files.append(p)
