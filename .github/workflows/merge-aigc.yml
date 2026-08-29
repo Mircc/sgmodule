@@ -41,18 +41,15 @@ jobs:
             echo
             echo "每日自动拉取上游源, 去重、归类、累积合并 (上游删除不影响本库)."
             echo
-            for i in 1 2 3; do
-              case $i in
-                1) f="Ai.yaml" ;;
-                2) f="Ai.list" ;;
-                3) f="Ai.qx.list" ;;
-              esac
-              echo "## 客户端${i}"
+            names=("一" "二" "三")
+            files=("Ai.yaml" "Ai.list" "Ai.qx.list")
+            for i in 0 1 2; do
+              echo "## 客户端${names[$i]}"
               echo
               echo "| 类型 | 链接 |"
               echo "| --- | --- |"
-              echo "| 加速链接 (推荐) | \${base_cdn}/output/${f} |"
-              echo "| 直连备用 | \${base_raw}/output/${f} |"
+              echo "| 加速链接 (推荐) | \${base_cdn}/output/${files[$i]} |"
+              echo "| 直连备用 | \${base_raw}/output/${files[$i]} |"
               echo
             done
             echo "客户端三订阅时请用 force-policy 参数自由指定策略组 (规则内置策略为占位符 no-policy, 不预设任何策略)."
