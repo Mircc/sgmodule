@@ -1,0 +1,463 @@
+# Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
+# UPDATED: 2026-08-29
+# COUNT: 416 (裸行=精确域名, .前缀行=域名及全部子域)
+# 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
+
+# >> OpenAI / ChatGPT
+openaiassets.blob.core.windows.net
+openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+openaicomproductionae4b.blob.core.windows.net
+.ai.com
+.chat.com
+.chatgpt.com
+.chatgpt.site
+.livekit.cloud
+.oaistatic.com
+.oaistatsig.com
+.oaiusercontent.com
+.openai.azure.com
+.openai.com
+.openai.com.cdn.cloudflare.net
+.sora.com
+# >> Anthropic / Claude
+anthropic-com.ghost.io
+anthropic.com.cdn.cloudflare.net
+clau.de
+servd-anthropic-website.b-cdn.net
+.anthropic.com
+.clau.de
+.claude.ai
+.claude.com
+.claude.site
+.claudemcpclient.com
+.claudemcpcontent.com
+.claudeusercontent.com
+.grazie.ai
+.grazie.aws.intellij.net
+.prodregistryv2.org
+# >> Cursor / 开发 AI
+.agentclientprotocol.com
+.ampcode.ai
+.ampcode.com
+.augment.dev
+.augmentcode.com
+.bolt.new
+.clawhub.ai
+.cline.bot
+.codeium.com
+.codeiumdata.com
+.coderabbit.ai
+.coderabbit.gallery.vsassets.io
+.cognition.ai
+.context7.com
+.continue.dev
+.cosine.sh
+.cursor-cdn.com
+.cursor.com
+.cursor.sh
+.cursorapi.com
+.cursorvm.com
+.deepwiki.com
+.deepwiki.org
+.devin.ai
+.factory.ai
+.grep.app
+.greptile.com
+.kilo.ai
+.kilocode.ai
+.kilocode.app
+.kiro.dev
+.lovable.dev
+.models.dev
+.openclaw.ai
+.opencode.ai
+.opencode.com
+.opencode.dev
+.openspec.dev
+.opncd.ai
+.pieces.app
+.plannotator.ai
+.qoder.com
+.qodo.ai
+.refact.ai
+.replit.com
+.roocode.com
+.sourcegraph.com
+.sourcery.ai
+.supermaven.com
+.sweep.dev
+.tabbyml.com
+.tabnine.com
+.v0.app
+.v0.dev
+.warp.dev
+.windsurf.ai
+.windsurf.build
+.windsurf.com
+.zed.dev
+# >> GitHub Copilot
+github.githubassets.com
+.githubcopilot.com
+# >> Apple Intelligence
+blackbird.apple.com
+guzzoni.apple.com
+intelligence.apple.com
+madservices.apple.com
+smoot.apple.com
+.apple-cloudkit.com
+.apple-livephotos.com
+# >> Dify
+.dify.ai
+# >> Manus
+.manus.ai
+.manus.im
+.manuscdn.com
+# >> OpenRouter
+openrouter.ai
+.openrouter.ai
+# >> Jasper
+.jasper.ai
+# >> Notion AI
+http-inputs-notion.splunkcloud.com
+.notion-static.com
+.notion.com
+.notion.new
+.notion.site
+.notion.so
+# >> OpenArt
+.openart.ai
+# >> JetBrains AI
+.jetbrains.ai
+# >> 图像生成
+.artbreeder.com
+.comfy.org
+.comfyci.org
+.comfyregistry.org
+.hedra.com
+.higgsfield.ai
+.ideogram.ai
+.kaiber.ai
+.krea.ai
+.leonardo.ai
+.lovart.ai
+.magnific.com
+.novelai.net
+.photoroom.com
+.playground.ai
+.playgroundai.com
+.recraft.ai
+.remove.bg
+.topazlabs.com
+.tripo3d.ai
+.viggle.ai
+# >> 视频生成
+.captions.ai
+.colossyan.com
+.d-id.com
+.descript.com
+.fliki.ai
+.genmo.ai
+.heygen.com
+.invideo.io
+.klingai.com
+.luma.ai
+.lumalabs.ai
+.pictory.ai
+.pika.art
+.runwayml.com
+.synthesia.io
+.tapnow.ai
+# >> LLM 平台
+api.together.xyz
+.cerebras.ai
+.modal.com
+.replicate.com
+.together.ai
+# >> 写作/搜索 AI
+.beautiful.ai
+.copy.ai
+.duck.ai
+.gamma.app
+.grammarly.com
+.notegpt.io
+.plusai.com
+.quillbot.com
+.rytr.me
+.sider.ai
+.speechify.com
+.spicywriter.com
+.sudowrite.com
+.talkai.info
+.wordtune.com
+.writer.com
+.writesonic.com
+.you.com
+# >> 设计工具
+.canva.com
+.envato-static.com
+.envato.com
+.envatousercontent.com
+.figma.com
+.themeforest.net
+# >> Google AI / Gemini
+ai.google.dev
+antigravity-unleash.goog
+antigravity.google
+.ai.google
+.ai.studio
+.antigravity-unleash.goog
+.antigravity.google
+.deepmind.com
+.deepmind.google
+.featureassets.org
+.flow.google
+.g.ai
+.gemini.google
+.gemini.gstatic.com
+.generativeai.google
+.google.com
+.googleapis.com
+.googleusercontent.com
+.jules.google
+.labs.google
+.notebooklm.google
+.opal.google
+.stitch.withgoogle.com
+# >> Microsoft Copilot / Bing
+api.github.com
+api.msn.com
+assets.msn.com
+copilot-proxy.githubusercontent.com
+copilot-workspace.githubnext.com
+copilot.microsoft.com
+copilotprodattachments.blob.core.windows.net
+gateway.bingviz.microsoft.net
+gateway.bingviz.microsoftapp.net
+odc.officeapps.live.com
+r.bing.com
+sydney.bing.com
+www.bing.com
+.api.microsoftapp.net
+.bing-shopping.microsoft-falcon.io
+.bingapis.com
+.copilot-stg.com
+.copilot.cloud.microsoft
+.copilot.com
+.copilot.microsoft.com
+.edgeservices.bing.com
+# >> xAI / Grok
+.grok-sandbox.com
+.grok.com
+.grok.x.com
+.grokipedia.com
+.groksupport.com
+.groktpcontent.com
+.grokusercontent.com
+.x.ai
+# >> Perplexity
+pplx-res.cloudinary.com
+.perplexity.ai
+.perplexity.com
+.pplx.ai
+# >> Poe
+.poe.com
+.poecdn.net
+# >> Midjourney
+.midjourney.com
+# >> Meta AI
+.meta.ai
+.meta.com
+# >> Mistral
+.mistral.ai
+# >> HuggingFace
+.hf.co
+.hf.space
+.huggingface.co
+# >> Cohere
+.cohere.ai
+.cohere.com
+# >> Stability
+.civitai.com
+.clipdrop.co
+.dreamstudio.ai
+.stability.ai
+# >> ElevenLabs / 语音音乐
+.assemblyai.com
+.cartesia.ai
+.deepgram.com
+.elevenlabs.com
+.elevenlabs.io
+.fathom.video
+.fireflies.ai
+.hume.ai
+.lmnt.com
+.meetgeek.ai
+.murf.ai
+.otter.ai
+.play.ht
+.read.ai
+.resemble.ai
+.respeecher.com
+.suno.ai
+.suno.com
+.tldv.io
+.udio.com
+.voice.ai
+.wellsaid.io
+.wellsaidlabs.com
+# >> NVIDIA AI
+api.ngc.nvidia.com
+api.nvidia.com
+build.nvidia.com
+.api.nvidia.com
+# >> 云厂商 AI
+ai.azure.com
+idetoolkits.amazonwebservices.com
+.ai.azure.com
+.azuredatabricks.net
+.cloud.databricks.com
+.gcp.databricks.com
+.ml.cloud.ibm.com
+.snowflakecomputing.com
+.watsonx.ai
+# >> 推理/算力平台
+.anyscale.com
+.baseten.co
+.chutes.ai
+.coreweave.com
+.crusoe.ai
+.deepinfra.com
+.fal.ai
+.fireworks.ai
+.hyperbolic.ai
+.hyperbolic.xyz
+.lambda.ai
+.nebius.com
+.runpod.io
+.sambanova.ai
+.vast.ai
+# >> 独立模型公司
+.ai21.com
+.ai21labs.com
+.aleph-alpha.com
+.allenai.org
+.arena.ai
+.bfl.ai
+.blackforestlabs.ai
+.dreamgen.com
+.h2o.ai
+.inflection.ai
+.liquid.ai
+.mozilla.ai
+.nomic.ai
+.nousresearch.com
+.pi.ai
+.reka.ai
+.smallcloud.ai
+.voyageai.com
+# >> LLM 开发栈/向量库
+.anythingllm.com
+.arize.com
+.braintrust.dev
+.crewai.com
+.helicone.ai
+.langchain.com
+.langfuse.com
+.langsmith.com
+.litellm.ai
+.llamaindex.ai
+.lmstudio.ai
+.milvus.io
+.mintlify.com
+.ollama.com
+.pinecone.io
+.portkey.ai
+.qdrant.tech
+.trychroma.com
+.turbopuffer.com
+.wandb.ai
+.wandb.com
+.weaviate.io
+# >> 数据采集/搜索 API
+.apify.com
+.brightdata.com
+.browserbase.com
+.browserless.io
+.diffbot.com
+.exa.ai
+.firecrawl.dev
+.phind.com
+.scrapingbee.com
+.serpapi.com
+.serper.dev
+.tavily.com
+.zenrows.com
+# >> 智能体/企业 AI
+.bardeen.ai
+.diabrowser.ai
+.diabrowser.com
+.diabrowser.engineering
+.dola.com
+.dust.tt
+.glean.com
+.granola.ai
+.granola.so
+.hebbia.ai
+.hebbia.com
+.lindy.ai
+.mem.ai
+.relay.app
+.sierra.ai
+.youmind.ai
+.youmind.com
+.youmind.site
+# >> Groq
+.groq.com
+# >> ByteDance / 豆包
+.cici.com
+.ciciai.com
+.ciciaicdn.com
+.coze.com
+.marscode.com
+.trae.ai
+# >> Moonshot / Kimi
+.kimi.ai
+.moonshot.ai
+# >> MiniMax
+.minimax.io
+# >> Character.AI
+.c.ai
+.character.ai
+# >> AI 通用基础设施
+browser-intake-datadoghq.com
+browser-intake-us5-datadoghq.com
+cdn.usefathom.com
+in.appcenter.ms
+location.microsoft.com
+self.events.data.microsoft.com
+.algolia.net
+.amazonaws.com
+.api.revenuecat.com
+.arkoselabs.com
+.auth0.com
+.azureedge.net
+.cloudflare.com
+.cloudflareinsights.com
+.ct.sendgrid.net
+.featuregates.org
+.identrust.com
+.images.workoscdn.com
+.imgix.net
+.intercom.io
+.intercomcdn.com
+.launchdarkly.com
+.liveperson.net
+.lpsnmedia.net
+.observeit.net
+.rum.browser-intake-datadoghq.com
+.segment.io
+.sentry.io
+.statsig.com
+.statsigapi.net
+.workos.com
+.wp.com
