@@ -1,0 +1,416 @@
+# Ai AIGC Rules (QuantumultX 原生 filter)
+# UPDATED: 2026-08-29
+# COUNT: 371 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# 策略默认 PROXY, 订阅时可用 force-policy 覆盖
+
+# >> OpenAI / ChatGPT
+HOST,chat.openai.com.cdn.cloudflare.net,PROXY
+HOST,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,PROXY
+HOST,openaicomproductionae4b.blob.core.windows.net,PROXY
+HOST-KEYWORD,chatgpt-async-webps,PROXY
+HOST-KEYWORD,openai,PROXY
+HOST-KEYWORD,openaicom-api,PROXY
+HOST-SUFFIX,ai.com,PROXY
+HOST-SUFFIX,chat.com,PROXY
+HOST-SUFFIX,chatgpt.com,PROXY
+HOST-SUFFIX,chatgpt.site,PROXY
+HOST-SUFFIX,livekit.cloud,PROXY
+HOST-SUFFIX,oaistatic.com,PROXY
+HOST-SUFFIX,oaiusercontent.com,PROXY
+HOST-SUFFIX,openai.azure.com,PROXY
+HOST-SUFFIX,openai.com,PROXY
+HOST-SUFFIX,sora.com,PROXY
+IP-ASN,20473,PROXY
+IP-CIDR,24.199.123.28/32,PROXY
+IP-CIDR,64.23.132.171/32,PROXY
+# >> Anthropic / Claude
+HOST,anthropic-com.ghost.io,PROXY
+HOST,anthropic.com.cdn.cloudflare.net,PROXY
+HOST,clau.de,PROXY
+HOST,servd-anthropic-website.b-cdn.net,PROXY
+HOST-KEYWORD,anthropic,PROXY
+HOST-KEYWORD,claude,PROXY
+HOST-SUFFIX,anthropic.com,PROXY
+HOST-SUFFIX,clau.de,PROXY
+HOST-SUFFIX,claude.ai,PROXY
+HOST-SUFFIX,claude.com,PROXY
+HOST-SUFFIX,claude.site,PROXY
+HOST-SUFFIX,claudemcpclient.com,PROXY
+HOST-SUFFIX,claudemcpcontent.com,PROXY
+HOST-SUFFIX,claudeusercontent.com,PROXY
+HOST-SUFFIX,grazie.ai,PROXY
+HOST-SUFFIX,grazie.aws.intellij.net,PROXY
+HOST-SUFFIX,prodregistryv2.org,PROXY
+IP-ASN,399358,PROXY
+IP-CIDR,160.79.104.0/21,PROXY
+IP-CIDR6,2607:6bc0::/32,PROXY
+# >> Cursor / 开发 AI
+HOST-SUFFIX,ampcode.ai,PROXY
+HOST-SUFFIX,ampcode.com,PROXY
+HOST-SUFFIX,augment.dev,PROXY
+HOST-SUFFIX,augmentcode.com,PROXY
+HOST-SUFFIX,bolt.new,PROXY
+HOST-SUFFIX,clawhub.ai,PROXY
+HOST-SUFFIX,cline.bot,PROXY
+HOST-SUFFIX,codeium.com,PROXY
+HOST-SUFFIX,coderabbit.ai,PROXY
+HOST-SUFFIX,cognition.ai,PROXY
+HOST-SUFFIX,context7.com,PROXY
+HOST-SUFFIX,continue.dev,PROXY
+HOST-SUFFIX,cosine.sh,PROXY
+HOST-SUFFIX,cursor-cdn.com,PROXY
+HOST-SUFFIX,cursor.com,PROXY
+HOST-SUFFIX,cursor.sh,PROXY
+HOST-SUFFIX,cursorapi.com,PROXY
+HOST-SUFFIX,cursorvm.com,PROXY
+HOST-SUFFIX,devin.ai,PROXY
+HOST-SUFFIX,factory.ai,PROXY
+HOST-SUFFIX,grep.app,PROXY
+HOST-SUFFIX,greptile.com,PROXY
+HOST-SUFFIX,kilo.ai,PROXY
+HOST-SUFFIX,kilocode.ai,PROXY
+HOST-SUFFIX,kilocode.app,PROXY
+HOST-SUFFIX,lovable.dev,PROXY
+HOST-SUFFIX,models.dev,PROXY
+HOST-SUFFIX,openclaw.ai,PROXY
+HOST-SUFFIX,opencode.ai,PROXY
+HOST-SUFFIX,opencode.com,PROXY
+HOST-SUFFIX,opencode.dev,PROXY
+HOST-SUFFIX,opncd.ai,PROXY
+HOST-SUFFIX,pieces.app,PROXY
+HOST-SUFFIX,qodo.ai,PROXY
+HOST-SUFFIX,refact.ai,PROXY
+HOST-SUFFIX,replit.com,PROXY
+HOST-SUFFIX,roocode.com,PROXY
+HOST-SUFFIX,sourcegraph.com,PROXY
+HOST-SUFFIX,sourcery.ai,PROXY
+HOST-SUFFIX,supermaven.com,PROXY
+HOST-SUFFIX,sweep.dev,PROXY
+HOST-SUFFIX,tabbyml.com,PROXY
+HOST-SUFFIX,tabnine.com,PROXY
+HOST-SUFFIX,v0.app,PROXY
+HOST-SUFFIX,v0.dev,PROXY
+HOST-SUFFIX,warp.dev,PROXY
+HOST-SUFFIX,windsurf.ai,PROXY
+HOST-SUFFIX,windsurf.com,PROXY
+HOST-SUFFIX,zed.dev,PROXY
+# >> GitHub Copilot
+HOST,github.githubassets.com,PROXY
+HOST-SUFFIX,githubcopilot.com,PROXY
+# >> Apple Intelligence
+HOST,blackbird.apple.com,PROXY
+HOST,guzzoni.apple.com,PROXY
+HOST,intelligence.apple.com,PROXY
+HOST,madservices.apple.com,PROXY
+HOST,smoot.apple.com,PROXY
+HOST-KEYWORD,apple-wit,PROXY
+HOST-SUFFIX,apple-cloudkit.com,PROXY
+HOST-SUFFIX,apple-livephotos.com,PROXY
+# >> Dify
+HOST-SUFFIX,dify.ai,PROXY
+# >> Manus
+HOST-SUFFIX,manus.ai,PROXY
+HOST-SUFFIX,manus.im,PROXY
+HOST-SUFFIX,manuscdn.com,PROXY
+# >> OpenRouter
+HOST,openrouter.ai,PROXY
+HOST-SUFFIX,openrouter.ai,PROXY
+# >> Jasper
+HOST-SUFFIX,jasper.ai,PROXY
+# >> Notion AI
+HOST,http-inputs-notion.splunkcloud.com,PROXY
+HOST-SUFFIX,notion-static.com,PROXY
+HOST-SUFFIX,notion.com,PROXY
+HOST-SUFFIX,notion.new,PROXY
+HOST-SUFFIX,notion.site,PROXY
+HOST-SUFFIX,notion.so,PROXY
+# >> OpenArt
+HOST-SUFFIX,openart.ai,PROXY
+# >> JetBrains AI
+HOST-SUFFIX,jetbrains.ai,PROXY
+# >> 图像生成
+HOST-SUFFIX,artbreeder.com,PROXY
+HOST-SUFFIX,hedra.com,PROXY
+HOST-SUFFIX,higgsfield.ai,PROXY
+HOST-SUFFIX,ideogram.ai,PROXY
+HOST-SUFFIX,kaiber.ai,PROXY
+HOST-SUFFIX,krea.ai,PROXY
+HOST-SUFFIX,leonardo.ai,PROXY
+HOST-SUFFIX,lovart.ai,PROXY
+HOST-SUFFIX,magnific.com,PROXY
+HOST-SUFFIX,photoroom.com,PROXY
+HOST-SUFFIX,playground.ai,PROXY
+HOST-SUFFIX,playgroundai.com,PROXY
+HOST-SUFFIX,recraft.ai,PROXY
+HOST-SUFFIX,remove.bg,PROXY
+HOST-SUFFIX,topazlabs.com,PROXY
+HOST-SUFFIX,viggle.ai,PROXY
+# >> 视频生成
+HOST-SUFFIX,captions.ai,PROXY
+HOST-SUFFIX,colossyan.com,PROXY
+HOST-SUFFIX,d-id.com,PROXY
+HOST-SUFFIX,descript.com,PROXY
+HOST-SUFFIX,fliki.ai,PROXY
+HOST-SUFFIX,genmo.ai,PROXY
+HOST-SUFFIX,heygen.com,PROXY
+HOST-SUFFIX,invideo.io,PROXY
+HOST-SUFFIX,klingai.com,PROXY
+HOST-SUFFIX,luma.ai,PROXY
+HOST-SUFFIX,lumalabs.ai,PROXY
+HOST-SUFFIX,pictory.ai,PROXY
+HOST-SUFFIX,pika.art,PROXY
+HOST-SUFFIX,runwayml.com,PROXY
+HOST-SUFFIX,synthesia.io,PROXY
+# >> LLM 平台
+HOST,api.together.xyz,PROXY
+HOST-SUFFIX,cerebras.ai,PROXY
+HOST-SUFFIX,modal.com,PROXY
+HOST-SUFFIX,replicate.com,PROXY
+HOST-SUFFIX,together.ai,PROXY
+# >> 写作/搜索 AI
+HOST-SUFFIX,beautiful.ai,PROXY
+HOST-SUFFIX,copy.ai,PROXY
+HOST-SUFFIX,gamma.app,PROXY
+HOST-SUFFIX,grammarly.com,PROXY
+HOST-SUFFIX,plusai.com,PROXY
+HOST-SUFFIX,quillbot.com,PROXY
+HOST-SUFFIX,rytr.me,PROXY
+HOST-SUFFIX,speechify.com,PROXY
+HOST-SUFFIX,sudowrite.com,PROXY
+HOST-SUFFIX,wordtune.com,PROXY
+HOST-SUFFIX,writer.com,PROXY
+HOST-SUFFIX,writesonic.com,PROXY
+HOST-SUFFIX,you.com,PROXY
+# >> 设计工具
+HOST-SUFFIX,canva.com,PROXY
+HOST-SUFFIX,figma.com,PROXY
+# >> Google AI / Gemini
+HOST,ai.google.dev,PROXY
+HOST,antigravity-unleash.goog,PROXY
+HOST,antigravity.google,PROXY
+HOST-KEYWORD,alkalimakersuite-pa.clients6.google.com,PROXY
+HOST-KEYWORD,colab,PROXY
+HOST-KEYWORD,developerprofiles,PROXY
+HOST-KEYWORD,generativeai,PROXY
+HOST-KEYWORD,generativelanguage,PROXY
+HOST-SUFFIX,ai.google,PROXY
+HOST-SUFFIX,deepmind.com,PROXY
+HOST-SUFFIX,deepmind.google,PROXY
+HOST-SUFFIX,featureassets.org,PROXY
+HOST-SUFFIX,g.ai,PROXY
+HOST-SUFFIX,gemini.google,PROXY
+HOST-SUFFIX,generativeai.google,PROXY
+HOST-SUFFIX,google.com,PROXY
+HOST-SUFFIX,googleapis.com,PROXY
+HOST-SUFFIX,googleusercontent.com,PROXY
+HOST-SUFFIX,notebooklm.google,PROXY
+# >> Microsoft Copilot / Bing
+HOST,api.github.com,PROXY
+HOST,api.msn.com,PROXY
+HOST,assets.msn.com,PROXY
+HOST,copilot-proxy.githubusercontent.com,PROXY
+HOST,copilot.microsoft.com,PROXY
+HOST,gateway.bingviz.microsoft.net,PROXY
+HOST,gateway.bingviz.microsoftapp.net,PROXY
+HOST,odc.officeapps.live.com,PROXY
+HOST,r.bing.com,PROXY
+HOST,sydney.bing.com,PROXY
+HOST,www.bing.com,PROXY
+HOST-SUFFIX,api.microsoftapp.net,PROXY
+HOST-SUFFIX,bing-shopping.microsoft-falcon.io,PROXY
+HOST-SUFFIX,bingapis.com,PROXY
+HOST-SUFFIX,copilot.cloud.microsoft,PROXY
+HOST-SUFFIX,copilot.microsoft.com,PROXY
+HOST-SUFFIX,edgeservices.bing.com,PROXY
+# >> xAI / Grok
+HOST-SUFFIX,grok-sandbox.com,PROXY
+HOST-SUFFIX,grok.com,PROXY
+HOST-SUFFIX,grokipedia.com,PROXY
+HOST-SUFFIX,groksupport.com,PROXY
+HOST-SUFFIX,groktpcontent.com,PROXY
+HOST-SUFFIX,grokusercontent.com,PROXY
+HOST-SUFFIX,x.ai,PROXY
+# >> Perplexity
+HOST,pplx-res.cloudinary.com,PROXY
+HOST-SUFFIX,perplexity.ai,PROXY
+HOST-SUFFIX,perplexity.com,PROXY
+HOST-SUFFIX,pplx.ai,PROXY
+# >> Poe
+HOST-SUFFIX,poe.com,PROXY
+HOST-SUFFIX,poecdn.net,PROXY
+# >> Midjourney
+HOST-SUFFIX,midjourney.com,PROXY
+# >> Meta AI
+HOST-SUFFIX,meta.ai,PROXY
+HOST-SUFFIX,meta.com,PROXY
+# >> Mistral
+HOST-SUFFIX,mistral.ai,PROXY
+# >> HuggingFace
+HOST-SUFFIX,hf.co,PROXY
+HOST-SUFFIX,hf.space,PROXY
+HOST-SUFFIX,huggingface.co,PROXY
+# >> Cohere
+HOST-SUFFIX,cohere.ai,PROXY
+HOST-SUFFIX,cohere.com,PROXY
+# >> Stability
+HOST-SUFFIX,civitai.com,PROXY
+HOST-SUFFIX,clipdrop.co,PROXY
+HOST-SUFFIX,dreamstudio.ai,PROXY
+HOST-SUFFIX,stability.ai,PROXY
+# >> ElevenLabs / 语音音乐
+HOST-SUFFIX,assemblyai.com,PROXY
+HOST-SUFFIX,cartesia.ai,PROXY
+HOST-SUFFIX,deepgram.com,PROXY
+HOST-SUFFIX,elevenlabs.com,PROXY
+HOST-SUFFIX,elevenlabs.io,PROXY
+HOST-SUFFIX,fathom.video,PROXY
+HOST-SUFFIX,fireflies.ai,PROXY
+HOST-SUFFIX,hume.ai,PROXY
+HOST-SUFFIX,lmnt.com,PROXY
+HOST-SUFFIX,meetgeek.ai,PROXY
+HOST-SUFFIX,murf.ai,PROXY
+HOST-SUFFIX,otter.ai,PROXY
+HOST-SUFFIX,play.ht,PROXY
+HOST-SUFFIX,read.ai,PROXY
+HOST-SUFFIX,resemble.ai,PROXY
+HOST-SUFFIX,respeecher.com,PROXY
+HOST-SUFFIX,suno.ai,PROXY
+HOST-SUFFIX,suno.com,PROXY
+HOST-SUFFIX,tldv.io,PROXY
+HOST-SUFFIX,udio.com,PROXY
+HOST-SUFFIX,voice.ai,PROXY
+HOST-SUFFIX,wellsaid.io,PROXY
+HOST-SUFFIX,wellsaidlabs.com,PROXY
+# >> NVIDIA AI
+HOST,api.ngc.nvidia.com,PROXY
+HOST,api.nvidia.com,PROXY
+HOST,build.nvidia.com,PROXY
+HOST-SUFFIX,api.nvidia.com,PROXY
+# >> 云厂商 AI
+HOST,ai.azure.com,PROXY
+HOST,idetoolkits.amazonwebservices.com,PROXY
+HOST-KEYWORD,bedrock,PROXY
+HOST-KEYWORD,bedrock-runtime,PROXY
+HOST-SUFFIX,ai.azure.com,PROXY
+HOST-SUFFIX,azuredatabricks.net,PROXY
+HOST-SUFFIX,cloud.databricks.com,PROXY
+HOST-SUFFIX,gcp.databricks.com,PROXY
+HOST-SUFFIX,ml.cloud.ibm.com,PROXY
+HOST-SUFFIX,snowflakecomputing.com,PROXY
+HOST-SUFFIX,watsonx.ai,PROXY
+# >> 推理/算力平台
+HOST-SUFFIX,anyscale.com,PROXY
+HOST-SUFFIX,baseten.co,PROXY
+HOST-SUFFIX,coreweave.com,PROXY
+HOST-SUFFIX,crusoe.ai,PROXY
+HOST-SUFFIX,deepinfra.com,PROXY
+HOST-SUFFIX,fal.ai,PROXY
+HOST-SUFFIX,fireworks.ai,PROXY
+HOST-SUFFIX,hyperbolic.ai,PROXY
+HOST-SUFFIX,hyperbolic.xyz,PROXY
+HOST-SUFFIX,lambda.ai,PROXY
+HOST-SUFFIX,nebius.com,PROXY
+HOST-SUFFIX,runpod.io,PROXY
+HOST-SUFFIX,sambanova.ai,PROXY
+HOST-SUFFIX,vast.ai,PROXY
+# >> 独立模型公司
+HOST-SUFFIX,ai21.com,PROXY
+HOST-SUFFIX,ai21labs.com,PROXY
+HOST-SUFFIX,aleph-alpha.com,PROXY
+HOST-SUFFIX,allenai.org,PROXY
+HOST-SUFFIX,bfl.ai,PROXY
+HOST-SUFFIX,blackforestlabs.ai,PROXY
+HOST-SUFFIX,inflection.ai,PROXY
+HOST-SUFFIX,liquid.ai,PROXY
+HOST-SUFFIX,nomic.ai,PROXY
+HOST-SUFFIX,nousresearch.com,PROXY
+HOST-SUFFIX,pi.ai,PROXY
+HOST-SUFFIX,reka.ai,PROXY
+HOST-SUFFIX,smallcloud.ai,PROXY
+HOST-SUFFIX,voyageai.com,PROXY
+# >> LLM 开发栈/向量库
+HOST-SUFFIX,arize.com,PROXY
+HOST-SUFFIX,braintrust.dev,PROXY
+HOST-SUFFIX,helicone.ai,PROXY
+HOST-SUFFIX,langchain.com,PROXY
+HOST-SUFFIX,langfuse.com,PROXY
+HOST-SUFFIX,langsmith.com,PROXY
+HOST-SUFFIX,litellm.ai,PROXY
+HOST-SUFFIX,llamaindex.ai,PROXY
+HOST-SUFFIX,milvus.io,PROXY
+HOST-SUFFIX,mintlify.com,PROXY
+HOST-SUFFIX,pinecone.io,PROXY
+HOST-SUFFIX,portkey.ai,PROXY
+HOST-SUFFIX,qdrant.tech,PROXY
+HOST-SUFFIX,trychroma.com,PROXY
+HOST-SUFFIX,turbopuffer.com,PROXY
+HOST-SUFFIX,wandb.ai,PROXY
+HOST-SUFFIX,wandb.com,PROXY
+HOST-SUFFIX,weaviate.io,PROXY
+# >> 数据采集/搜索 API
+HOST-SUFFIX,apify.com,PROXY
+HOST-SUFFIX,brightdata.com,PROXY
+HOST-SUFFIX,browserbase.com,PROXY
+HOST-SUFFIX,browserless.io,PROXY
+HOST-SUFFIX,diffbot.com,PROXY
+HOST-SUFFIX,exa.ai,PROXY
+HOST-SUFFIX,firecrawl.dev,PROXY
+HOST-SUFFIX,phind.com,PROXY
+HOST-SUFFIX,scrapingbee.com,PROXY
+HOST-SUFFIX,serpapi.com,PROXY
+HOST-SUFFIX,serper.dev,PROXY
+HOST-SUFFIX,tavily.com,PROXY
+HOST-SUFFIX,zenrows.com,PROXY
+# >> 智能体/企业 AI
+HOST-SUFFIX,bardeen.ai,PROXY
+HOST-SUFFIX,diabrowser.ai,PROXY
+HOST-SUFFIX,diabrowser.com,PROXY
+HOST-SUFFIX,dust.tt,PROXY
+HOST-SUFFIX,glean.com,PROXY
+HOST-SUFFIX,granola.ai,PROXY
+HOST-SUFFIX,granola.so,PROXY
+HOST-SUFFIX,hebbia.ai,PROXY
+HOST-SUFFIX,hebbia.com,PROXY
+HOST-SUFFIX,lindy.ai,PROXY
+HOST-SUFFIX,mem.ai,PROXY
+HOST-SUFFIX,relay.app,PROXY
+HOST-SUFFIX,sierra.ai,PROXY
+# >> Groq
+HOST-SUFFIX,groq.com,PROXY
+# >> Character.AI
+HOST-SUFFIX,c.ai,PROXY
+HOST-SUFFIX,character.ai,PROXY
+# >> AI 通用基础设施
+HOST,browser-intake-datadoghq.com,PROXY
+HOST,browser-intake-us5-datadoghq.com,PROXY
+HOST,cdn.usefathom.com,PROXY
+HOST,in.appcenter.ms,PROXY
+HOST,location.microsoft.com,PROXY
+HOST,self.events.data.microsoft.com,PROXY
+HOST-SUFFIX,algolia.net,PROXY
+HOST-SUFFIX,amazonaws.com,PROXY
+HOST-SUFFIX,api.revenuecat.com,PROXY
+HOST-SUFFIX,arkoselabs.com,PROXY
+HOST-SUFFIX,auth0.com,PROXY
+HOST-SUFFIX,azureedge.net,PROXY
+HOST-SUFFIX,cloudflare.com,PROXY
+HOST-SUFFIX,cloudflareinsights.com,PROXY
+HOST-SUFFIX,ct.sendgrid.net,PROXY
+HOST-SUFFIX,featuregates.org,PROXY
+HOST-SUFFIX,identrust.com,PROXY
+HOST-SUFFIX,images.workoscdn.com,PROXY
+HOST-SUFFIX,imgix.net,PROXY
+HOST-SUFFIX,intercom.io,PROXY
+HOST-SUFFIX,intercomcdn.com,PROXY
+HOST-SUFFIX,launchdarkly.com,PROXY
+HOST-SUFFIX,observeit.net,PROXY
+HOST-SUFFIX,rum.browser-intake-datadoghq.com,PROXY
+HOST-SUFFIX,segment.io,PROXY
+HOST-SUFFIX,sentry.io,PROXY
+HOST-SUFFIX,statsig.com,PROXY
+HOST-SUFFIX,statsigapi.net,PROXY
+HOST-SUFFIX,workos.com,PROXY
+HOST-SUFFIX,wp.com,PROXY
+IP-ASN,13335,PROXY
+# >> Others
+IP-CIDR,129.146.3.78/32,PROXY
