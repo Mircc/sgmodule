@@ -1,14 +1,15 @@
 # AIGC 规则合并报告 - 2026-08-29
 
-- 保留规则: **371** 条
-- 去重删除: **85** 条
-- 输出: `Ai.yaml` (Clash) / `Ai.list` (Surge) / `Ai.qx.list` (QuantumultX 原生, 其中跳过 0 条 QX 不支持的规则类型)
+- 保留规则: **438** 条
+- 去重删除: **104** 条
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.list` (Surge) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- mrs: `Cl_Ai_domain.mrs` (416 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
-| Ai.yaml | 371 |
+| Cl_Ai.yaml | 438 |
 
 ## 去重明细
 
@@ -20,6 +21,8 @@
 | DOMAIN,alkalicore-pa.clients6.google.com | 被 DOMAIN-SUFFIX,clients6.google.com 覆盖 |
 | DOMAIN,alkalimakersuite-pa.clients6.google.com | 被 DOMAIN-SUFFIX,clients6.google.com 覆盖 |
 | DOMAIN,anthropic.auth0.com | 被 DOMAIN-SUFFIX,auth0.com 覆盖 |
+| DOMAIN,antigravity-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
+| DOMAIN,antigravity.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,api.apple-cloudkit.com | 被 DOMAIN-SUFFIX,apple-cloudkit.com 覆盖 |
 | DOMAIN,api.cloudflare.com | 被 DOMAIN-SUFFIX,cloudflare.com 覆盖 |
 | DOMAIN,api.githubcopilot.com | 被 DOMAIN-SUFFIX,githubcopilot.com 覆盖 |
@@ -30,7 +33,10 @@
 | DOMAIN,aws-language-servers.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,aws-toolkit-language-servers.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,bard.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN,chat.openai.com.cdn.cloudflare.net | 被 DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net 覆盖 |
 | DOMAIN,client-telemetry.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
+| DOMAIN,cloudaicompanion.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
+| DOMAIN,cloudcode-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,codewhisperer.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,console.groq.com | 被 DOMAIN-SUFFIX,groq.com 覆盖 |
 | DOMAIN,daily-cloudcode-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
@@ -42,8 +48,13 @@
 | DOMAIN,integrate.api.nvidia.com | 被 DOMAIN-SUFFIX,api.nvidia.com 覆盖 |
 | DOMAIN,jules.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN,makersuite.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN,notebooklm-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,notebooklm.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN,notebooklm.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,openai-api.arkoselabs.com | 被 DOMAIN-SUFFIX,arkoselabs.com 覆盖 |
+| DOMAIN,openaiapi-site.azureedge.net | 被 DOMAIN-SUFFIX,azureedge.net 覆盖 |
+| DOMAIN,openaicom.imgix.net | 被 DOMAIN-SUFFIX,imgix.net 覆盖 |
+| DOMAIN,ppl-ai-file-upload.s3.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,production-openaicom-storage.azureedge.net | 被 DOMAIN-SUFFIX,azureedge.net 覆盖 |
 | DOMAIN,q.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,robinfrontend-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
@@ -51,8 +62,11 @@
 | DOMAIN,specs.q.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,static.cloudflareinsights.com | 被 DOMAIN-SUFFIX,cloudflareinsights.com 覆盖 |
 | DOMAIN,telemetry.aws-language-servers.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
+| DOMAIN,webchannel-alkalimakersuite-pa.clients6.google.com | 被 DOMAIN-SUFFIX,clients6.google.com 覆盖 |
 | DOMAIN-SUFFIX,aicode.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
+| DOMAIN-SUFFIX,aida.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,aiplatform.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
+| DOMAIN-SUFFIX,aisandbox-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,aistudio.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,alkalimakersuite-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,android.chat.openai.com | 被 DOMAIN-SUFFIX,chat.openai.com 覆盖 |
@@ -80,19 +94,25 @@
 | DOMAIN-SUFFIX,events.statsigapi.net | 被 DOMAIN-SUFFIX,statsigapi.net 覆盖 |
 | DOMAIN-SUFFIX,firebaseinstallations.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,forwarder.workos.com | 被 DOMAIN-SUFFIX,workos.com 覆盖 |
+| DOMAIN-SUFFIX,gateway.ai.cloudflare.com | 被 DOMAIN-SUFFIX,cloudflare.com 覆盖 |
 | DOMAIN-SUFFIX,geller-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,gemini.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,generativelanguage.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,host.livekit.cloud | 被 DOMAIN-SUFFIX,livekit.cloud 覆盖 |
 | DOMAIN-SUFFIX,ios.chat.openai.com | 被 DOMAIN-SUFFIX,chat.openai.com 覆盖 |
 | DOMAIN-SUFFIX,js.intercomcdn.com | 被 DOMAIN-SUFFIX,intercomcdn.com 覆盖 |
+| DOMAIN-SUFFIX,jules.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN-SUFFIX,labs.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,makersuite.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN-SUFFIX,notebook.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,notebooklm.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,o207216.ingest.sentry.io | 被 DOMAIN-SUFFIX,sentry.io 覆盖 |
 | DOMAIN-SUFFIX,o33249.ingest.sentry.io | 被 DOMAIN-SUFFIX,sentry.io 覆盖 |
+| DOMAIN-SUFFIX,opal.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,openaiapi-site.azureedge.net | 被 DOMAIN-SUFFIX,azureedge.net 覆盖 |
 | DOMAIN-SUFFIX,openaicom.imgix.net | 被 DOMAIN-SUFFIX,imgix.net 覆盖 |
 | DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
+| DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,setup.auth.openai.com | 被 DOMAIN-SUFFIX,auth.openai.com 覆盖 |
 | DOMAIN-SUFFIX,setup.workos.com | 被 DOMAIN-SUFFIX,workos.com 覆盖 |
 | DOMAIN-SUFFIX,tcr9i.chat.openai.com | 被 DOMAIN-SUFFIX,chat.openai.com 覆盖 |
@@ -107,7 +127,7 @@
 
 ## 已排除的非 AI 规则 (支付类黑名单)
 
-共 268 条命中排除黑名单(PayPal 家族/通用支付 SaaS), 未纳入输出:
+共 270 条命中排除黑名单(PayPal 家族/通用支付 SaaS), 未纳入输出:
 
 - DOMAIN-SUFFIX,stripe.com  <- 00_Ai.yaml
 - DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe  <- 02_AIGC.yaml
@@ -371,3 +391,4 @@
 - DOMAIN-KEYWORD,paypal  <- 05_OverseasAI.list
 - DOMAIN-KEYWORD,stripe  <- 05_OverseasAI.list
 - IP-ASN,14061  <- 05_OverseasAI.list
+- DOMAIN-SUFFIX,oystermercury.top  <- 14_AI_Rules.lsr
