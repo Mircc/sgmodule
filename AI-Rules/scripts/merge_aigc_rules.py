@@ -8,7 +8,7 @@ AIGC Rules Merger - 合并去重归类 AIGC 分流规则
 仅依赖 Python 标准库, 可被任何工具(Cursor/Claude/Codex)与 GitHub Actions 直接调用。
 用法:
   python merge_aigc_rules.py <输入文件或目录...> -o <输出目录> [--name Ai]
-      [--qx-policy no-policy] [--sources-file sources.txt]
+      [--qx-policy 策略名] [--sources-file sources.txt]
   # 仅用远程 sources.txt 时输入路径可省略:
   python merge_aigc_rules.py --sources-file sources.txt -o output/
 """
@@ -497,12 +497,13 @@ def build_outputs(keep, removed, args):
         f.write("\n".join(list_lines) + "\n")
 
     # ---- Ai.qx.list (QuantumultX 原生语法) ----
-    # QX 原生格式: HOST-SUFFIX,openai.com,no-policy (占位策略; 订阅时 force-policy 覆盖)
+    # QX 原生格式: HOST-SUFFIX,openai.com (两字段, 不写策略位, 参考墨鱼 ddgksf2013 同款写法)
+    # 订阅时用 force-policy=你的策略组 自由指定; 若指定 --qx-policy 则附加第三字段
     qx_lines = [
         f"# {args.name} AIGC Rules (QuantumultX 原生 filter)",
         f"# UPDATED: {today}",
         f"# COUNT: {len(keep)} (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)",
-        f"# 策略为占位符 {args.qx_policy}, 请订阅时用 force-policy=你的策略组 自由指定",
+        f"# 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定",
         "",
     ]
     last_cat = None
@@ -515,7 +516,10 @@ def build_outputs(keep, removed, args):
         if t not in QX_NATIVE_MAP:
             qx_skipped += 1
             continue
-        qx_lines.append(f"{QX_NATIVE_MAP[t]},{v},{args.qx_policy}")
+        if args.qx_policy:
+            qx_lines.append(f"{QX_NATIVE_MAP[t]},{v},{args.qx_policy}")
+        else:
+            qx_lines.append(f"{QX_NATIVE_MAP[t]},{v}")
     with open(os.path.join(outdir, f"{args.name}.qx.list"), "w", encoding="utf-8") as f:
         f.write("\n".join(qx_lines) + "\n")
 
@@ -611,9 +615,9 @@ def main():
     ap.add_argument("inputs", nargs="*", help="输入文件或目录(目录会递归扫描; 有 --sources-file 时可省略)")
     ap.add_argument("-o", "--output", default="./output", help="输出目录 (默认 ./output)")
     ap.add_argument("--name", default="Ai", help="输出文件名前缀 (默认 Ai)")
-    ap.add_argument("--qx-policy", default="no-policy",
-                    help="QuantumultX 原生输出内嵌的策略占位符 (默认 no-policy, 不预设具体策略; "
-                         "语法第三字段必须存在, 订阅时用 force-policy=自定义策略组 覆盖即可自由指定)")
+    ap.add_argument("--qx-policy", default=None,
+                    help="QuantumultX 原生输出附加的第三字段 (默认不写, 规则仅两字段, "
+                         "参考墨鱼 ddgksf2013 同款写法; 订阅时用 force-policy=自定义策略组 自由指定)")
     ap.add_argument("--sources-file", dest="sources_file", default=None,
                     help="URL 列表文件(每行一个 http(s) 链接, # 注释), 自动下载后并入输入")
     ap.add_argument("--cumulative", action="store_true",
