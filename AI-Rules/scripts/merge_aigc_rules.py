@@ -3,12 +3,17 @@
 """
 AIGC Rules Merger - 合并去重归类 AIGC 分流规则
 支持输入: Clash rule-provider yaml / Clash config rules / QuantumultX yaml filter /
-         QuantumultX legacy list / Surge list / 混合文本 / 远程 URL 列表文件
-输出: Ai.yaml (Clash) / Ai.list (Surge) / Ai.qx.list (QuantumultX 原生语法) / report.md
+         QuantumultX legacy list / Surge list / Loon .lsr / 混合文本 / 远程 URL 列表文件
+输出 (文件名规范 v2):
+  Cl_Ai.yaml      (Clash classical rule-provider)
+  Sg_Ai.list      (Surge RULE-SET)
+  Ai_qx.list      (QuantumultX 原生 filter, 两字段无策略位)
+  Cl_Ai_domain.mrs  / Cl_Ai_ipcidr.mrs  (Clash Meta/mihomo 二进制规则集, 移动端省电; 需 PATH 有 mihomo)
+  report.md
 仅依赖 Python 标准库, 可被任何工具(Cursor/Claude/Codex)与 GitHub Actions 直接调用。
 用法:
   python merge_aigc_rules.py <输入文件或目录...> -o <输出目录> [--name Ai]
-      [--qx-policy 策略名] [--sources-file sources.txt]
+      [--qx-policy 策略名] [--sources-file sources.txt] [--mihomo /path/to/mihomo]
   # 仅用远程 sources.txt 时输入路径可省略:
   python merge_aigc_rules.py --sources-file sources.txt -o output/
 """
@@ -17,9 +22,17 @@ import datetime
 import ipaddress
 import os
 import re
+import shutil
+import subprocess
 import sys
 import tempfile
 import urllib.request
+
+# ---------------- 输出文件名规范 (v2: 客户端前缀标识) ----------------
+def output_filenames(name):
+    """返回 (clash, surge, qx, mrs_domain, mrs_ipcidr) 五个输出文件名"""
+    return (f"Cl_{name}.yaml", f"Sg_{name}.list", f"{name}_qx.list",
+            f"Cl_{name}_domain.mrs", f"Cl_{name}_ipcidr.mrs")
 
 # ---------------- 规则类型 ----------------
 # (类型, 是否域名类)
@@ -59,6 +72,7 @@ EXCLUDE_EXACT = {
     "pool.ntp.org",    # NTP 时间同步, 非 AI
     "qpoe.com",        # 归属不明
     "14061",           # ASN 14061 (DigitalOcean 通用云), 非 AI 专属
+    "oystermercury.top",  # 归属不明(随机词 .top 域, Keviin560 上游带入), 2026-08-29 剔除
 }
 
 
@@ -92,7 +106,7 @@ QX_NATIVE_MAP = {
 PROVIDER_MAP = [
     ("OpenAI / ChatGPT", [
         "openai", "chatgpt", "oaistatic", "oaiusercontent", "chat.com",
-        "sora.com", "livekit", "ai.com",
+        "sora.com", "livekit", "ai.com", "oaistatsig",
     ]),
     ("Anthropic / Claude", [
         "anthropic", "claude", "claudeusercontent", "grazie", "poetry-db",
@@ -105,7 +119,10 @@ PROVIDER_MAP = [
                           "kilo", "kilocode", "lovable", "models.dev", "opencode", "opncd",
                           "openclaw", "clawhub", "pieces.app", "qodo", "refact", "roocode",
                           "sourcery", "sourcegraph", "supermaven", "sweep.dev", "tabbyml",
-                          "warp.dev", "zed"]),
+                          "warp.dev", "zed",
+                          # 2026-08-29 新增 (Keviin560 上游带入)
+                          "agentclientprotocol", "deepwiki", "kiro", "openspec", "qoder",
+                          "plannotator"]),
     ("GitHub Copilot", ["githubcopilot", "github.githubassets.com"]),
     ("Apple Intelligence", ["apple-wit", "intelligence.apple.com", "apple-cloudkit.com",
                             "apple-livephotos.com", "madservices.apple.com", "guzzoni.apple.com",
@@ -119,19 +136,22 @@ PROVIDER_MAP = [
     ("JetBrains AI", ["jetbrains"]),
     ("图像生成", ["recraft.ai", "ideogram.ai", "leonardo.ai", "playground.ai", "playgroundai",
                  "krea", "magnific", "photoroom", "remove.bg", "topazlabs", "artbreeder",
-                 "kaiber", "higgsfield", "hedra", "viggle", "lovart"]),
+                 "kaiber", "higgsfield", "hedra", "viggle", "lovart",
+                 "comfy", "novelai", "tripo3d"]),  # ComfyUI/NovelAI/Tripo3D
     ("视频生成", ["runwayml", "lumalabs", "luma", "pika.art", "klingai", "synthesia", "heygen", "d-id",
-                 "captions", "fliki", "pictory", "genmo", "invideo", "colossyan", "descript"]),
+                 "captions", "fliki", "pictory", "genmo", "invideo", "colossyan", "descript",
+                 "tapnow"]),
     ("LLM 平台", ["replicate", "cerebras", "together.ai", "together.xyz", "modal.com"]),
     ("写作/搜索 AI", ["you.com", "copy.ai", "writesonic", "grammarly", "quillbot", "wordtune",
                      "writer.com", "rytr", "sudowrite", "plusai", "gamma.app", "beautiful.ai",
-                     "speechify"]),
-    ("设计工具", ["canva.com", "figma.com"]),
+                     "speechify", "duck.ai", "sider", "spicywriter", "talkai", "notegpt"]),
+    ("设计工具", ["canva.com", "figma.com", "envato", "themeforest"]),
     ("Google AI / Gemini", [
         "gemini", "generativelanguage", "deepmind", "generativeai",
         "bard.google", "ai.google.dev", "makersuite", "aistudio",
         "notebooklm.google", "jules.google", "labs.google", "alphafold",
         "g.ai", "antigravity", "featureassets", "ai.google",
+        "ai.studio", "flow.google", "opal.google", "stitch.withgoogle.com",
         "google.com",  # 上游带 google.com 主体域, 经用户确认归入本组
         "googleapis.com", "googleusercontent.com", "colab.google", "colab.research.google",
         "apis.google.com", "clients4.google.com", "clients6.google.com",
@@ -161,21 +181,24 @@ PROVIDER_MAP = [
                   "ml.cloud.ibm.com", "watsonx", "snowflakecomputing"]),
     ("推理/算力平台", ["baseten", "cerebras", "coreweave", "crusoe", "deepinfra", "fireworks",
                      "hyperbolic", "lambda", "nebius", "runpod", "sambanova", "anyscale",
-                     "vast.ai", "modal", "fal.ai"]),
+                     "vast.ai", "modal", "fal.ai", "chutes"]),
     ("独立模型公司", ["ai21", "aleph-alpha", "allenai", "inflection", "reka", "liquid.ai",
                     "nomic", "nousresearch", "smallcloud", "voyageai", "bfl.ai",
-                    "blackforestlabs", "pi.ai"]),
+                    "blackforestlabs", "pi.ai", "h2o.ai", "mozilla.ai", "dreamgen",
+                    "arena.ai"]),
     ("LLM 开发栈/向量库", ["langchain", "llamaindex", "litellm", "portkey", "helicone", "langfuse",
                          "langsmith", "arize", "braintrust", "wandb", "mintlify", "pinecone",
-                         "qdrant", "weaviate", "milvus", "trychroma", "chroma", "turbopuffer"]),
+                         "qdrant", "weaviate", "milvus", "trychroma", "chroma", "turbopuffer",
+                         "crewai", "lmstudio", "ollama", "anythingllm"]),
     ("数据采集/搜索 API", ["apify", "brightdata", "browserbase", "browserless", "diffbot",
                           "exa", "firecrawl", "scrapingbee", "serpapi", "serper", "tavily",
                           "zenrows", "phind"]),
     ("智能体/企业 AI", ["lindy", "relay.app", "dust.tt", "sierra", "hebbia", "glean", "mem.ai",
-                       "granola", "diabrowser", "bardeen"]),
+                       "granola", "diabrowser", "bardeen", "youmind", "dola"]),
     ("Groq", ["groq.com", "grokmind"]),
     ("DeepSeek", ["deepseek"]),
-    ("ByteDance / 豆包", ["doubao", "coze", "volces", "volcengine", "byteintl", "lf-ai"]),
+    ("ByteDance / 豆包", ["doubao", "coze", "volces", "volcengine", "byteintl", "lf-ai",
+                          "cici", "marscode", "trae"]),
     ("Alibaba / 通义", ["tongyi", "qianwen", "dashscope", "aliyun-ai", "baichuan-ai",
                         "modelscope", "bailian", "aliyuncs.com/ai"]),
     ("Baidu / 文心", ["yiyan", "ernie", "aip.baidubce", "wenxin"]),
@@ -206,7 +229,7 @@ PROVIDER_MAP = [
         # 其他通用
         "intercom", "intercomcdn", "zendesk", "freshdesk", "liveperson",
         "imgix", "azureedge", "wp.com", "amazonaws", "identrust",
-        "usefathom", "plausible", "cloudinary",
+        "usefathom", "plausible", "cloudinary", "lpsnmedia",
     ]),
 ]
 
@@ -239,9 +262,9 @@ def classify(value, rtype):
                 kw in v and (("." + kw) in ("." + v) or ("-" + kw) in ("-" + v))
             ):
                 return label
-    # 关键词型规则用包含匹配
+    # 关键词型/正则型规则用包含匹配
     for label, kws in PROVIDER_MAP:
-        if rtype == "DOMAIN-KEYWORD" and any(kw in v for kw in kws):
+        if rtype in ("DOMAIN-KEYWORD", "DOMAIN-REGEX") and any(kw in v for kw in kws):
             return label
     return "Others"
 
@@ -457,11 +480,12 @@ def build_outputs(keep, removed, args):
     outdir = args.output
     os.makedirs(outdir, exist_ok=True)
     items = sorted(keep.items(), key=order_key)
+    clash_fn, surge_fn, qx_fn, mrs_dom_fn, mrs_ip_fn = output_filenames(args.name)
 
-    # ---- Ai.yaml (Clash; QX 亦可经单向兼容直接订阅) ----
+    # ---- Cl_Ai.yaml (Clash classical rule-provider; QX 亦可经单向兼容直接订阅) ----
     yaml_lines = [
         f"# NAME: {args.name} AIGC Rules",
-        f"# DESC: 合并整理的 AIGC 分流规则 (Clash rule-provider; QX 亦可直接订阅)",
+        f"# DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)",
         f"# UPDATED: {today}",
         f"# COUNT: {len(keep)}",
         "",
@@ -475,10 +499,10 @@ def build_outputs(keep, removed, args):
             last_cat = cat
         nr = ",no-resolve" if rec[2] and t in IP_TYPES else ""
         yaml_lines.append(f"  - {t},{v}{nr}")
-    with open(os.path.join(outdir, f"{args.name}.yaml"), "w", encoding="utf-8") as f:
+    with open(os.path.join(outdir, clash_fn), "w", encoding="utf-8") as f:
         f.write("\n".join(yaml_lines) + "\n")
 
-    # ---- Ai.list (Surge) ----
+    # ---- Sg_Ai.list (Surge) ----
     list_lines = [
         f"# {args.name} AIGC Rules (Surge RULE-SET)",
         f"# UPDATED: {today}",
@@ -493,10 +517,10 @@ def build_outputs(keep, removed, args):
             last_cat = cat
         nr = ",no-resolve" if rec[2] and t in IP_TYPES else ""
         list_lines.append(f"{t},{v}{nr}")
-    with open(os.path.join(outdir, f"{args.name}.list"), "w", encoding="utf-8") as f:
+    with open(os.path.join(outdir, surge_fn), "w", encoding="utf-8") as f:
         f.write("\n".join(list_lines) + "\n")
 
-    # ---- Ai.qx.list (QuantumultX 原生语法) ----
+    # ---- Ai_qx.list (QuantumultX 原生语法) ----
     # QX 原生格式: HOST-SUFFIX,openai.com (两字段, 不写策略位, 参考墨鱼 ddgksf2013 同款写法)
     # 订阅时用 force-policy=你的策略组 自由指定; 若指定 --qx-policy 则附加第三字段
     qx_lines = [
@@ -520,8 +544,11 @@ def build_outputs(keep, removed, args):
             qx_lines.append(f"{QX_NATIVE_MAP[t]},{v},{args.qx_policy}")
         else:
             qx_lines.append(f"{QX_NATIVE_MAP[t]},{v}")
-    with open(os.path.join(outdir, f"{args.name}.qx.list"), "w", encoding="utf-8") as f:
+    with open(os.path.join(outdir, qx_fn), "w", encoding="utf-8") as f:
         f.write("\n".join(qx_lines) + "\n")
+
+    # ---- mrs (Clash Meta/mihomo 二进制规则集, 移动端省电) ----
+    mrs_dom_cnt, mrs_ip_cnt, mrs_skipped = build_mrs(items, outdir, mrs_dom_fn, mrs_ip_fn, args)
 
     # ---- report.md ----
     sources = {}
@@ -534,8 +561,10 @@ def build_outputs(keep, removed, args):
         "",
         f"- 保留规则: **{len(keep)}** 条",
         f"- 去重删除: **{len(removed)}** 条",
-        f"- 输出: `{args.name}.yaml` (Clash) / `{args.name}.list` (Surge) / "
-        f"`{args.name}.qx.list` (QuantumultX 原生, 其中跳过 {qx_skipped} 条 QX 不支持的规则类型)",
+        f"- 输出: `{clash_fn}` (Clash) / `{surge_fn}` (Surge) / "
+        f"`{qx_fn}` (QuantumultX 原生, 其中跳过 {qx_skipped} 条 QX 不支持的规则类型)",
+        f"- mrs: `{mrs_dom_fn}` ({mrs_dom_cnt} 条域名规则) + `{mrs_ip_fn}` ({mrs_ip_cnt} 条 IP 规则); "
+        f"另有 {mrs_skipped} 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效",
         "",
         "## 来源文件统计",
         "",
@@ -562,6 +591,61 @@ def build_outputs(keep, removed, args):
     with open(os.path.join(outdir, "report.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(rep) + "\n")
     return len(keep), len(removed), others
+
+
+# ---------------- mrs 输出 (Clash Meta/mihomo) ----------------
+def build_mrs(items, outdir, mrs_dom_fn, mrs_ip_fn, args):
+    """
+    生成 mrs 二进制规则集 (需 PATH 或 --mihomo 指定 mihomo):
+      domain mrs:  DOMAIN->裸域(精确) / DOMAIN-SUFFIX->+.域 / DOMAIN-WILDCARD 原样
+      ipcidr mrs:  IP-CIDR / IP-CIDR6 原样
+    DOMAIN-KEYWORD / DOMAIN-REGEX / IP-ASN / GEOIP 无法进 mrs, 仅保留在 yaml/list。
+    未找到 mihomo 时跳过 mrs 输出并给出提示。
+    返回 (domain条数, ip条数, 跳过条数)
+    """
+    mihomo = shutil.which(args.mihomo) if args.mihomo else shutil.which("mihomo")
+    dom_lines, ip_lines, skipped = [], [], 0
+    for (t, v), _rec in items:
+        if t in ("DOMAIN", "DOMAIN-SUFFIX", "DOMAIN-WILDCARD"):
+            dom_lines.append(v if t == "DOMAIN" else ("+." + v if t == "DOMAIN-SUFFIX" else v))
+        elif t in ("IP-CIDR", "IP-CIDR6"):
+            ip_lines.append(v)
+        else:
+            skipped += 1  # KEYWORD / REGEX / ASN / GEOIP
+    if not mihomo:
+        print(f"[WARN] 未找到 mihomo, 跳过 mrs 输出 (已统计: 域名 {len(dom_lines)} 条, "
+              f"IP {len(ip_lines)} 条, 不支持 {skipped} 条)", file=sys.stderr)
+        print("[WARN] 安装方法: https://github.com/MetaCubeX/mihomo/releases 下载后放入 PATH, "
+              "或用 --mihomo /path/to/mihomo 指定", file=sys.stderr)
+        return 0, 0, skipped
+    # 中间源文件与 mihomo 运行 cwd 都放临时目录 (mihomo 启动会在 cwd 生成初始配置文件)
+    tmpdir = tempfile.mkdtemp(prefix="aigc_mrs_")
+    try:
+        dom_src = os.path.join(tmpdir, "domain.txt")
+        ip_src = os.path.join(tmpdir, "ipcidr.txt")
+        with open(dom_src, "w", encoding="utf-8") as f:
+            f.write("\n".join(dom_lines) + "\n")
+        with open(ip_src, "w", encoding="utf-8") as f:
+            f.write("\n".join(ip_lines) + "\n")
+        # 用法: mihomo convert-ruleset <behavior> <源格式> <源文件> <目标文件>
+        # 注意: 全部用绝对路径 (mihomo 以临时目录为 cwd 运行, 避免在其 cwd 生成初始配置文件)
+        dom_dst = os.path.abspath(os.path.join(outdir, mrs_dom_fn))
+        ip_dst = os.path.abspath(os.path.join(outdir, mrs_ip_fn))
+        r1 = subprocess.run([mihomo, "convert-ruleset", "domain", "text", dom_src, dom_dst],
+                            capture_output=True, timeout=120, cwd=tmpdir)
+        r2 = subprocess.run([mihomo, "convert-ruleset", "ipcidr", "text", ip_src, ip_dst],
+                            capture_output=True, timeout=120, cwd=tmpdir)
+        for r, dst, cnt, tag in ((r1, dom_dst, len(dom_lines), "domain"),
+                                 (r2, ip_dst, len(ip_lines), "ipcidr")):
+            if r.returncode == 0 and os.path.isfile(dst) and os.path.getsize(dst) > 0:
+                print(f"[INFO] mrs {tag}: {cnt} 条 -> {os.path.basename(dst)}")
+            else:
+                print(f"[WARN] mrs {tag} 转换失败: {r.stderr.decode(errors='ignore')[:200]}",
+                      file=sys.stderr)
+                return 0, 0, skipped
+        return len(dom_lines), len(ip_lines), skipped
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
 
 
 def fetch_sources(sources_file):
@@ -620,6 +704,9 @@ def main():
                          "参考墨鱼 ddgksf2013 同款写法; 订阅时用 force-policy=自定义策略组 自由指定)")
     ap.add_argument("--sources-file", dest="sources_file", default=None,
                     help="URL 列表文件(每行一个 http(s) 链接, # 注释), 自动下载后并入输入")
+    ap.add_argument("--mihomo", default=None,
+                    help="mihomo 可执行文件路径 (默认从 PATH 查找; 找到时输出 mrs 二进制规则集, "
+                         "移动端 Clash Meta 更省电)")
     ap.add_argument("--cumulative", action="store_true",
                     help="累积模式: 先读入输出目录已有规则作为基底再合并新源, "
                          "上游删除的规则本地继续保留, 只去重/新增(防上游恶意删除)")
@@ -628,7 +715,7 @@ def main():
     files = []
     if args.cumulative:
         # 累积模式: 上一轮输出回灌为基底输入(置于最前, 报告中来源显示为基底文件)
-        base_names = [f"{args.name}.yaml", f"{args.name}.list", f"{args.name}.qx.list"]
+        base_names = list(output_filenames(args.name)[:3])
         for bn in base_names:
             bp = os.path.join(args.output, bn)
             if os.path.isfile(bp):
@@ -646,7 +733,8 @@ def main():
         if os.path.isdir(p):
             for root, _, names in os.walk(p):
                 for n in names:
-                    if n.lower().endswith((".yaml", ".yml", ".list", ".txt", ".conf", ".rule", ".rules")):
+                    if n.lower().endswith((".yaml", ".yml", ".list", ".txt", ".conf",
+                                           ".rule", ".rules", ".lsr")):
                         files.append(os.path.join(root, n))
         elif os.path.isfile(p):
             files.append(p)
