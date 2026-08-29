@@ -8,22 +8,22 @@
 
 | 类型 | 链接 |
 | --- | --- |
-| 加速链接 (推荐) | ${base_cdn}/output/Ai.yaml |
-| 直连备用 | ${base_raw}/output/Ai.yaml |
+| 加速链接 (推荐) | https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AI-Rules/output/Ai.yaml |
+| 直连备用 | https://raw.githubusercontent.com/Mircc/sgmodule/main/AI-Rules/output/Ai.yaml |
 
 ## 客户端二
 
 | 类型 | 链接 |
 | --- | --- |
-| 加速链接 (推荐) | ${base_cdn}/output/Ai.list |
-| 直连备用 | ${base_raw}/output/Ai.list |
+| 加速链接 (推荐) | https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AI-Rules/output/Ai.list |
+| 直连备用 | https://raw.githubusercontent.com/Mircc/sgmodule/main/AI-Rules/output/Ai.list |
 
 ## 客户端三
 
 | 类型 | 链接 |
 | --- | --- |
-| 加速链接 (推荐) | ${base_cdn}/output/Ai.qx.list |
-| 直连备用 | ${base_raw}/output/Ai.qx.list |
+| 加速链接 (推荐) | https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AI-Rules/output/Ai.qx.list, tag=Ai, force-policy=你的策略组, enabled=true |
+| 直连备用 | https://raw.githubusercontent.com/Mircc/sgmodule/main/AI-Rules/output/Ai.qx.list, tag=Ai, force-policy=你的策略组, enabled=true |
 
 客户端三订阅时请用 force-policy 参数自由指定策略组 (规则不写策略位, 不预设任何策略).
 
