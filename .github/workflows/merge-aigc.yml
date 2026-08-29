@@ -1,0 +1,77 @@
+name: Merge AIGC Rules
+
+on:
+  schedule:
+    - cron: "30 21 * * *"   # UTC 21:30 = 北京时间每天 05:30
+  workflow_dispatch:          # 支持手动触发
+
+permissions:
+  contents: write             # 允许提交回仓库
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Merge & dedupe rules
+        run: |
+          python AI-Rules/scripts/merge_aigc_rules.py \
+            --sources-file AI-Rules/sources.txt \
+            -o AI-Rules/output/ \
+            --name Ai \
+            --qx-policy PROXY \
+            --cumulative
+
+      - name: Generate README with links
+        run: |
+          REPO="${GITHUB_REPOSITORY}"
+          BRANCH="${GITHUB_REF_NAME:-main}"
+          base_raw="https://raw.githubusercontent.com/${REPO}/${BRANCH}/AI-Rules"
+          base_cdn="https://cdn.jsdelivr.net/gh/${REPO}@${BRANCH}/AI-Rules"
+          {
+            echo "# AIGC / AI 规则集"
+            echo
+            echo "> 本文件由 GitHub Actions 自动生成, 订阅链接随仓库/分支自动适配."
+            echo
+            echo "每日自动拉取上游源, 去重、归类、累积合并 (上游删除不影响本库)."
+            echo
+            echo "## 订阅地址 (jsDelivr 加速, 推荐)"
+            echo
+            echo "| 客户端 | 订阅 URL |"
+            echo "| --- | --- |"
+            echo "| Clash rule-provider | \${base_cdn}/output/Ai.yaml |"
+            echo "| Surge RULE-SET | \${base_cdn}/output/Ai.list |"
+            echo "| QuantumultX filter_remote | \${base_cdn}/output/Ai.qx.list, tag=Ai, force-policy=你的策略组, enabled=true |"
+            echo
+            echo "## 备用直连 (raw.githubusercontent)"
+            echo
+            echo "| 客户端 | 订阅 URL |"
+            echo "| --- | --- |"
+            echo "| Clash rule-provider | \${base_raw}/output/Ai.yaml |"
+            echo "| Surge RULE-SET | \${base_raw}/output/Ai.list |"
+            echo "| QuantumultX filter_remote | \${base_raw}/output/Ai.qx.list, tag=Ai, force-policy=你的策略组, enabled=true |"
+            echo
+            echo "## 缓存说明"
+            echo
+            echo "- jsDelivr 分支缓存约 12 小时, 急更新访问 https://purge.jsdelivr.net 刷新"
+            echo "- 个别地区可换 testingcf.jsdelivr.net / fastly.jsdelivr.net 同源镜像"
+          } > AI-Rules/README.md
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add AI-Rules/output/ AI-Rules/README.md
+          if git diff --staged --quiet; then
+            echo "规则无变化, 跳过提交"
+          else
+            git commit -m "auto: merge AIGC rules $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
