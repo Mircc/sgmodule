@@ -2,7 +2,7 @@
 
 - 保留规则: **438** 条
 - 去重删除: **104** 条
-- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.list` (Surge) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 416 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
 - mrs: `Cl_Ai_domain.mrs` (416 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
