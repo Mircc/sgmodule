@@ -26,7 +26,6 @@ jobs:
             --sources-file AI-Rules/sources.txt \
             -o AI-Rules/output/ \
             --name Ai \
-            --qx-policy PROXY \
             --cumulative
 
       - name: Generate README with links
@@ -36,32 +35,32 @@ jobs:
           base_raw="https://raw.githubusercontent.com/${REPO}/${BRANCH}/AI-Rules"
           base_cdn="https://cdn.jsdelivr.net/gh/${REPO}@${BRANCH}/AI-Rules"
           {
-            echo "# AIGC / AI 规则集"
+            echo "# AI-Rules"
             echo
             echo "> 本文件由 GitHub Actions 自动生成, 订阅链接随仓库/分支自动适配."
             echo
             echo "每日自动拉取上游源, 去重、归类、累积合并 (上游删除不影响本库)."
             echo
-            echo "## 订阅地址 (jsDelivr 加速, 推荐)"
-            echo
-            echo "| 客户端 | 订阅 URL |"
-            echo "| --- | --- |"
-            echo "| Clash rule-provider | \${base_cdn}/output/Ai.yaml |"
-            echo "| Surge RULE-SET | \${base_cdn}/output/Ai.list |"
-            echo "| QuantumultX filter_remote | \${base_cdn}/output/Ai.qx.list, tag=Ai, force-policy=你的策略组, enabled=true |"
-            echo
-            echo "## 备用直连 (raw.githubusercontent)"
-            echo
-            echo "| 客户端 | 订阅 URL |"
-            echo "| --- | --- |"
-            echo "| Clash rule-provider | \${base_raw}/output/Ai.yaml |"
-            echo "| Surge RULE-SET | \${base_raw}/output/Ai.list |"
-            echo "| QuantumultX filter_remote | \${base_raw}/output/Ai.qx.list, tag=Ai, force-policy=你的策略组, enabled=true |"
+            for i in 1 2 3; do
+              case $i in
+                1) f="Ai.yaml" ;;
+                2) f="Ai.list" ;;
+                3) f="Ai.qx.list" ;;
+              esac
+              echo "## 客户端${i}"
+              echo
+              echo "| 类型 | 链接 |"
+              echo "| --- | --- |"
+              echo "| 加速链接 (推荐) | \${base_cdn}/output/${f} |"
+              echo "| 直连备用 | \${base_raw}/output/${f} |"
+              echo
+            done
+            echo "客户端三订阅时请用 force-policy 参数自由指定策略组 (规则内置策略为占位符 no-policy, 不预设任何策略)."
             echo
             echo "## 缓存说明"
             echo
             echo "- jsDelivr 分支缓存约 12 小时, 急更新访问 https://purge.jsdelivr.net 刷新"
-            echo "- 个别地区可换 testingcf.jsdelivr.net / fastly.jsdelivr.net 同源镜像"
+            echo "- 个别地区可换 testingcf.jsdelivr.net / fastly.jsdelivr.net 同源镜像, 路径不变"
           } > AI-Rules/README.md
 
       - name: Commit & push
