@@ -84,8 +84,19 @@ jobs:
             echo
             echo "| 类型 | 链接 |"
             echo "| --- | --- |"
-            echo "| 加速链接 (推荐) | ${base_cdn}/output/Sg_Ai.list |"
-            echo "| 直连备用 | ${base_raw}/output/Sg_Ai.list |"
+            echo "| 加速域名集 (推荐, 高性能) | ${base_cdn}/output/Sg_Ai.domainset |"
+            echo "| 直连域名集 | ${base_raw}/output/Sg_Ai.domainset |"
+            echo "| 加速补充集 (RULE-SET) | ${base_cdn}/output/Sg_Ai.list |"
+            echo "| 直连补充集 (RULE-SET) | ${base_raw}/output/Sg_Ai.list |"
+            echo
+            echo "域名集 (DOMAIN-SET) 走专用索引, 匹配性能远优于 classical 规则集; 域名规则全部在其中,"
+            echo "补充集仅含 KEYWORD/REGEX/IP 类规则, 两条各写一行配合使用:"
+            echo
+            echo '```ini'
+            echo "[Rule]"
+            echo "DOMAIN-SET,${base_cdn}/output/Sg_Ai.domainset,你的策略组"
+            echo "RULE-SET,${base_cdn}/output/Sg_Ai.list,你的策略组"
+            echo '```'
             echo
             echo "## 客户端三"
             echo
@@ -118,8 +129,9 @@ jobs:
         run: |
           REPO="${GITHUB_REPOSITORY}"
           BRANCH="${GITHUB_REF_NAME:-main}"
-          for f in output/Cl_Ai.yaml output/Sg_Ai.list output/Ai_qx.list \
-                   output/Cl_Ai_domain.mrs output/Cl_Ai_ipcidr.mrs README.md; do
+          for f in output/Cl_Ai.yaml output/Sg_Ai.domainset output/Sg_Ai.list \
+                   output/Ai_qx.list output/Cl_Ai_domain.mrs output/Cl_Ai_ipcidr.mrs \
+                   README.md; do
             echo "purge: ${f}"
             curl -sL --max-time 30 "https://purge.jsdelivr.net/gh/${REPO}@${BRANCH}/AI-Rules/${f}" \
               | head -c 200 || true
