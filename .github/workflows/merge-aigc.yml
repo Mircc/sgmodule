@@ -48,8 +48,13 @@ jobs:
               echo
               echo "| 类型 | 链接 |"
               echo "| --- | --- |"
-              echo "| 加速链接 (推荐) | \${base_cdn}/output/${files[$i]} |"
-              echo "| 直连备用 | \${base_raw}/output/${files[$i]} |"
+              if [ "$i" = "2" ]; then
+                echo "| 加速链接 (推荐) | ${base_cdn}/output/${files[$i]}, tag=Ai, force-policy=你的策略组, enabled=true |"
+                echo "| 直连备用 | ${base_raw}/output/${files[$i]}, tag=Ai, force-policy=你的策略组, enabled=true |"
+              else
+                echo "| 加速链接 (推荐) | ${base_cdn}/output/${files[$i]} |"
+                echo "| 直连备用 | ${base_raw}/output/${files[$i]} |"
+              fi
               echo
             done
             echo "客户端三订阅时请用 force-policy 参数自由指定策略组 (规则不写策略位, 不预设任何策略)."
