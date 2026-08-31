@@ -1,4 +1,0 @@
-{
-  "_comment": "raw_base 用于生成 DOMAIN-SET 引用的原始地址。GitHub Actions 会自动用真实仓库地址覆盖，本地构建如需正确地址可手动修改。",
-  "raw_base": "https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules"
-}

@@ -1,9 +1,0 @@
-{
-  "_comment": "知名度榜单：用客观的域名流行度排名判断「该服务是否家喻户晓」，替代永远写不全的手工白名单。",
-  "enabled": true,
-  "url": "https://tranco-list.eu/top-1m.csv.zip",
-  "top_n": 10000,
-  "cache_days": 7,
-  "_top_n_note": "排名前 N 即视为「极其有名」。实测 top10k 可覆盖 Duolingo(#482)、QQ(#89)、163(#401)、Nespresso(#4918)、AmEx(#2123)；再放宽会把 free.fr、weebly 这类托管平台的垃圾子域大量捞回。",
-  "_fallback_note": "榜单抓取失败时自动降级为纯手工词表模式，构建不会中断。"
-}
