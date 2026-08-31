@@ -62,7 +62,35 @@
 | `c_agent-domain.list` | `c_agent.mrs` 的文本版，供不支持二进制规则集的客户端兜底 | `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/c_agent-domain.list` |
 | `c_agent-rules.yaml` | `behavior: classical` 规则集，承载域名集装不下的类型（IP 段 / 复合规则等） | `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/c_agent-rules.yaml` |
 
-Surge 中单独订阅域名集：
+### 国内加速（jsDelivr）
+
+`raw.githubusercontent.com` 在国内经常访问不畅，可改用 jsDelivr 加速地址——
+把 `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/`
+换成 `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/` 即可，文件完全相同：
+
+| 文件 | jsDelivr 加速地址 |
+| --- | --- |
+| `AdBlock-CN.sgmodule` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/AdBlock-CN.sgmodule` |
+| `AdBlock-CN-Standalone.sgmodule` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/AdBlock-CN-Standalone.sgmodule` |
+| `AdBlock-CN-Advanced.sgmodule` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/AdBlock-CN-Advanced.sgmodule` |
+| `adblock-cn-domains.txt` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/adblock-cn-domains.txt` |
+| `c_agent.mrs` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/c_agent.mrs` |
+| `c_agent-domain.list` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/c_agent-domain.list` |
+| `c_agent-rules.yaml` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/c_agent-rules.yaml` |
+
+Surge 中单独订阅域名集（加速版）：
+
+```
+[Rule]
+DOMAIN-SET,https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/adblock-cn-domains.txt,REJECT
+```
+
+**两点说明**：
+
+- jsDelivr 有约 **12–24 小时缓存**，规则又是 72 小时才更新一次，所以缓存延迟基本感知不到。
+- jsDelivr 偶尔也有波动，两个地址随时可以互换，订阅内容完全一致。
+
+Surge 中单独订阅域名集（直连版）：
 
 ```
 [Rule]
@@ -96,6 +124,9 @@ rules:
   - RULE-SET,c-agent-domain,REJECT
   - RULE-SET,c-agent-rules,REJECT
 ```
+
+> 若 `raw.githubusercontent.com` 访问不畅，把上面 `url:` 换成
+> [jsDelivr 加速地址](#国内加速jsdelivr) 即可，内容完全一致。
 
 **为什么推荐 `c_agent.mrs`**：它是二进制规则集，客户端加载时**跳过文本解析**，
 对两万多条这种量级的列表，启动速度与内存占用的改善非常明显——这正是手机端最需要的。
@@ -561,12 +592,12 @@ python3 docs/audit.py
 
 <!-- UPSTREAM_STATUS:START -->
 <!-- 本段由 scripts/build.py 自动生成，请勿手动修改 -->
-<!-- 本次构建时间：2026-08-31 15:15:11 -->
+<!-- 本次构建时间：2026-08-31 22:52:08 -->
 
 | 源 | 上游最新更新时间 | 距今 | 本次条目数 | 说明 |
 | --- | --- | --- | --- | --- |
 | AWAvenue Ads Rule | 2026-08-20 11:45:33 | 11 天 | 887 | 国内 App 去广告规则的集大成者，人工逐条甄别，是本项目主规则的主要来源 |
-| Blockads 软件去广告合集 | 2026-08-29 15:49:38 | 1 天 | 643 | 常用国产软件的 App 级去广告合集，附带的 App 名注释极大地方便了规则核对 |
+| Blockads 软件去广告合集 | 2026-08-29 15:49:38 | 2 天 | 643 | 常用国产软件的 App 级去广告合集，附带的 App 名注释极大地方便了规则核对 |
 | anti-AD | 2026-08-29 09:48:49 | 2 天 | 100,773 | 长期稳定维护的通用广告域名库，覆盖面极广 |
 | AdBlock Surge (217heidai) | 2026-08-31 12:51:19 | 0 天 | 214,960 | 每 8 小时自动重建的多源合并 Surge 规则，工程化程度令人钦佩 |
 
