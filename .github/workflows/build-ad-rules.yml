@@ -1,0 +1,154 @@
+name: Build AD-Rules
+
+on:
+  schedule:
+    # 每 3 天（≈72 小时）UTC 03:17 构建一次。
+    # 说明：GitHub Actions 的 cron 不支持「每 72 小时」这种跨天间隔，
+    #       「每 3 天」是最接近的表达（跨月时略有偏移，其余均为 72 小时）。
+    - cron: "17 3 */3 * *"
+  workflow_dispatch:
+    inputs:
+      no_fetch:
+        description: "使用缓存构建（不联网抓取上游）"
+        type: boolean
+        default: false
+      no_guard:
+        description: "忽略上游异常保护（仅在确认上游确实在大改时使用）"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - "AD-Rules/config/**"
+      - "AD-Rules/scripts/**"
+      - "AD-Rules/docs/**"
+      - ".github/workflows/build-ad-rules.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-ad-rules
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 仅用于生成 c_agent.mrs（Mihomo 二进制规则集）。
+      # 获取失败不会中断构建 —— 会自动降级为只产出文本格式产物。
+      - name: 准备 mihomo 转换工具
+        run: |
+          TAG=$(curl -sSL https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
+                | grep -m1 '"tag_name"' | cut -d'"' -f4)
+          echo "latest mihomo: ${TAG:-unknown}"
+          for ASSET in "mihomo-linux-amd64-compatible-${TAG}.gz" "mihomo-linux-amd64-${TAG}.gz"; do
+            URL="https://github.com/MetaCubeX/mihomo/releases/download/${TAG}/${ASSET}"
+            if curl -sSL --retry 2 --max-time 240 -o /tmp/mihomo.gz "$URL" && [ -s /tmp/mihomo.gz ]; then
+              gunzip -f /tmp/mihomo.gz && chmod +x /tmp/mihomo
+              echo "MIHOMO=/tmp/mihomo" >> $GITHUB_ENV
+              echo "已获取 ${ASSET}"
+              break
+            fi
+          done
+          if [ ! -x /tmp/mihomo ]; then
+            echo "::warning::未获取到 mihomo，本次跳过 c_agent.mrs（文本格式产物不受影响）"
+          fi
+
+      # 上游异常保护：脚本检测到「上游大幅删规则 / 链接失效 / 内容异常」时
+      # 以退出码 2 中止，且不写任何文件。这里捕获该码并跳过后续提交，
+      # 保证仓库里已发布的产物不被坏结果覆盖。
+      - name: Build
+        id: build
+        run: |
+          # pipefail 必须开，否则 `cmd | tee` 的 $? 是 tee 的退出码（恒为 0），
+          # 会永远拿不到 build.py 的保护退出码 2。
+          set -o pipefail
+          set +e
+          RAW_BASE="https://raw.githubusercontent.com/${{ github.repository }}/main/AD-Rules"
+          ARGS="--raw-base $RAW_BASE"
+          [ "${{ github.event.inputs.no_fetch }}" = "true" ] && ARGS="$ARGS --no-fetch"
+          [ "${{ github.event.inputs.no_guard }}" = "true" ] && ARGS="$ARGS --no-guard"
+          python3 AD-Rules/scripts/build.py $ARGS 2>&1 | tee build.log
+          CODE=$?
+          set -e
+          echo "exit_code=$CODE" >> $GITHUB_OUTPUT
+          echo "构建退出码: $CODE"
+          if [ "$CODE" = "2" ]; then
+            echo "::warning::上游异常保护已触发 —— 保留仓库内现有产物，本次不提交"
+          elif [ "$CODE" != "0" ]; then
+            echo "::error::构建失败（退出码 $CODE）"
+            exit "$CODE"
+          fi
+
+      - name: Audit (去重复核九项测)
+        if: steps.build.outputs.exit_code != '2'
+        run: python3 AD-Rules/docs/audit.py
+
+      - name: Read stats
+        if: steps.build.outputs.exit_code != '2'
+        id: stats
+        run: |
+          echo "rules_total=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['rules']['after_dedupe'])")" >> $GITHUB_OUTPUT
+          echo "rules_mitm=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['rules']['mitm_required'])")" >> $GITHUB_OUTPUT
+          echo "domains=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['domainset']['after_region_filter_and_dedupe'])")" >> $GITHUB_OUTPUT
+          echo "dropped=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['rules']['dropped_foreign'])")" >> $GITHUB_OUTPUT
+          echo "cagent_rules=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['cagent']['rules'])")" >> $GITHUB_OUTPUT
+          echo "cagent_mrs=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['cagent']['mrs'])")" >> $GITHUB_OUTPUT
+
+      - name: Commit and push
+        if: steps.build.outputs.exit_code != '2'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain AD-Rules)" ]; then
+            git add AD-Rules
+            git commit -m "chore: rebuild rules $(date -u '+%Y-%m-%d %H:%M UTC')
+
+          rules: ${{ steps.stats.outputs.rules_total }} (mitm ${{ steps.stats.outputs.rules_mitm }})
+          domains: ${{ steps.stats.outputs.domains }}
+          dropped(foreign): ${{ steps.stats.outputs.dropped }}
+          c_agent: ${{ steps.stats.outputs.cagent_rules }} rules / mrs=${{ steps.stats.outputs.cagent_mrs }}"
+            git push
+          else
+            echo "无变化，跳过提交"
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            if [ "${{ steps.build.outputs.exit_code }}" = "2" ]; then
+              echo "## ⚠️ 上游异常保护触发，本次未更新"
+              echo ""
+              echo "检测到上游可能存在大幅删规则 / 链接失效 / 内容异常，"
+              echo "已**中止构建并保留仓库内现有产物**，订阅服务不受影响。"
+              echo ""
+              echo "如确认属正常变更，可手动运行本工作流并勾选 \`no_guard\`。"
+            else
+              echo "### AdBlock-CN 构建完成"
+              echo ""
+              echo "| 指标 | 数量 |"
+              echo "| --- | --- |"
+              echo "| 规则总数（去重后） | ${{ steps.stats.outputs.rules_total }} |"
+              echo "| 其中需要 MITM | ${{ steps.stats.outputs.rules_mitm }} |"
+              echo "| 合并域名集 | ${{ steps.stats.outputs.domains }} |"
+              echo "| 剔除的国外不知名规则 | ${{ steps.stats.outputs.dropped }} |"
+              echo "| c_agent classical 规则 | ${{ steps.stats.outputs.cagent_rules }} |"
+              echo "| c_agent.mrs | ${{ steps.stats.outputs.cagent_mrs }} |"
+              echo ""
+              echo "订阅地址："
+              echo '```'
+              echo "https://raw.githubusercontent.com/${{ github.repository }}/main/AD-Rules/AdBlock-CN.sgmodule"
+              echo "https://raw.githubusercontent.com/${{ github.repository }}/main/AD-Rules/c_agent.mrs"
+              echo '```'
+            fi
+          } >> $GITHUB_STEP_SUMMARY

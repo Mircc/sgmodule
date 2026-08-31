@@ -1,0 +1,6 @@
+AD-Rules/_cache/
+AD-Rules/.bak/
+AD-Rules/build.log
+__pycache__/
+*.pyc
+.DS_Store
