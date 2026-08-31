@@ -1,0 +1,52 @@
+# 「托管平台 / CDN 基础设施」域名后缀。
+# 这些不是 App —— 它们的子域是任意第三方站点，不是某一个知名服务自己的广告域。
+# 因此即便平台主域名在知名度榜单里排名很高，也不据此恢复其广告规则
+# （否则会把 free.fr / weebly.com / vercel.app 这类平台上海量的垃圾子域全部捞回来）。
+#
+# 按"后缀匹配"处理：写 weebly.com 即匹配 weebly.com 及全部子域。
+
+# 建站 / 博客 / 页面托管
+weebly.com
+wordpress.com
+blogspot.com
+blogspot.co.uk
+tumblr.com
+wixsite.com
+squarespace.com
+godaddysites.com
+webflow.io
+netlify.app
+firebaseapp.com
+github.io
+gitlab.io
+vercel.app
+vercel.dev
+herokuapp.com
+onrender.com
+railway.app
+fly.dev
+glitch.me
+pages.dev
+workers.dev
+run.app
+appspot.com
+azurewebsites.net
+lovable.app
+000webhost.com
+000webhostapp.com
+110mb.com
+eu.cc
+altervista.org
+webzdarma.cz
+free.fr
+myshopify.com
+myikas.com
+softonic.com
+
+# 纯 CDN / 分发基础设施（子域归属任意第三方）
+edgekey.net
+akamaiedge.net
+b-cdn.net
+trafficmanager.net
+cdn77.org
+rsc.cdn77.org

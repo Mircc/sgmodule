@@ -1,0 +1,25 @@
+# 安全白名单：命中后一律不写入拦截列表，防止误杀导致 App / 系统功能不可用。
+#
+# 匹配规则：
+#   example.com    -> 仅精确匹配 example.com 本身（不匹配子域）
+#   .example.com   -> 匹配 example.com 及其全部子域（后缀匹配）
+#
+# 若发现某个域名被误拦，把它的后缀加到这里即可。
+# 注意：不要把 apple.com、icloud.com 这类大域名整体加进来，
+#       否则会连带放过 iad.apple.com 等真正的广告域名。
+
+# iOS / macOS 系统更新、推送与证书校验
+mesu.apple.com
+swscan.apple.com
+gdmf.apple.com
+appldnld.apple.com
+gs.apple.com
+xp.apple.com
+ocsp.apple.com
+valid.apple.com
+web.push.apple.com
+init.push.apple.com
+
+# Windows 更新
+.windowsupdate.com
+.update.microsoft.com

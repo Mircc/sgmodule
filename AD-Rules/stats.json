@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31 22:52:08",
+  "generated_at": "2026-08-31 15:15:11",
   "sources": [
     {
       "name": "AWAvenue Ads Rule",
@@ -39,10 +39,10 @@
     "mrs": "ok"
   },
   "fetch_status": {
-    "AWAvenue Ads Rule": "cache-fresh",
-    "Blockads 软件去广告合集": "cache-fresh",
-    "anti-AD": "cache-fresh",
-    "AdBlock Surge (217heidai)": "cache-fresh"
+    "AWAvenue Ads Rule": "fresh",
+    "Blockads 软件去广告合集": "fresh",
+    "anti-AD": "fresh",
+    "AdBlock Surge (217heidai)": "fresh"
   },
   "source_entries": {
     "AWAvenue Ads Rule": 887,
@@ -57,7 +57,7 @@
     },
     "Blockads 软件去广告合集": {
       "declared_time": "2026-08-29 15:49:38",
-      "days_since_update": 2
+      "days_since_update": 1
     },
     "anti-AD": {
       "declared_time": "2026-08-29 09:48:49",

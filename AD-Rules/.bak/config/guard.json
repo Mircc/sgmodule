@@ -1,0 +1,24 @@
+{
+  "_comment": "上游异常保护：上游仓库出现大幅删规则、链接失效、返回空内容时，中止本次构建并保留仓库里已发布的产物，绝不把坏结果覆盖上去。",
+
+  "enabled": true,
+
+  "max_drop_ratio": 0.30,
+  "_max_drop_ratio_note": "域名数或规则数相比上一版跌幅超过 30% 判定为异常。上游正常迭代一般是净增长，突然大跌几乎都是出事了。",
+
+  "min_domains": 12000,
+  "min_rules": 1000,
+  "_min_note": "绝对下限（防『上一版本身就是坏的』导致跌幅比较失效）。当前基线：域名约 2.28 万、规则约 1425。",
+
+  "require_all_sources": true,
+  "_require_all_sources_note": "true 表示：任一启用的源既抓不到新内容、又没有可用缓存时，直接中止。宁可不更新，也不能悄悄少一个源。",
+
+  "min_source_entries": 200,
+  "_min_source_entries_note": "单个 domainset 源解析出的条目数低于此值视为内容异常（正常应在数千到数十万）。",
+
+  "keep_backup": true,
+  "_keep_backup_note": "构建成功前先把上一版复制到 AD-Rules.bak/，便于需要时回滚。",
+
+  "exit_code": 2,
+  "_exit_code_note": "保护触发时的进程退出码。GitHub Actions 里据此跳过提交步骤。"
+}

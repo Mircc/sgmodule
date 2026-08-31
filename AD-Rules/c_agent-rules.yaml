@@ -1,5 +1,5 @@
 # c_agent 规则集（rule-provider behavior: classical）
-# 生成时间: 2026-08-31 22:52:08
+# 生成时间: 2026-08-31 15:15:11
 # 只收录域名集装不下的类型；DOMAIN / DOMAIN-SUFFIX 由 c_agent.mrs 覆盖，此处不再重复
 # 规则数量: 85
 payload:

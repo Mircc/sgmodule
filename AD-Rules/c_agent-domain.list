@@ -1,5 +1,5 @@
 # c_agent 域名清单（rule-provider behavior: domain）
-# 生成时间: 2026-08-31 22:52:08
+# 生成时间: 2026-08-31 15:15:11
 # 语法: example.com = 精确匹配(DOMAIN) / +.example.com = 后缀匹配(DOMAIN-SUFFIX)
 # 域名数量: 22832
 #

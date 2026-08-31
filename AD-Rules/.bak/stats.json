@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-08-31 22:52:08",
+  "sources": [
+    {
+      "name": "AWAvenue Ads Rule",
+      "url": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge-module.sgmodule"
+    },
+    {
+      "name": "Blockads 软件去广告合集",
+      "url": "https://raw.githubusercontent.com/thNylHx/Tools/refs/heads/main/Surge/Module/Blockads.sgmodule"
+    },
+    {
+      "name": "anti-AD",
+      "url": "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge2.txt"
+    },
+    {
+      "name": "AdBlock Surge (217heidai)",
+      "url": "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblocksurge.list"
+    }
+  ],
+  "rules": {
+    "raw": 1530,
+    "kept_after_region_filter": 1521,
+    "dropped_foreign": 9,
+    "after_dedupe": 1425,
+    "no_mitm_required": 1387,
+    "mitm_required": 38
+  },
+  "domainset": {
+    "raw_entries": 315733,
+    "after_region_filter_and_dedupe": 22832
+  },
+  "mitm_hostnames": 23,
+  "cagent": {
+    "domains": 22832,
+    "rules": 85,
+    "skipped_regex_comma": 0,
+    "skipped_unsupported": 53,
+    "mrs": "ok"
+  },
+  "fetch_status": {
+    "AWAvenue Ads Rule": "cache-fresh",
+    "Blockads 软件去广告合集": "cache-fresh",
+    "anti-AD": "cache-fresh",
+    "AdBlock Surge (217heidai)": "cache-fresh"
+  },
+  "source_entries": {
+    "AWAvenue Ads Rule": 887,
+    "Blockads 软件去广告合集": 643,
+    "anti-AD": 100773,
+    "AdBlock Surge (217heidai)": 214960
+  },
+  "upstream": {
+    "AWAvenue Ads Rule": {
+      "declared_time": "2026-08-20 11:45:33",
+      "days_since_update": 11
+    },
+    "Blockads 软件去广告合集": {
+      "declared_time": "2026-08-29 15:49:38",
+      "days_since_update": 2
+    },
+    "anti-AD": {
+      "declared_time": "2026-08-29 09:48:49",
+      "days_since_update": 2
+    },
+    "AdBlock Surge (217heidai)": {
+      "declared_time": "2026-08-31 12:51:19",
+      "days_since_update": 0
+    }
+  }
+}

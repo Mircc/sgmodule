@@ -1,5 +1,5 @@
 # AdBlock-CN 合并去重域名集
-# 生成时间: 2026-08-31 22:52:08
+# 生成时间: 2026-08-31 15:15:11
 # 规则源: AWAvenue Ads Rule, Blockads 软件去广告合集, anti-AD, AdBlock Surge (217heidai)
 # 用途: DOMAIN-SET,https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/adblock-cn-domains.txt,REJECT
 # 域名数量: 22832
