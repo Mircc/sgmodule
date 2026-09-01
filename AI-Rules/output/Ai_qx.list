@@ -1,5 +1,5 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-08-30
+# UPDATED: 2026-09-01
 # COUNT: 438 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
