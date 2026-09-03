@@ -1,5 +1,5 @@
 # Ai AIGC Rules (Surge RULE-SET, classical 补充集)
-# UPDATED: 2026-09-02
+# UPDATED: 2026-09-03
 # COUNT: 22 (仅 KEYWORD/REGEX/WILDCARD/IP 类, 域名规则在 Sg_Ai.domainset)
 # 建议与 DOMAIN-SET 配合使用, 两条规则各写一行
 
