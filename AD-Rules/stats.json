@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01 08:44:17",
+  "generated_at": "2026-09-04 08:02:54",
   "sources": [
     {
       "name": "AWAvenue Ads Rule",
@@ -27,12 +27,12 @@
     "mitm_required": 38
   },
   "domainset": {
-    "raw_entries": 315447,
-    "after_region_filter_and_dedupe": 22808
+    "raw_entries": 315194,
+    "after_region_filter_and_dedupe": 22947
   },
   "mitm_hostnames": 23,
   "cagent": {
-    "domains": 22808,
+    "domains": 22947,
     "rules": 85,
     "skipped_regex_comma": 0,
     "skipped_unsupported": 53,
@@ -47,24 +47,24 @@
   "source_entries": {
     "AWAvenue Ads Rule": 887,
     "Blockads 软件去广告合集": 643,
-    "anti-AD": 100764,
-    "AdBlock Surge (217heidai)": 214683
+    "anti-AD": 100977,
+    "AdBlock Surge (217heidai)": 214217
   },
   "upstream": {
     "AWAvenue Ads Rule": {
       "declared_time": "2026-08-20 11:45:33",
-      "days_since_update": 11
+      "days_since_update": 14
     },
     "Blockads 软件去广告合集": {
       "declared_time": "2026-08-29 15:49:38",
-      "days_since_update": 2
+      "days_since_update": 5
     },
     "anti-AD": {
-      "declared_time": "2026-09-01 06:57:04",
-      "days_since_update": 0
+      "declared_time": "2026-09-02 05:10:40",
+      "days_since_update": 2
     },
     "AdBlock Surge (217heidai)": {
-      "declared_time": "2026-09-01 12:30:40",
+      "declared_time": "2026-09-04 11:54:49",
       "days_since_update": 0
     }
   }
