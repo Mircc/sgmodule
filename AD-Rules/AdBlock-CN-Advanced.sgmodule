@@ -4,7 +4,7 @@
 #!author=AdBlock-CN Builder
 #!icon=https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad.png
 #!homepage=https://github.com/privacy-protection-tools/anti-AD
-#!date=2026-09-04 08:02:54
+#!date=2026-09-07 08:24:08
 #
 # 规则源：AWAvenue Ads Rule, Blockads 软件去广告合集, anti-AD, AdBlock Surge (217heidai)
 #
@@ -1571,6 +1571,13 @@ http-response-jq ^https:\/\/app\.zhuanzhuan\.com\/zz\/transfer\/getmyprofilev3$ 
 ^https:\/\/richmanrules\.ksedt\.com\/intellectWaterfallBidding\/find$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https:\/\/op\.ksedt\.com\/jxedtLive\/liveIntroduceResource data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https:\/\/richmanrules\.ksedt\.com\/intellectWaterfall\/find$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+# 金十数据
+^https:\/\/jad-api\.jin10\.com\/ad\d\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https:\/\/common-open-api\.jin10\.com\/configuration\/getById\?id=1493$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https:\/\/search-open-api\.jin10\.com\/search\/getHotWords$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https:\/\/cdn\.jin10\.com\/json\/index\/hits_rank\.json\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https:\/\/[0-9a-z]+\.z3c\.jin10\.com\/api\/home\/search\/hot$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https:\/\/jad-api\.jin10\.com\/mult\/list_unread\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 # ======= K ======= #
 # 快递100
 ^https?:\/\/p\.kuaidi100\.com\/advertisement\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
