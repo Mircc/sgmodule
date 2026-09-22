@@ -1,15 +1,16 @@
-# AIGC 规则合并报告 - 2026-09-20
+# AIGC 规则合并报告 - 2026-09-22
 
-- 保留规则: **438** 条
-- 去重删除: **104** 条
-- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 416 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
-- mrs: `Cl_Ai_domain.mrs` (416 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
+- 保留规则: **439** 条
+- 去重删除: **105** 条
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 417 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- mrs: `Cl_Ai_domain.mrs` (417 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
 | Cl_Ai.yaml | 438 |
+| 14_AI_Rules.lsr | 1 |
 
 ## 去重明细
 
@@ -93,6 +94,7 @@
 | DOMAIN-SUFFIX,events.launchdarkly.com | 被 DOMAIN-SUFFIX,launchdarkly.com 覆盖 |
 | DOMAIN-SUFFIX,events.statsigapi.net | 被 DOMAIN-SUFFIX,statsigapi.net 覆盖 |
 | DOMAIN-SUFFIX,firebaseinstallations.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
+| DOMAIN-SUFFIX,flow.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,forwarder.workos.com | 被 DOMAIN-SUFFIX,workos.com 覆盖 |
 | DOMAIN-SUFFIX,gateway.ai.cloudflare.com | 被 DOMAIN-SUFFIX,cloudflare.com 覆盖 |
 | DOMAIN-SUFFIX,geller-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
@@ -123,6 +125,7 @@
 ## 未能自动归类 (Others)
 
 以下规则需人工归入厂商类别:
+- DOMAIN-SUFFIX,notebook.google
 - IP-CIDR,129.146.3.78/32
 
 ## 已排除的非 AI 规则 (支付类黑名单)
