@@ -1,10 +1,14 @@
 # c_agent 规则集（rule-provider behavior: classical）
-# 生成时间: 2026-09-19 08:07:32
+# 生成时间: 2026-09-22 08:37:45
 # 只收录域名集装不下的类型；DOMAIN / DOMAIN-SUFFIX 由 c_agent.mrs 覆盖，此处不再重复
-# 规则数量: 85
+# 规则数量: 89
 payload:
   - DOMAIN-KEYWORD,-ad-sign.byteimg.com
   - DOMAIN-KEYWORD,-ad.byteoversea.com
+  - DOMAIN-KEYWORD,-ad.sm.cn
+  - DOMAIN-KEYWORD,-ad.video.yximgs.com
+  - DOMAIN-KEYWORD,-ad.wtzw.com
+  - DOMAIN-KEYWORD,-be-pack-sign.pglstatp-toutiao.com
   - DOMAIN-KEYWORD,ad.hunyuan.tencent.com
   - DOMAIN-KEYWORD,adstrategy
   - DOMAIN-KEYWORD,asiad.byteactivity
