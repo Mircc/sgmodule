@@ -1,16 +1,16 @@
-# AIGC 规则合并报告 - 2026-09-27
+# AIGC 规则合并报告 - 2026-09-29
 
-- 保留规则: **440** 条
-- 去重删除: **102** 条
-- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 418 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
-- mrs: `Cl_Ai_domain.mrs` (418 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
+- 保留规则: **441** 条
+- 去重删除: **105** 条
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 419 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- mrs: `Cl_Ai_domain.mrs` (419 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
-| Cl_Ai.yaml | 439 |
-| 00_Ai.yaml | 1 |
+| Cl_Ai.yaml | 440 |
+| Sg_Ai.domainset | 1 |
 
 ## 去重明细
 
@@ -83,11 +83,14 @@
 | DOMAIN-SUFFIX,chat.openai.com | 被 DOMAIN-SUFFIX,openai.com 覆盖 |
 | DOMAIN-SUFFIX,chatgpt.livekit.cloud | 被 DOMAIN-SUFFIX,livekit.cloud 覆盖 |
 | DOMAIN-SUFFIX,client-api.arkoselabs.com | 被 DOMAIN-SUFFIX,arkoselabs.com 覆盖 |
+| DOMAIN-SUFFIX,clients4.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,clients6.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,clientstream.launchdarkly.com | 被 DOMAIN-SUFFIX,launchdarkly.com 覆盖 |
 | DOMAIN-SUFFIX,cloudcode-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,colab.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN-SUFFIX,colab.research.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,desktop.chat.openai.com | 被 DOMAIN-SUFFIX,chat.openai.com 覆盖 |
+| DOMAIN-SUFFIX,developerprofiles.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,events.launchdarkly.com | 被 DOMAIN-SUFFIX,launchdarkly.com 覆盖 |
 | DOMAIN-SUFFIX,events.statsigapi.net | 被 DOMAIN-SUFFIX,statsigapi.net 覆盖 |
 | DOMAIN-SUFFIX,firebaseinstallations.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
@@ -123,14 +126,15 @@
 
 以下规则需人工归入厂商类别:
 - DOMAIN,cookieEl.style.display
+- DOMAIN,cookieel.style.display
 - DOMAIN-SUFFIX,notebook.google
 - IP-CIDR,129.146.3.78/32
 
 ## 已排除的非 AI 规则 (支付类黑名单)
 
-共 269 条命中排除黑名单(PayPal 家族/通用支付 SaaS), 未纳入输出:
+共 270 条命中排除黑名单(PayPal 家族/通用支付 SaaS), 未纳入输出:
 
-- DOMAIN-SUFFIX,stripe.com  <- 01_OpenAI.list
+- DOMAIN-SUFFIX,stripe.com  <- 00_Ai.yaml
 - DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe  <- 02_AIGC.yaml
 - DOMAIN-SUFFIX,js.stripe.com  <- 03_AIGC.list
 - DOMAIN-SUFFIX,pool.ntp.org  <- 03_AIGC.list
