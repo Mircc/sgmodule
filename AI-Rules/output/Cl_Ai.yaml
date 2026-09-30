@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-09-29
-# COUNT: 441
+# UPDATED: 2026-09-30
+# COUNT: 443
 
 payload:
   # >> OpenAI / ChatGPT
@@ -486,5 +486,7 @@ payload:
   # >> Others
   - DOMAIN,cookieEl.style.display
   - DOMAIN,cookieel.style.display
+  - DOMAIN-SUFFIX,metaaivm.com
+  - DOMAIN-SUFFIX,muse.ai
   - DOMAIN-SUFFIX,notebook.google
   - IP-CIDR,129.146.3.78/32,no-resolve

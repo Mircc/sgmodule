@@ -1,15 +1,16 @@
-# AIGC 规则合并报告 - 2026-09-29
+# AIGC 规则合并报告 - 2026-09-30
 
-- 保留规则: **441** 条
-- 去重删除: **105** 条
-- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 419 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
-- mrs: `Cl_Ai_domain.mrs` (419 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
+- 保留规则: **443** 条
+- 去重删除: **108** 条
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 421 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- mrs: `Cl_Ai_domain.mrs` (421 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
 | Cl_Ai.yaml | 440 |
+| 14_AI_Rules.lsr | 2 |
 | Sg_Ai.domainset | 1 |
 
 ## 去重明细
@@ -44,6 +45,8 @@
 | DOMAIN,desktop-release.codewhisperer.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,gateway.ai.cloudflare.com | 被 DOMAIN-SUFFIX,cloudflare.com 覆盖 |
 | DOMAIN,gemini.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN,geminiweb-pa.clients.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN,geminiweb-pa.clients6.google.com | 被 DOMAIN-SUFFIX,clients6.google.com 覆盖 |
 | DOMAIN,generativelanguage.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,idetoolkits-hostedfiles.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,integrate.api.nvidia.com | 被 DOMAIN-SUFFIX,api.nvidia.com 覆盖 |
@@ -105,6 +108,7 @@
 | DOMAIN-SUFFIX,js.intercomcdn.com | 被 DOMAIN-SUFFIX,intercomcdn.com 覆盖 |
 | DOMAIN-SUFFIX,jules.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,labs.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN-SUFFIX,labstailwind.pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN-SUFFIX,makersuite.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,notebook.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,notebooklm.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
@@ -127,6 +131,8 @@
 以下规则需人工归入厂商类别:
 - DOMAIN,cookieEl.style.display
 - DOMAIN,cookieel.style.display
+- DOMAIN-SUFFIX,metaaivm.com
+- DOMAIN-SUFFIX,muse.ai
 - DOMAIN-SUFFIX,notebook.google
 - IP-CIDR,129.146.3.78/32
 
