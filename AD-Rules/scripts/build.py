@@ -976,9 +976,15 @@ def build(args):
                  mitm_rules, mitm_hosts, mode="standalone", cls=cls)
 
     # --- c_agent（Mihomo 系内核）产物 ---
-    print("== 7/7 生成 c_agent 产物（Mihomo 系内核）==")
+    print("== 7/8 生成 c_agent 产物（Mihomo 系内核）==")
     cagent = write_cagent(collapsed, deduped, ts, raw_base,
                           mihomo_arg=args.mihomo, enabled=not args.no_mrs)
+
+    # --- sing-box 产物（.srs 二进制规则集）---
+    print("== 8/8 生成 sing-box 产物（.srs 二进制规则集）==")
+    singbox_stats = write_singbox(collapsed, deduped, ts, raw_base,
+                                  singbox_arg=getattr(args, "sing_box", ""),
+                                  enabled=not getattr(args, "no_srs", False))
 
     stats["domainset"] = len(collapsed)
     stats["rules_total"] = len(deduped)
@@ -1004,6 +1010,7 @@ def build(args):
         },
         "mitm_hostnames": len(mitm_hosts),
         "cagent": cagent,
+        "singbox": singbox_stats,
         "fetch_status": fetch_report,
         "source_entries": source_entries,
         "upstream": {
@@ -1329,8 +1336,8 @@ def write_cagent(collapsed, deduped, ts, raw_base, mihomo_arg="", enabled=True):
     stats["skipped_regex_comma"] = skipped_comma
     stats["skipped_unsupported"] = skipped_unsupported
     if skipped_unsupported:
-        print(f"  - 另有 {skipped_unsupported} 条规则因 Mihomo 规则集不支持该类型而跳过"
-              f"（{"、".join(sorted(MIHOMO_UNSUPPORTED_TYPES))}）")
+        types_str = "、".join(sorted(MIHOMO_UNSUPPORTED_TYPES))
+        print(f"  - 另有 {skipped_unsupported} 条规则因 Mihomo 规则集不支持该类型而跳过（{types_str}）")
 
     rules_path = OUT / "c_agent-rules.yaml"
     with rules_path.open("w", encoding="utf-8") as f:
@@ -1377,6 +1384,129 @@ def write_cagent(collapsed, deduped, ts, raw_base, mihomo_arg="", enabled=True):
     return stats
 
 
+# ---------------------------------------------------------------------------
+# sing-box 规则集（.srs 二进制 & .json 源码）生成
+# ---------------------------------------------------------------------------
+
+def find_singbox(explicit: str = "") -> str:
+    """定位 sing-box 二进制：显式路径 > 环境变量 SING_BOX > PATH > _cache/sing-box > /tmp/sing-box-bin > /usr/local/bin/sing-box。"""
+    candidates = [explicit, os.environ.get("SING_BOX", ""), "sing-box",
+                  str(CACHE / "sing-box"), "/tmp/sing-box-bin", "/usr/local/bin/sing-box"]
+    for c in candidates:
+        if not c:
+            continue
+        if os.path.isabs(c) or os.sep in c:
+            if os.path.isfile(c) and os.access(c, os.X_OK):
+                return c
+        else:
+            found = shutil.which(c)
+            if found:
+                return found
+    return ""
+
+
+def singbox_convert(binary: str, json_path: Path, srs_path: Path) -> tuple:
+    """调用 sing-box rule-set compile。返回 (是否成功, 错误说明)。"""
+    try:
+        proc = subprocess.run(
+            [binary, "rule-set", "compile", str(json_path), "-o", str(srs_path)],
+            capture_output=True, text=True, timeout=300,
+        )
+    except Exception as e:  # noqa: BLE001
+        return False, f"执行失败: {e}"
+    if proc.returncode != 0:
+        return False, (proc.stderr or proc.stdout or "").strip()[:300]
+    if not srs_path.exists() or srs_path.stat().st_size == 0:
+        return False, "未生成产物或产物为空"
+    return True, ""
+
+
+def singbox_verify(binary: str, srs_path: Path, sample_domain: str = "ad.qq.com") -> tuple:
+    """调用 sing-box rule-set match -f binary 验证 srs 是否可正常检索。"""
+    try:
+        proc = subprocess.run(
+            [binary, "rule-set", "match", "-f", "binary", str(srs_path), sample_domain],
+            capture_output=True, text=True, timeout=60,
+        )
+        if proc.returncode != 0:
+            return False, f"自检匹配失败 (code {proc.returncode}): {(proc.stderr or proc.stdout)[:200]}"
+        return True, ""
+    except Exception as e:  # noqa: BLE001
+        return False, f"自检失败: {e}"
+
+
+def write_singbox(collapsed, deduped, ts, raw_base, singbox_arg="", enabled=True):
+    """
+    生成 sing-box 规则集：
+      adblock-cn.srs   二进制规则集，format: binary —— 移动端加载最快、内存占用最低
+      adblock-cn.json  规则集 JSON 源码，format: source —— 可用于测试或不支持 srs 的客户端
+    """
+    stats = {}
+    keywords, ip_cidrs = [], []
+    for r in deduped:
+        if r.policy in POLICIES_BLOCK:
+            if r.type == "DOMAIN-KEYWORD":
+                keywords.append(r.value.strip())
+            elif r.type in ("IP-CIDR", "IP-CIDR6"):
+                ip_cidrs.append(r.value.strip().split(",")[0])
+
+    rule_item = {
+        "domain_suffix": sorted(set(collapsed))
+    }
+    if keywords:
+        rule_item["domain_keyword"] = sorted(set(keywords))
+    if ip_cidrs:
+        rule_item["ip_cidr"] = sorted(set(ip_cidrs))
+
+    sb_data = {
+        "version": 2,
+        "rules": [rule_item]
+    }
+
+    json_path = OUT / "adblock-cn.json"
+    with json_path.open("w", encoding="utf-8") as f:
+        json.dump(sb_data, f, ensure_ascii=False, indent=2)
+    stats["domain_suffixes"] = len(collapsed)
+    stats["keywords"] = len(keywords)
+    stats["ip_cidrs"] = len(ip_cidrs)
+    stats["json_bytes"] = json_path.stat().st_size
+
+    srs_path = OUT / "adblock-cn.srs"
+    if not enabled:
+        print("  - adblock-cn.srs 已按配置跳过")
+        stats["srs"] = "disabled"
+        return stats
+
+    binary = find_singbox(singbox_arg)
+    if not binary:
+        print("  - 未找到 sing-box 二进制，跳过 adblock-cn.srs（JSON 源码产物已生成）")
+        print("    提示: 设置 SING_BOX=/path/to/sing-box 或安装 sing-box 后再构建")
+        stats["srs"] = "no-binary"
+        return stats
+
+    ok, msg = singbox_convert(binary, json_path, srs_path)
+    if not ok:
+        print(f"  ! sing-box 编译失败，已丢弃 {srs_path.name}: {msg}")
+        srs_path.unlink(missing_ok=True)
+        stats["srs"] = f"convert-failed: {msg}"
+        return stats
+
+    sample = collapsed[0] if collapsed else "ad.qq.com"
+    ok, msg = singbox_verify(binary, srs_path, sample)
+    if not ok:
+        print(f"  ! adblock-cn.srs 自检未通过，已丢弃: {msg}")
+        srs_path.unlink(missing_ok=True)
+        stats["srs"] = f"verify-failed: {msg}"
+        return stats
+
+    size_kb = srs_path.stat().st_size / 1024
+    print(f"  - adblock-cn.srs 生成成功并通过自检（{size_kb:.0f} KB，"
+          f"较 JSON 源码压缩 {json_path.stat().st_size / max(srs_path.stat().st_size, 1):.1f}x）")
+    stats["srs"] = "ok"
+    stats["srs_bytes"] = srs_path.stat().st_size
+    return stats
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-fetch", action="store_true", help="使用缓存，不联网")
@@ -1384,6 +1514,8 @@ def main():
     ap.add_argument("--stats-only", action="store_true", help="只打印统计")
     ap.add_argument("--mihomo", default="", help="mihomo 二进制路径，用于生成 c_agent.mrs")
     ap.add_argument("--no-mrs", action="store_true", help="跳过 c_agent.mrs 生成")
+    ap.add_argument("--sing-box", "--singbox", default="", help="sing-box 二进制路径，用于生成 adblock-cn.srs")
+    ap.add_argument("--no-srs", action="store_true", help="跳过 adblock-cn.srs 生成")
     ap.add_argument("--no-guard", action="store_true",
                     help="跳过上游异常保护（仅在确认上游确实在大改时使用）")
     args = ap.parse_args()

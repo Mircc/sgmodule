@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
 # UPDATED: 2026-09-30
-# COUNT: 443 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# COUNT: 450 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -282,6 +282,7 @@ HOST-SUFFIX,poecdn.net
 # >> Midjourney
 HOST-SUFFIX,midjourney.com
 # >> Meta AI
+HOST-SUFFIX,llama.com
 HOST-SUFFIX,meta.ai
 HOST-SUFFIX,meta.com
 # >> Mistral
@@ -482,8 +483,14 @@ HOST-SUFFIX,workos.com
 HOST-SUFFIX,wp.com
 IP-ASN,13335
 # >> Others
-HOST,cookieEl.style.display
-HOST,cookieel.style.display
+HOST,connect.facebook.net
+HOST,meta-ohttp-config-prod.fastly-edge.com
+HOST,meta-ohttp-relay-prod.fastly-edge.com
+HOST,production.museai.com
+HOST-SUFFIX,atmeta.com
+HOST-SUFFIX,facebook.com
+HOST-SUFFIX,fbcdn.net
+HOST-SUFFIX,llamameta.net
 HOST-SUFFIX,metaaivm.com
 HOST-SUFFIX,muse.ai
 HOST-SUFFIX,notebook.google

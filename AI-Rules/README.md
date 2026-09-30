@@ -63,6 +63,38 @@ RULE-SET,https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AI-Rules/output/Sg_Ai.l
 
 客户端三订阅时请用 force-policy 参数自由指定策略组 (规则不写策略位, 不预设任何策略).
 
+## 客户端四 (sing-box)
+
+| 类型 | 链接 |
+| --- | --- |
+| 加速链接 (推荐, .srs 二进制) | https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AI-Rules/output/Sb_Ai.srs |
+| 直连备用 (.srs 二进制) | https://raw.githubusercontent.com/Mircc/sgmodule/main/AI-Rules/output/Sb_Ai.srs |
+| json 源码 (兼容) | https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AI-Rules/output/Sb_Ai.json |
+
+sing-box 规则集引用示例:
+
+```json
+{
+  "route": {
+    "rule_set": [
+      {
+        "tag": "ai",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AI-Rules/output/Sb_Ai.srs",
+        "download_detour": "proxy"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": "ai",
+        "outbound": "AI-Proxy"
+      }
+    ]
+  }
+}
+```
+
 ## 缓存说明
 
 - jsDelivr 分支缓存约 12 小时, 急更新访问 https://purge.jsdelivr.net 刷新

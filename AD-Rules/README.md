@@ -61,6 +61,8 @@
 | `c_agent.mrs` | **手机端推荐**：Mihomo 系内核的二进制规则集，加载最快、内存占用最低 | `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/c_agent.mrs` |
 | `c_agent-domain.list` | `c_agent.mrs` 的文本版，供不支持二进制规则集的客户端兜底 | `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/c_agent-domain.list` |
 | `c_agent-rules.yaml` | `behavior: classical` 规则集，承载域名集装不下的类型（IP 段 / 复合规则等） | `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/c_agent-rules.yaml` |
+| `adblock-cn.srs` | **sing-box 推荐**：二进制规则集，加载最快、内存占用最低 | `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/adblock-cn.srs` |
+| `adblock-cn.json` | sing-box 规则集 JSON 源码，供调试或支持 source 模式的客户端 | `https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/adblock-cn.json` |
 
 ### 国内加速（jsDelivr）
 
@@ -77,6 +79,8 @@
 | `c_agent.mrs` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/c_agent.mrs` |
 | `c_agent-domain.list` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/c_agent-domain.list` |
 | `c_agent-rules.yaml` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/c_agent-rules.yaml` |
+| `adblock-cn.srs` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/adblock-cn.srs` |
+| `adblock-cn.json` | `https://cdn.jsdelivr.net/gh/Mircc/sgmodule@main/AD-Rules/adblock-cn.json` |
 
 Surge 中单独订阅域名集（加速版）：
 
@@ -123,6 +127,32 @@ rule-providers:
 rules:
   - RULE-SET,c-agent-domain,REJECT
   - RULE-SET,c-agent-rules,REJECT
+```
+
+### 手机端：sing-box 规则集
+
+为 **sing-box** 用户准备的独立规则集，包含全部去广告域名后缀、广告关键词以及拦截 IP 段：
+
+```json
+{
+  "route": {
+    "rule_set": [
+      {
+        "tag": "adblock-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/adblock-cn.srs",
+        "download_detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": "adblock-cn",
+        "action": "reject"
+      }
+    ]
+  }
+}
 ```
 
 > 若 `raw.githubusercontent.com` 访问不畅，把上面 `url:` 换成
@@ -592,14 +622,14 @@ python3 docs/audit.py
 
 <!-- UPSTREAM_STATUS:START -->
 <!-- 本段由 scripts/build.py 自动生成，请勿手动修改 -->
-<!-- 本次构建时间：2026-09-28 09:52:36 -->
+<!-- 本次构建时间：2026-09-30 21:29:19 -->
 
 | 源 | 上游最新更新时间 | 距今 | 本次条目数 | 说明 |
 | --- | --- | --- | --- | --- |
-| AWAvenue Ads Rule | 2026-09-21 21:56:59 | 6 天 | 965 | 国内 App 去广告规则的集大成者，人工逐条甄别，是本项目主规则的主要来源 |
-| Blockads 软件去广告合集 | 2026-09-06 08:52:43 | 22 天 | 643 | 常用国产软件的 App 级去广告合集，附带的 App 名注释极大地方便了规则核对 |
-| anti-AD | 2026-09-26 05:43:50 | 2 天 | 102,114 | 长期稳定维护的通用广告域名库，覆盖面极广 |
-| AdBlock Surge (217heidai) | 2026-09-28 12:45:15 | 0 天 | 214,061 | 每 8 小时自动重建的多源合并 Surge 规则，工程化程度令人钦佩 |
+| AWAvenue Ads Rule | 2026-09-21 21:56:59 | 8 天 | 965 | 国内 App 去广告规则的集大成者，人工逐条甄别，是本项目主规则的主要来源 |
+| Blockads 软件去广告合集 | 2026-09-06 08:52:43 | 24 天 | 643 | 常用国产软件的 App 级去广告合集，附带的 App 名注释极大地方便了规则核对 |
+| anti-AD | 2026-09-29 07:24:24 | 1 天 | 99,385 | 长期稳定维护的通用广告域名库，覆盖面极广 |
+| AdBlock Surge (217heidai) | 2026-09-30 12:59:01 | 0 天 | 214,903 | 每 8 小时自动重建的多源合并 Surge 规则，工程化程度令人钦佩 |
 
 > 时间为上游内容里自报的更新时间（非本项目抓取时间），可据此判断上游是否还在维护。
 > 距今超过 180 天会标注 ⚠️。

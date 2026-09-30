@@ -157,6 +157,27 @@ def main():
            not unsupported,
            f"规则 {len(payload)} 条，不支持类型 {len(unsupported)} 条 {unsupported[:2]}")
 
+    # --- sing-box 规则集产物校验 ---
+    import json
+    sb_json_path = ROOT / "adblock-cn.json"
+    sb_srs_path = ROOT / "adblock-cn.srs"
+    if sb_json_path.exists():
+        try:
+            sb_data = json.loads(sb_json_path.read_text(encoding="utf-8"))
+            sb_rules = sb_data.get("rules", [{}])[0]
+            sb_dom_cnt = len(sb_rules.get("domain_suffix", []))
+            report("J sing-box JSON 源码校验（版本=2，域名条数与域名集一致）",
+                   sb_data.get("version") == 2 and sb_dom_cnt == len(out_ds),
+                   f"版本 {sb_data.get('version')}，域名 {sb_dom_cnt} vs 域名集 {len(out_ds)}")
+        except Exception as e:
+            report("J sing-box JSON 源码校验", False, f"解析异常: {e}")
+    else:
+        report("J sing-box JSON 源码校验", False, "文件不存在")
+
+    if sb_srs_path.exists():
+        srs_size = sb_srs_path.stat().st_size
+        report("K sing-box 二进制规则集存在且非空", srs_size > 0, f"大小 {srs_size // 1024} KB")
+
     ok = all(results)
     print(f"\n  总结: {'全部 PASS' if ok else '存在 FAIL，请检查'}")
     sys.exit(0 if ok else 1)

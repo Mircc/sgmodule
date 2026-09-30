@@ -63,6 +63,23 @@ jobs:
             echo "::warning::未获取到 mihomo，本次跳过 c_agent.mrs（文本格式产物不受影响）"
           fi
 
+      # 仅用于生成 adblock-cn.srs（sing-box 二进制规则集）。
+      # 获取失败不会中断构建 —— 会自动降级为只产出 JSON 源码产物。
+      - name: 准备 sing-box 转换工具
+        run: |
+          TAG=$(curl -sSL https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep -m1 '"tag_name"' | cut -d'"' -f4)
+          TAG="${TAG:-v1.14.2}"
+          VER="${TAG#v}"
+          echo "latest sing-box: ${TAG}"
+          if curl -sSL --retry 2 --max-time 240 -o /tmp/sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/${TAG}/sing-box-${VER}-linux-amd64.tar.gz" && [ -s /tmp/sing-box.tar.gz ]; then
+            tar -xzf /tmp/sing-box.tar.gz -C /tmp
+            chmod +x /tmp/sing-box-${VER}-linux-amd64/sing-box
+            echo "SING_BOX=/tmp/sing-box-${VER}-linux-amd64/sing-box" >> $GITHUB_ENV
+            echo "已获取 sing-box ${TAG}"
+          else
+            echo "::warning::未获取到 sing-box，本次跳过 adblock-cn.srs（JSON 源码产物不受影响）"
+          fi
+
       # 上游异常保护：脚本检测到「上游大幅删规则 / 链接失效 / 内容异常」时
       # 以退出码 2 中止，且不写任何文件。这里捕获该码并跳过后续提交，
       # 保证仓库里已发布的产物不被坏结果覆盖。
@@ -103,6 +120,7 @@ jobs:
           echo "dropped=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['rules']['dropped_foreign'])")" >> $GITHUB_OUTPUT
           echo "cagent_rules=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['cagent']['rules'])")" >> $GITHUB_OUTPUT
           echo "cagent_mrs=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['cagent']['mrs'])")" >> $GITHUB_OUTPUT
+          echo "singbox_srs=$(python3 -c "import json;print(json.load(open('AD-Rules/stats.json'))['singbox']['srs'])")" >> $GITHUB_OUTPUT
 
       - name: Commit and push
         if: steps.build.outputs.exit_code != '2'
@@ -116,7 +134,8 @@ jobs:
           rules: ${{ steps.stats.outputs.rules_total }} (mitm ${{ steps.stats.outputs.rules_mitm }})
           domains: ${{ steps.stats.outputs.domains }}
           dropped(foreign): ${{ steps.stats.outputs.dropped }}
-          c_agent: ${{ steps.stats.outputs.cagent_rules }} rules / mrs=${{ steps.stats.outputs.cagent_mrs }}"
+          c_agent: ${{ steps.stats.outputs.cagent_rules }} rules / mrs=${{ steps.stats.outputs.cagent_mrs }}
+          sing_box: srs=${{ steps.stats.outputs.singbox_srs }}"
             git push
           else
             echo "无变化，跳过提交"
@@ -144,11 +163,13 @@ jobs:
               echo "| 剔除的国外不知名规则 | ${{ steps.stats.outputs.dropped }} |"
               echo "| c_agent classical 规则 | ${{ steps.stats.outputs.cagent_rules }} |"
               echo "| c_agent.mrs | ${{ steps.stats.outputs.cagent_mrs }} |"
+              echo "| sing-box .srs | ${{ steps.stats.outputs.singbox_srs }} |"
               echo ""
               echo "订阅地址："
               echo '```'
               echo "https://raw.githubusercontent.com/${{ github.repository }}/main/AD-Rules/AdBlock-CN.sgmodule"
               echo "https://raw.githubusercontent.com/${{ github.repository }}/main/AD-Rules/c_agent.mrs"
+              echo "https://raw.githubusercontent.com/${{ github.repository }}/main/AD-Rules/adblock-cn.srs"
               echo '```'
             fi
           } >> $GITHUB_STEP_SUMMARY

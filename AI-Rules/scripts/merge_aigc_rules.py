@@ -32,9 +32,10 @@ import urllib.request
 
 # ---------------- 输出文件名规范 (v2: 客户端前缀标识) ----------------
 def output_filenames(name):
-    """返回 (clash, surge_classical, surge_domainset, qx, mrs_domain, mrs_ipcidr) 六个输出文件名"""
+    """返回 (clash, surge_classical, surge_domainset, qx, mrs_domain, mrs_ipcidr, sb_srs, sb_json) 输出文件名"""
     return (f"Cl_{name}.yaml", f"Sg_{name}.list", f"Sg_{name}.domainset", f"{name}_qx.list",
-            f"Cl_{name}_domain.mrs", f"Cl_{name}_ipcidr.mrs")
+            f"Cl_{name}_domain.mrs", f"Cl_{name}_ipcidr.mrs",
+            f"Sb_{name}.srs", f"Sb_{name}.json")
 
 # ---------------- 规则类型 ----------------
 # (类型, 是否域名类)
@@ -485,7 +486,7 @@ def build_outputs(keep, removed, args):
     outdir = args.output
     os.makedirs(outdir, exist_ok=True)
     items = sorted(keep.items(), key=order_key)
-    clash_fn, surge_fn, ds_fn, qx_fn, mrs_dom_fn, mrs_ip_fn = output_filenames(args.name)
+    clash_fn, surge_fn, ds_fn, qx_fn, mrs_dom_fn, mrs_ip_fn, sb_srs_fn, sb_json_fn = output_filenames(args.name)
 
     # ---- Cl_Ai.yaml (Clash classical rule-provider; QX 亦可经单向兼容直接订阅) ----
     yaml_lines = [
@@ -580,6 +581,9 @@ def build_outputs(keep, removed, args):
     # ---- mrs (Clash Meta/mihomo 二进制规则集, 移动端省电) ----
     mrs_dom_cnt, mrs_ip_cnt, mrs_skipped = build_mrs(items, outdir, mrs_dom_fn, mrs_ip_fn, args)
 
+    # ---- sing-box (.srs 二进制规则集 & .json 源码) ----
+    sb_cnt, sb_skipped, sb_srs_ok = build_singbox(items, outdir, sb_srs_fn, sb_json_fn, args)
+
     # ---- report.md ----
     sources = {}
     for rec in keep.values():
@@ -596,6 +600,8 @@ def build_outputs(keep, removed, args):
         f"`{qx_fn}` (QuantumultX 原生, 其中跳过 {qx_skipped} 条 QX 不支持的规则类型)",
         f"- mrs: `{mrs_dom_fn}` ({mrs_dom_cnt} 条域名规则) + `{mrs_ip_fn}` ({mrs_ip_cnt} 条 IP 规则); "
         f"另有 {mrs_skipped} 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效",
+        f"- sing-box: `{sb_srs_fn}` ({sb_cnt} 条规则, 二进制格式, " + ("已生成" if sb_srs_ok else "跳过编译") + f") + `{sb_json_fn}` (JSON 源码格式); "
+        f"另有 {sb_skipped} 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效",
         "",
         "## 来源文件统计",
         "",
@@ -679,6 +685,86 @@ def build_mrs(items, outdir, mrs_dom_fn, mrs_ip_fn, args):
         shutil.rmtree(tmpdir, ignore_errors=True)
 
 
+# ---------------- sing-box 输出 (.srs / .json) ----------------
+def build_singbox(items, outdir, sb_srs_fn, sb_json_fn, args):
+    """
+    生成 sing-box 规则集 (.json 源码与 .srs 二进制规则集, 需 PATH 或 --sing-box 指定 sing-box):
+      domain -> domain
+      DOMAIN-SUFFIX -> domain_suffix
+      DOMAIN-KEYWORD -> domain_keyword
+      DOMAIN-REGEX -> domain_regex
+      IP-CIDR / IP-CIDR6 -> ip_cidr
+    IP-ASN / GEOIP 等 sing-box headless 规则集不支持, 跳过。
+    未找到 sing-box 时仅生成 .json 源码并给出提示。
+    返回 (规则总数, 跳过数, 是否成功编译srs)
+    """
+    import json
+    singbox = getattr(args, "sing_box", None) or os.environ.get("SING_BOX", "")
+    singbox_bin = shutil.which(singbox) if singbox else (shutil.which("sing-box") or ("/tmp/sing-box-bin" if os.path.isfile("/tmp/sing-box-bin") and os.access("/tmp/sing-box-bin", os.X_OK) else None))
+
+    domains, suffixes, keywords, regexes, ip_cidrs, skipped = [], [], [], [], [], 0
+    for (t, v), _rec in items:
+        if t == "DOMAIN":
+            domains.append(v)
+        elif t == "DOMAIN-SUFFIX":
+            suffixes.append(v)
+        elif t == "DOMAIN-KEYWORD":
+            keywords.append(v)
+        elif t == "DOMAIN-REGEX":
+            regexes.append(v)
+        elif t in ("IP-CIDR", "IP-CIDR6"):
+            ip_cidrs.append(v)
+        else:
+            skipped += 1
+
+    rule_item = {}
+    if domains:
+        rule_item["domain"] = sorted(set(domains))
+    if suffixes:
+        rule_item["domain_suffix"] = sorted(set(suffixes))
+    if keywords:
+        rule_item["domain_keyword"] = sorted(set(keywords))
+    if regexes:
+        rule_item["domain_regex"] = sorted(set(regexes))
+    if ip_cidrs:
+        rule_item["ip_cidr"] = sorted(set(ip_cidrs))
+
+    sb_data = {
+        "version": 2,
+        "rules": [rule_item] if rule_item else []
+    }
+
+    json_path = os.path.abspath(os.path.join(outdir, sb_json_fn))
+    srs_path = os.path.abspath(os.path.join(outdir, sb_srs_fn))
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(sb_data, f, ensure_ascii=False, indent=2)
+
+    total_rules = len(domains) + len(suffixes) + len(keywords) + len(regexes) + len(ip_cidrs)
+
+    if not singbox_bin:
+        print(f"[WARN] 未找到 sing-box, 已生成 {sb_json_fn}, 跳过 .srs 二进制编译 "
+              f"(已收录: {total_rules} 条规则, 跳过 {skipped} 条)", file=sys.stderr)
+        print("[WARN] 安装方法: https://github.com/SagerNet/sing-box/releases 下载后放入 PATH, "
+              "或用 --sing-box /path/to/sing-box 指定", file=sys.stderr)
+        return total_rules, skipped, False
+
+    tmpdir = tempfile.mkdtemp(prefix="aigc_sb_")
+    try:
+        r = subprocess.run([singbox_bin, "rule-set", "compile", json_path, "-o", srs_path],
+                           capture_output=True, timeout=120, cwd=tmpdir)
+        if r.returncode == 0 and os.path.isfile(srs_path) and os.path.getsize(srs_path) > 0:
+            size_kb = os.path.getsize(srs_path) / 1024
+            print(f"[INFO] sing-box srs: {total_rules} 条 -> {sb_srs_fn} ({size_kb:.1f} KB)")
+            return total_rules, skipped, True
+        else:
+            err = r.stderr.decode(errors="ignore") if r.stderr else (r.stdout.decode(errors="ignore") if r.stdout else "unknown error")
+            print(f"[WARN] sing-box 编译失败: {err[:200]}", file=sys.stderr)
+            return total_rules, skipped, False
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
+
+
 def fetch_sources(sources_file):
     """读取 sources.txt 中的 URL 列表并下载到临时目录, 返回下载后的文件路径列表"""
     urls = []
@@ -738,6 +824,8 @@ def main():
     ap.add_argument("--mihomo", default=None,
                     help="mihomo 可执行文件路径 (默认从 PATH 查找; 找到时输出 mrs 二进制规则集, "
                          "移动端 Clash Meta 更省电)")
+    ap.add_argument("--sing-box", "--singbox", default=None,
+                    help="sing-box 可执行文件路径 (默认从 PATH 查找; 找到时输出 .srs 二进制规则集)")
     ap.add_argument("--cumulative", action="store_true",
                     help="累积模式: 先读入输出目录已有规则作为基底再合并新源, "
                          "上游删除的规则本地继续保留, 只去重/新增(防上游恶意删除)")
