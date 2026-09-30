@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30 21:29:19",
+  "generated_at": "2026-09-30 13:43:31",
   "sources": [
     {
       "name": "AWAvenue Ads Rule",
@@ -36,7 +36,7 @@
     "rules": 89,
     "skipped_regex_comma": 0,
     "skipped_unsupported": 53,
-    "mrs": "no-binary"
+    "mrs": "ok"
   },
   "singbox": {
     "domain_suffixes": 23351,
