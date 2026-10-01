@@ -1,24 +1,16 @@
-# AIGC 规则合并报告 - 2026-09-30
+# AIGC 规则合并报告 - 2026-10-01
 
 - 保留规则: **450** 条
 - 去重删除: **108** 条
 - 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 428 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
-- mrs: `Cl_Ai_domain.mrs` (0 条域名规则) + `Cl_Ai_ipcidr.mrs` (0 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
+- mrs: `Cl_Ai_domain.mrs` (428 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 - sing-box: `Sb_Ai.srs` (447 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
-| 05_OverseasAI.list | 191 |
-| 00_Ai.yaml | 86 |
-| 14_AI_Rules.lsr | 70 |
-| 04_AI.list | 49 |
-| 03_AIGC.list | 20 |
-| 02_AIGC.yaml | 14 |
-| 06_AI.list | 9 |
-| 13_Notion.list | 6 |
-| 01_OpenAI.list | 5 |
+| Cl_Ai.yaml | 450 |
 
 ## 去重明细
 
