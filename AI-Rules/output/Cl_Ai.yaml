@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-01
-# COUNT: 450
+# UPDATED: 2026-10-02
+# COUNT: 460
 
 payload:
   # >> OpenAI / ChatGPT
@@ -182,11 +182,12 @@ payload:
   - DOMAIN-SUFFIX,synthesia.io
   - DOMAIN-SUFFIX,tapnow.ai
   # >> LLM 平台
-  - DOMAIN,api.together.xyz
   - DOMAIN-SUFFIX,cerebras.ai
   - DOMAIN-SUFFIX,modal.com
   - DOMAIN-SUFFIX,replicate.com
+  - DOMAIN-SUFFIX,replicate.delivery
   - DOMAIN-SUFFIX,together.ai
+  - DOMAIN-SUFFIX,together.xyz
   # >> 写作/搜索 AI
   - DOMAIN-SUFFIX,beautiful.ai
   - DOMAIN-SUFFIX,copy.ai
@@ -391,6 +392,7 @@ payload:
   - DOMAIN-SUFFIX,lmstudio.ai
   - DOMAIN-SUFFIX,milvus.io
   - DOMAIN-SUFFIX,mintlify.com
+  - DOMAIN-SUFFIX,ollama.ai
   - DOMAIN-SUFFIX,ollama.com
   - DOMAIN-SUFFIX,pinecone.io
   - DOMAIN-SUFFIX,portkey.ai
@@ -485,15 +487,23 @@ payload:
   - DOMAIN-SUFFIX,wp.com
   - IP-ASN,13335,no-resolve
   # >> Others
+  - DOMAIN,ai-gateway.vercel.sh
   - DOMAIN,connect.facebook.net
   - DOMAIN,meta-ohttp-config-prod.fastly-edge.com
   - DOMAIN,meta-ohttp-relay-prod.fastly-edge.com
   - DOMAIN,production.museai.com
+  - DOMAIN-SUFFIX,abacus.ai
   - DOMAIN-SUFFIX,atmeta.com
+  - DOMAIN-SUFFIX,base44.app
+  - DOMAIN-SUFFIX,base44.com
   - DOMAIN-SUFFIX,facebook.com
   - DOMAIN-SUFFIX,fbcdn.net
+  - DOMAIN-SUFFIX,genspark.ai
+  - DOMAIN-SUFFIX,link.com
   - DOMAIN-SUFFIX,llamameta.net
   - DOMAIN-SUFFIX,metaaivm.com
   - DOMAIN-SUFFIX,muse.ai
   - DOMAIN-SUFFIX,notebook.google
+  - DOMAIN-SUFFIX,novita.ai
+  - DOMAIN-SUFFIX,thinkingmachines.ai
   - IP-CIDR,129.146.3.78/32,no-resolve

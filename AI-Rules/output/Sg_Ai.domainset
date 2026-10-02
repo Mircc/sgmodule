@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
-# UPDATED: 2026-10-01
-# COUNT: 428 (裸行=精确域名, .前缀行=域名及全部子域)
+# UPDATED: 2026-10-02
+# COUNT: 438 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -168,11 +168,12 @@ http-inputs-notion.splunkcloud.com
 .synthesia.io
 .tapnow.ai
 # >> LLM 平台
-api.together.xyz
 .cerebras.ai
 .modal.com
 .replicate.com
+.replicate.delivery
 .together.ai
+.together.xyz
 # >> 写作/搜索 AI
 .beautiful.ai
 .copy.ai
@@ -370,6 +371,7 @@ idetoolkits.amazonwebservices.com
 .lmstudio.ai
 .milvus.io
 .mintlify.com
+.ollama.ai
 .ollama.com
 .pinecone.io
 .portkey.ai
@@ -463,14 +465,22 @@ self.events.data.microsoft.com
 .workos.com
 .wp.com
 # >> Others
+ai-gateway.vercel.sh
 connect.facebook.net
 meta-ohttp-config-prod.fastly-edge.com
 meta-ohttp-relay-prod.fastly-edge.com
 production.museai.com
+.abacus.ai
 .atmeta.com
+.base44.app
+.base44.com
 .facebook.com
 .fbcdn.net
+.genspark.ai
+.link.com
 .llamameta.net
 .metaaivm.com
 .muse.ai
 .notebook.google
+.novita.ai
+.thinkingmachines.ai

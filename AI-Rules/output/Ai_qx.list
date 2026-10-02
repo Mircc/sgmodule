@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-10-01
-# COUNT: 450 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-10-02
+# COUNT: 460 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -180,11 +180,12 @@ HOST-SUFFIX,runwayml.com
 HOST-SUFFIX,synthesia.io
 HOST-SUFFIX,tapnow.ai
 # >> LLM 平台
-HOST,api.together.xyz
 HOST-SUFFIX,cerebras.ai
 HOST-SUFFIX,modal.com
 HOST-SUFFIX,replicate.com
+HOST-SUFFIX,replicate.delivery
 HOST-SUFFIX,together.ai
+HOST-SUFFIX,together.xyz
 # >> 写作/搜索 AI
 HOST-SUFFIX,beautiful.ai
 HOST-SUFFIX,copy.ai
@@ -389,6 +390,7 @@ HOST-SUFFIX,llamaindex.ai
 HOST-SUFFIX,lmstudio.ai
 HOST-SUFFIX,milvus.io
 HOST-SUFFIX,mintlify.com
+HOST-SUFFIX,ollama.ai
 HOST-SUFFIX,ollama.com
 HOST-SUFFIX,pinecone.io
 HOST-SUFFIX,portkey.ai
@@ -483,15 +485,23 @@ HOST-SUFFIX,workos.com
 HOST-SUFFIX,wp.com
 IP-ASN,13335
 # >> Others
+HOST,ai-gateway.vercel.sh
 HOST,connect.facebook.net
 HOST,meta-ohttp-config-prod.fastly-edge.com
 HOST,meta-ohttp-relay-prod.fastly-edge.com
 HOST,production.museai.com
+HOST-SUFFIX,abacus.ai
 HOST-SUFFIX,atmeta.com
+HOST-SUFFIX,base44.app
+HOST-SUFFIX,base44.com
 HOST-SUFFIX,facebook.com
 HOST-SUFFIX,fbcdn.net
+HOST-SUFFIX,genspark.ai
+HOST-SUFFIX,link.com
 HOST-SUFFIX,llamameta.net
 HOST-SUFFIX,metaaivm.com
 HOST-SUFFIX,muse.ai
 HOST-SUFFIX,notebook.google
+HOST-SUFFIX,novita.ai
+HOST-SUFFIX,thinkingmachines.ai
 IP-CIDR,129.146.3.78/32

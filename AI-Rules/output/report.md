@@ -1,16 +1,17 @@
-# AIGC 规则合并报告 - 2026-10-01
+# AIGC 规则合并报告 - 2026-10-02
 
-- 保留规则: **450** 条
-- 去重删除: **108** 条
-- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 428 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
-- mrs: `Cl_Ai_domain.mrs` (428 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
-- sing-box: `Sb_Ai.srs` (447 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
+- 保留规则: **460** 条
+- 去重删除: **109** 条
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 438 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- mrs: `Cl_Ai_domain.mrs` (438 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
+- sing-box: `Sb_Ai.srs` (457 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
-| Cl_Ai.yaml | 450 |
+| Cl_Ai.yaml | 449 |
+| 05_OverseasAI.list | 11 |
 
 ## 去重明细
 
@@ -30,6 +31,7 @@
 | DOMAIN,api.groq.com | 被 DOMAIN-SUFFIX,groq.com 覆盖 |
 | DOMAIN,api.jetbrains.ai | 被 DOMAIN-SUFFIX,jetbrains.ai 覆盖 |
 | DOMAIN,api.statsig.com | 被 DOMAIN-SUFFIX,statsig.com 覆盖 |
+| DOMAIN,api.together.xyz | 被 DOMAIN-SUFFIX,together.xyz 覆盖 |
 | DOMAIN,auth.grazie.ai | 被 DOMAIN-SUFFIX,grazie.ai 覆盖 |
 | DOMAIN,aws-language-servers.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,aws-toolkit-language-servers.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
@@ -128,17 +130,25 @@
 ## 未能自动归类 (Others)
 
 以下规则需人工归入厂商类别:
+- DOMAIN,ai-gateway.vercel.sh
 - DOMAIN,connect.facebook.net
 - DOMAIN,meta-ohttp-config-prod.fastly-edge.com
 - DOMAIN,meta-ohttp-relay-prod.fastly-edge.com
 - DOMAIN,production.museai.com
+- DOMAIN-SUFFIX,abacus.ai
 - DOMAIN-SUFFIX,atmeta.com
+- DOMAIN-SUFFIX,base44.app
+- DOMAIN-SUFFIX,base44.com
 - DOMAIN-SUFFIX,facebook.com
 - DOMAIN-SUFFIX,fbcdn.net
+- DOMAIN-SUFFIX,genspark.ai
+- DOMAIN-SUFFIX,link.com
 - DOMAIN-SUFFIX,llamameta.net
 - DOMAIN-SUFFIX,metaaivm.com
 - DOMAIN-SUFFIX,muse.ai
 - DOMAIN-SUFFIX,notebook.google
+- DOMAIN-SUFFIX,novita.ai
+- DOMAIN-SUFFIX,thinkingmachines.ai
 - IP-CIDR,129.146.3.78/32
 
 ## 已排除的非 AI 规则 (支付类黑名单)
