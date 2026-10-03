@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-02
-# COUNT: 460
+# UPDATED: 2026-10-03
+# COUNT: 461
 
 payload:
   # >> OpenAI / ChatGPT
@@ -38,6 +38,7 @@ payload:
   - DOMAIN-SUFFIX,clau.de
   - DOMAIN-SUFFIX,claude.ai
   - DOMAIN-SUFFIX,claude.com
+  - DOMAIN-SUFFIX,claude.dev
   - DOMAIN-SUFFIX,claude.site
   - DOMAIN-SUFFIX,claudemcpclient.com
   - DOMAIN-SUFFIX,claudemcpcontent.com

@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
-# UPDATED: 2026-10-02
-# COUNT: 438 (裸行=精确域名, .前缀行=域名及全部子域)
+# UPDATED: 2026-10-03
+# COUNT: 439 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -28,6 +28,7 @@ servd-anthropic-website.b-cdn.net
 .clau.de
 .claude.ai
 .claude.com
+.claude.dev
 .claude.site
 .claudemcpclient.com
 .claudemcpcontent.com
