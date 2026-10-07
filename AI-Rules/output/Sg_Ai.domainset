@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
-# UPDATED: 2026-10-06
-# COUNT: 439 (裸行=精确域名, .前缀行=域名及全部子域)
+# UPDATED: 2026-10-07
+# COUNT: 440 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -468,6 +468,7 @@ self.events.data.microsoft.com
 # >> Others
 ai-gateway.vercel.sh
 connect.facebook.net
+cookieEl.style.display
 meta-ohttp-config-prod.fastly-edge.com
 meta-ohttp-relay-prod.fastly-edge.com
 production.museai.com
