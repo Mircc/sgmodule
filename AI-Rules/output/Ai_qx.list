@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-10-08
-# COUNT: 463 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-10-09
+# COUNT: 465 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -247,6 +247,8 @@ HOST,api.github.com
 HOST,api.msn.com
 HOST,assets.msn.com
 HOST,copilot-proxy.githubusercontent.com
+HOST,copilot-telemetry-service.githubusercontent.com
+HOST,copilot-telemetry.githubusercontent.com
 HOST,copilot-workspace.githubnext.com
 HOST,copilot.microsoft.com
 HOST,copilotprodattachments.blob.core.windows.net

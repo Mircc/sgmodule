@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-08
-# COUNT: 463
+# UPDATED: 2026-10-09
+# COUNT: 465
 
 payload:
   # >> OpenAI / ChatGPT
@@ -249,6 +249,8 @@ payload:
   - DOMAIN,api.msn.com
   - DOMAIN,assets.msn.com
   - DOMAIN,copilot-proxy.githubusercontent.com
+  - DOMAIN,copilot-telemetry-service.githubusercontent.com
+  - DOMAIN,copilot-telemetry.githubusercontent.com
   - DOMAIN,copilot-workspace.githubnext.com
   - DOMAIN,copilot.microsoft.com
   - DOMAIN,copilotprodattachments.blob.core.windows.net
