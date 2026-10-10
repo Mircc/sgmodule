@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-10-09
-# COUNT: 465 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-10-10
+# COUNT: 492 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -29,6 +29,7 @@ IP-CIDR,64.23.132.171/32
 HOST,anthropic-com.ghost.io
 HOST,anthropic.com.cdn.cloudflare.net
 HOST,clau.de
+HOST,grazie.aws.intellij.net
 HOST,servd-anthropic-website.b-cdn.net
 HOST-KEYWORD,anthropic
 HOST-KEYWORD,claude
@@ -48,6 +49,7 @@ IP-ASN,399358
 IP-CIDR,160.79.104.0/21
 IP-CIDR6,2607:6bc0::/32
 # >> Cursor / 开发 AI
+HOST,coderabbit.gallery.vsassets.io
 HOST-SUFFIX,agentclientprotocol.com
 HOST-SUFFIX,ampcode.ai
 HOST-SUFFIX,ampcode.com
@@ -170,6 +172,7 @@ HOST-SUFFIX,d-id.com
 HOST-SUFFIX,descript.com
 HOST-SUFFIX,fliki.ai
 HOST-SUFFIX,genmo.ai
+HOST-SUFFIX,heygen.ai
 HOST-SUFFIX,heygen.com
 HOST-SUFFIX,invideo.io
 HOST-SUFFIX,klingai.com
@@ -217,6 +220,7 @@ HOST-SUFFIX,themeforest.net
 HOST,ai.google.dev
 HOST,antigravity-unleash.goog
 HOST,antigravity.google
+HOST,gemini.gstatic.com
 HOST-KEYWORD,alkalimakersuite-pa.clients6.google.com
 HOST-KEYWORD,colab
 HOST-KEYWORD,developerprofiles
@@ -267,6 +271,7 @@ HOST-SUFFIX,copilot.com
 HOST-SUFFIX,copilot.microsoft.com
 HOST-SUFFIX,edgeservices.bing.com
 # >> xAI / Grok
+HOST,grok.x.com
 HOST-SUFFIX,grok-sandbox.com
 HOST-SUFFIX,grok.com
 HOST-SUFFIX,grok.x.com
@@ -453,6 +458,7 @@ HOST-SUFFIX,minimax.io
 # >> Character.AI
 HOST-SUFFIX,c.ai
 HOST-SUFFIX,character.ai
+HOST-SUFFIX,characterai.io
 # >> AI 通用基础设施
 HOST,browser-intake-datadoghq.com
 HOST,browser-intake-us5-datadoghq.com
@@ -466,10 +472,12 @@ HOST-SUFFIX,api.revenuecat.com
 HOST-SUFFIX,arkoselabs.com
 HOST-SUFFIX,auth0.com
 HOST-SUFFIX,azureedge.net
+HOST-SUFFIX,clerk.com
 HOST-SUFFIX,cloudflare.com
 HOST-SUFFIX,cloudflareinsights.com
 HOST-SUFFIX,ct.sendgrid.net
 HOST-SUFFIX,featuregates.org
+HOST-SUFFIX,hcaptcha.com
 HOST-SUFFIX,identrust.com
 HOST-SUFFIX,images.workoscdn.com
 HOST-SUFFIX,imgix.net
@@ -479,6 +487,7 @@ HOST-SUFFIX,launchdarkly.com
 HOST-SUFFIX,liveperson.net
 HOST-SUFFIX,lpsnmedia.net
 HOST-SUFFIX,observeit.net
+HOST-SUFFIX,recaptcha.net
 HOST-SUFFIX,rum.browser-intake-datadoghq.com
 HOST-SUFFIX,segment.io
 HOST-SUFFIX,sentry.io
@@ -495,18 +504,36 @@ HOST,cookieel.style.display
 HOST,meta-ohttp-config-prod.fastly-edge.com
 HOST,meta-ohttp-relay-prod.fastly-edge.com
 HOST,production.museai.com
+HOST,us-central1-xi-labs.cloudfunctions.net
 HOST-SUFFIX,abacus.ai
 HOST-SUFFIX,atmeta.com
+HOST-SUFFIX,awswaf.com
 HOST-SUFFIX,base44.app
 HOST-SUFFIX,base44.com
+HOST-SUFFIX,composio.dev
+HOST-SUFFIX,cue.im
+HOST-SUFFIX,eigent.ai
 HOST-SUFFIX,facebook.com
 HOST-SUFFIX,fbcdn.net
 HOST-SUFFIX,genspark.ai
+HOST-SUFFIX,interaction.co
 HOST-SUFFIX,link.com
 HOST-SUFFIX,llamameta.net
 HOST-SUFFIX,metaaivm.com
+HOST-SUFFIX,mindstudio.ai
 HOST-SUFFIX,muse.ai
+HOST-SUFFIX,myclaw.ai
 HOST-SUFFIX,notebook.google
 HOST-SUFFIX,novita.ai
+HOST-SUFFIX,poke.com
+HOST-SUFFIX,prelude.dev
+HOST-SUFFIX,px-cloud.net
+HOST-SUFFIX,runway.com
+HOST-SUFFIX,simular.ai
+HOST-SUFFIX,slashy.com
+HOST-SUFFIX,stytch.com
+HOST-SUFFIX,syntx.ai
 HOST-SUFFIX,thinkingmachines.ai
+HOST-SUFFIX,vellum.ai
+HOST-SUFFIX,withpersona.com
 IP-CIDR,129.146.3.78/32

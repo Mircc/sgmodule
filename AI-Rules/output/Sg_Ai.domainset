@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
-# UPDATED: 2026-10-09
-# COUNT: 443 (裸行=精确域名, .前缀行=域名及全部子域)
+# UPDATED: 2026-10-10
+# COUNT: 470 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -23,6 +23,7 @@ openaicomproductionae4b.blob.core.windows.net
 anthropic-com.ghost.io
 anthropic.com.cdn.cloudflare.net
 clau.de
+grazie.aws.intellij.net
 servd-anthropic-website.b-cdn.net
 .anthropic.com
 .clau.de
@@ -37,6 +38,7 @@ servd-anthropic-website.b-cdn.net
 .grazie.aws.intellij.net
 .prodregistryv2.org
 # >> Cursor / 开发 AI
+coderabbit.gallery.vsassets.io
 .agentclientprotocol.com
 .ampcode.ai
 .ampcode.com
@@ -158,6 +160,7 @@ http-inputs-notion.splunkcloud.com
 .descript.com
 .fliki.ai
 .genmo.ai
+.heygen.ai
 .heygen.com
 .invideo.io
 .klingai.com
@@ -205,6 +208,7 @@ http-inputs-notion.splunkcloud.com
 ai.google.dev
 antigravity-unleash.goog
 antigravity.google
+gemini.gstatic.com
 .ai.google
 .ai.studio
 .antigravity-unleash.goog
@@ -250,6 +254,7 @@ www.bing.com
 .copilot.microsoft.com
 .edgeservices.bing.com
 # >> xAI / Grok
+grok.x.com
 .grok-sandbox.com
 .grok.com
 .grok.x.com
@@ -434,6 +439,7 @@ idetoolkits.amazonwebservices.com
 # >> Character.AI
 .c.ai
 .character.ai
+.characterai.io
 # >> AI 通用基础设施
 browser-intake-datadoghq.com
 browser-intake-us5-datadoghq.com
@@ -447,10 +453,12 @@ self.events.data.microsoft.com
 .arkoselabs.com
 .auth0.com
 .azureedge.net
+.clerk.com
 .cloudflare.com
 .cloudflareinsights.com
 .ct.sendgrid.net
 .featuregates.org
+.hcaptcha.com
 .identrust.com
 .images.workoscdn.com
 .imgix.net
@@ -460,6 +468,7 @@ self.events.data.microsoft.com
 .liveperson.net
 .lpsnmedia.net
 .observeit.net
+.recaptcha.net
 .rum.browser-intake-datadoghq.com
 .segment.io
 .sentry.io
@@ -475,17 +484,35 @@ cookieel.style.display
 meta-ohttp-config-prod.fastly-edge.com
 meta-ohttp-relay-prod.fastly-edge.com
 production.museai.com
+us-central1-xi-labs.cloudfunctions.net
 .abacus.ai
 .atmeta.com
+.awswaf.com
 .base44.app
 .base44.com
+.composio.dev
+.cue.im
+.eigent.ai
 .facebook.com
 .fbcdn.net
 .genspark.ai
+.interaction.co
 .link.com
 .llamameta.net
 .metaaivm.com
+.mindstudio.ai
 .muse.ai
+.myclaw.ai
 .notebook.google
 .novita.ai
+.poke.com
+.prelude.dev
+.px-cloud.net
+.runway.com
+.simular.ai
+.slashy.com
+.stytch.com
+.syntx.ai
 .thinkingmachines.ai
+.vellum.ai
+.withpersona.com

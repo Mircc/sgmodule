@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-09
-# COUNT: 465
+# UPDATED: 2026-10-10
+# COUNT: 492
 
 payload:
   # >> OpenAI / ChatGPT
@@ -31,6 +31,7 @@ payload:
   - DOMAIN,anthropic-com.ghost.io
   - DOMAIN,anthropic.com.cdn.cloudflare.net
   - DOMAIN,clau.de
+  - DOMAIN,grazie.aws.intellij.net
   - DOMAIN,servd-anthropic-website.b-cdn.net
   - DOMAIN-KEYWORD,anthropic
   - DOMAIN-KEYWORD,claude
@@ -50,6 +51,7 @@ payload:
   - IP-CIDR,160.79.104.0/21,no-resolve
   - IP-CIDR6,2607:6bc0::/32,no-resolve
   # >> Cursor / 开发 AI
+  - DOMAIN,coderabbit.gallery.vsassets.io
   - DOMAIN-SUFFIX,agentclientprotocol.com
   - DOMAIN-SUFFIX,ampcode.ai
   - DOMAIN-SUFFIX,ampcode.com
@@ -172,6 +174,7 @@ payload:
   - DOMAIN-SUFFIX,descript.com
   - DOMAIN-SUFFIX,fliki.ai
   - DOMAIN-SUFFIX,genmo.ai
+  - DOMAIN-SUFFIX,heygen.ai
   - DOMAIN-SUFFIX,heygen.com
   - DOMAIN-SUFFIX,invideo.io
   - DOMAIN-SUFFIX,klingai.com
@@ -219,6 +222,7 @@ payload:
   - DOMAIN,ai.google.dev
   - DOMAIN,antigravity-unleash.goog
   - DOMAIN,antigravity.google
+  - DOMAIN,gemini.gstatic.com
   - DOMAIN-KEYWORD,alkalimakersuite-pa.clients6.google.com
   - DOMAIN-KEYWORD,colab
   - DOMAIN-KEYWORD,developerprofiles
@@ -269,6 +273,7 @@ payload:
   - DOMAIN-SUFFIX,copilot.microsoft.com
   - DOMAIN-SUFFIX,edgeservices.bing.com
   # >> xAI / Grok
+  - DOMAIN,grok.x.com
   - DOMAIN-SUFFIX,grok-sandbox.com
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,grok.x.com
@@ -455,6 +460,7 @@ payload:
   # >> Character.AI
   - DOMAIN-SUFFIX,c.ai
   - DOMAIN-SUFFIX,character.ai
+  - DOMAIN-SUFFIX,characterai.io
   # >> AI 通用基础设施
   - DOMAIN,browser-intake-datadoghq.com
   - DOMAIN,browser-intake-us5-datadoghq.com
@@ -468,10 +474,12 @@ payload:
   - DOMAIN-SUFFIX,arkoselabs.com
   - DOMAIN-SUFFIX,auth0.com
   - DOMAIN-SUFFIX,azureedge.net
+  - DOMAIN-SUFFIX,clerk.com
   - DOMAIN-SUFFIX,cloudflare.com
   - DOMAIN-SUFFIX,cloudflareinsights.com
   - DOMAIN-SUFFIX,ct.sendgrid.net
   - DOMAIN-SUFFIX,featuregates.org
+  - DOMAIN-SUFFIX,hcaptcha.com
   - DOMAIN-SUFFIX,identrust.com
   - DOMAIN-SUFFIX,images.workoscdn.com
   - DOMAIN-SUFFIX,imgix.net
@@ -481,6 +489,7 @@ payload:
   - DOMAIN-SUFFIX,liveperson.net
   - DOMAIN-SUFFIX,lpsnmedia.net
   - DOMAIN-SUFFIX,observeit.net
+  - DOMAIN-SUFFIX,recaptcha.net
   - DOMAIN-SUFFIX,rum.browser-intake-datadoghq.com
   - DOMAIN-SUFFIX,segment.io
   - DOMAIN-SUFFIX,sentry.io
@@ -497,18 +506,36 @@ payload:
   - DOMAIN,meta-ohttp-config-prod.fastly-edge.com
   - DOMAIN,meta-ohttp-relay-prod.fastly-edge.com
   - DOMAIN,production.museai.com
+  - DOMAIN,us-central1-xi-labs.cloudfunctions.net
   - DOMAIN-SUFFIX,abacus.ai
   - DOMAIN-SUFFIX,atmeta.com
+  - DOMAIN-SUFFIX,awswaf.com
   - DOMAIN-SUFFIX,base44.app
   - DOMAIN-SUFFIX,base44.com
+  - DOMAIN-SUFFIX,composio.dev
+  - DOMAIN-SUFFIX,cue.im
+  - DOMAIN-SUFFIX,eigent.ai
   - DOMAIN-SUFFIX,facebook.com
   - DOMAIN-SUFFIX,fbcdn.net
   - DOMAIN-SUFFIX,genspark.ai
+  - DOMAIN-SUFFIX,interaction.co
   - DOMAIN-SUFFIX,link.com
   - DOMAIN-SUFFIX,llamameta.net
   - DOMAIN-SUFFIX,metaaivm.com
+  - DOMAIN-SUFFIX,mindstudio.ai
   - DOMAIN-SUFFIX,muse.ai
+  - DOMAIN-SUFFIX,myclaw.ai
   - DOMAIN-SUFFIX,notebook.google
   - DOMAIN-SUFFIX,novita.ai
+  - DOMAIN-SUFFIX,poke.com
+  - DOMAIN-SUFFIX,prelude.dev
+  - DOMAIN-SUFFIX,px-cloud.net
+  - DOMAIN-SUFFIX,runway.com
+  - DOMAIN-SUFFIX,simular.ai
+  - DOMAIN-SUFFIX,slashy.com
+  - DOMAIN-SUFFIX,stytch.com
+  - DOMAIN-SUFFIX,syntx.ai
   - DOMAIN-SUFFIX,thinkingmachines.ai
+  - DOMAIN-SUFFIX,vellum.ai
+  - DOMAIN-SUFFIX,withpersona.com
   - IP-CIDR,129.146.3.78/32,no-resolve
