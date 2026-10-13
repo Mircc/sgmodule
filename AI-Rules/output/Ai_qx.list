@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-10-12
-# COUNT: 492 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-10-13
+# COUNT: 496 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -121,6 +121,8 @@ HOST,smoot.apple.com
 HOST-KEYWORD,apple-wit
 HOST-SUFFIX,apple-cloudkit.com
 HOST-SUFFIX,apple-livephotos.com
+HOST-SUFFIX,guzzoni.apple.com
+HOST-SUFFIX,smoot.apple.com
 # >> Dify
 HOST-SUFFIX,dify.ai
 # >> Manus
@@ -506,6 +508,7 @@ HOST,meta-ohttp-relay-prod.fastly-edge.com
 HOST,production.museai.com
 HOST,us-central1-xi-labs.cloudfunctions.net
 HOST-SUFFIX,abacus.ai
+HOST-SUFFIX,apple-relay.fastly-edge.com
 HOST-SUFFIX,atmeta.com
 HOST-SUFFIX,awswaf.com
 HOST-SUFFIX,base44.app
@@ -516,6 +519,7 @@ HOST-SUFFIX,eigent.ai
 HOST-SUFFIX,facebook.com
 HOST-SUFFIX,fbcdn.net
 HOST-SUFFIX,genspark.ai
+HOST-SUFFIX,gspe1-ssl.ls.apple.com
 HOST-SUFFIX,interaction.co
 HOST-SUFFIX,link.com
 HOST-SUFFIX,llamameta.net

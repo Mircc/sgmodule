@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-12
-# COUNT: 492
+# UPDATED: 2026-10-13
+# COUNT: 496
 
 payload:
   # >> OpenAI / ChatGPT
@@ -123,6 +123,8 @@ payload:
   - DOMAIN-KEYWORD,apple-wit
   - DOMAIN-SUFFIX,apple-cloudkit.com
   - DOMAIN-SUFFIX,apple-livephotos.com
+  - DOMAIN-SUFFIX,guzzoni.apple.com
+  - DOMAIN-SUFFIX,smoot.apple.com
   # >> Dify
   - DOMAIN-SUFFIX,dify.ai
   # >> Manus
@@ -508,6 +510,7 @@ payload:
   - DOMAIN,production.museai.com
   - DOMAIN,us-central1-xi-labs.cloudfunctions.net
   - DOMAIN-SUFFIX,abacus.ai
+  - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
   - DOMAIN-SUFFIX,atmeta.com
   - DOMAIN-SUFFIX,awswaf.com
   - DOMAIN-SUFFIX,base44.app
@@ -518,6 +521,7 @@ payload:
   - DOMAIN-SUFFIX,facebook.com
   - DOMAIN-SUFFIX,fbcdn.net
   - DOMAIN-SUFFIX,genspark.ai
+  - DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
   - DOMAIN-SUFFIX,interaction.co
   - DOMAIN-SUFFIX,link.com
   - DOMAIN-SUFFIX,llamameta.net
