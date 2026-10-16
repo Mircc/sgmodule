@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-10-15
-# COUNT: 496 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-10-16
+# COUNT: 497 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -538,6 +538,7 @@ HOST-SUFFIX,slashy.com
 HOST-SUFFIX,stytch.com
 HOST-SUFFIX,syntx.ai
 HOST-SUFFIX,thinkingmachines.ai
+HOST-SUFFIX,typesafe.ai
 HOST-SUFFIX,vellum.ai
 HOST-SUFFIX,withpersona.com
 IP-CIDR,129.146.3.78/32
