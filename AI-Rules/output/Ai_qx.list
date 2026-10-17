@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-10-16
-# COUNT: 497 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-10-17
+# COUNT: 498 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -21,6 +21,7 @@ HOST-SUFFIX,oaiusercontent.com
 HOST-SUFFIX,openai.azure.com
 HOST-SUFFIX,openai.com
 HOST-SUFFIX,openai.com.cdn.cloudflare.net
+HOST-SUFFIX,openai.org
 HOST-SUFFIX,sora.com
 IP-ASN,20473
 IP-CIDR,24.199.123.28/32

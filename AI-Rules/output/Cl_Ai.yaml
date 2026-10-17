@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-16
-# COUNT: 497
+# UPDATED: 2026-10-17
+# COUNT: 498
 
 payload:
   # >> OpenAI / ChatGPT
@@ -23,6 +23,7 @@ payload:
   - DOMAIN-SUFFIX,openai.azure.com
   - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
+  - DOMAIN-SUFFIX,openai.org
   - DOMAIN-SUFFIX,sora.com
   - IP-ASN,20473,no-resolve
   - IP-CIDR,24.199.123.28/32,no-resolve
