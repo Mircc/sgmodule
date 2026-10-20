@@ -1,16 +1,18 @@
 # AIGC 规则合并报告 - 2026-10-20
 
-- 保留规则: **498** 条
+- 保留规则: **515** 条
 - 去重删除: **106** 条
-- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 476 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
-- mrs: `Cl_Ai_domain.mrs` (476 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
-- sing-box: `Sb_Ai.srs` (495 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 493 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- mrs: `Cl_Ai_domain.mrs` (493 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
+- sing-box: `Sb_Ai.srs` (512 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
 | Cl_Ai.yaml | 497 |
+| 04_AI.list | 15 |
+| 05_OverseasAI.list | 2 |
 | Sg_Ai.domainset | 1 |
 
 ## 去重明细
@@ -25,7 +27,6 @@
 | DOMAIN,alkalimakersuite-pa.clients6.google.com | 被 DOMAIN-SUFFIX,clients6.google.com 覆盖 |
 | DOMAIN,antigravity-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,antigravity.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
-| DOMAIN,api.apple-cloudkit.com | 被 DOMAIN-SUFFIX,apple-cloudkit.com 覆盖 |
 | DOMAIN,api.cloudflare.com | 被 DOMAIN-SUFFIX,cloudflare.com 覆盖 |
 | DOMAIN,api.githubcopilot.com | 被 DOMAIN-SUFFIX,githubcopilot.com 覆盖 |
 | DOMAIN,api.groq.com | 被 DOMAIN-SUFFIX,groq.com 覆盖 |
@@ -89,6 +90,7 @@
 | DOMAIN-SUFFIX,api.statsig.com | 被 DOMAIN-SUFFIX,statsig.com 覆盖 |
 | DOMAIN-SUFFIX,apis.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN-SUFFIX,bard.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN-SUFFIX,bedrock.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN-SUFFIX,business.gemini.google | 被 DOMAIN-SUFFIX,gemini.google 覆盖 |
 | DOMAIN-SUFFIX,challenges.cloudflare.com | 被 DOMAIN-SUFFIX,cloudflare.com 覆盖 |
 | DOMAIN-SUFFIX,chatgpt.livekit.cloud | 被 DOMAIN-SUFFIX,livekit.cloud 覆盖 |
@@ -131,24 +133,37 @@
 - DOMAIN,connect.facebook.net
 - DOMAIN,cookieEl.style.display
 - DOMAIN,cookieel.style.display
+- DOMAIN,firefly.adobe.com
 - DOMAIN,meta-ohttp-config-prod.fastly-edge.com
 - DOMAIN,meta-ohttp-relay-prod.fastly-edge.com
 - DOMAIN,production.museai.com
 - DOMAIN,us-central1-xi-labs.cloudfunctions.net
 - DOMAIN-SUFFIX,abacus.ai
+- DOMAIN-SUFFIX,adobe.io
 - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+- DOMAIN-SUFFIX,atlassian.com
 - DOMAIN-SUFFIX,atmeta.com
 - DOMAIN-SUFFIX,awswaf.com
 - DOMAIN-SUFFIX,base44.app
 - DOMAIN-SUFFIX,base44.com
+- DOMAIN-SUFFIX,blackbox.ai
+- DOMAIN-SUFFIX,claicode.com
+- DOMAIN-SUFFIX,commandcode.ai
 - DOMAIN-SUFFIX,composio.dev
 - DOMAIN-SUFFIX,cue.im
+- DOMAIN-SUFFIX,deepl.com
+- DOMAIN-SUFFIX,deeplusercontent.com
 - DOMAIN-SUFFIX,eigent.ai
 - DOMAIN-SUFFIX,facebook.com
 - DOMAIN-SUFFIX,fbcdn.net
+- DOMAIN-SUFFIX,freepik.com
 - DOMAIN-SUFFIX,genspark.ai
 - DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
 - DOMAIN-SUFFIX,interaction.co
+- DOMAIN-SUFFIX,jina.ai
+- DOMAIN-SUFFIX,komo.ai
+- DOMAIN-SUFFIX,lepton.ai
+- DOMAIN-SUFFIX,linear.app
 - DOMAIN-SUFFIX,link.com
 - DOMAIN-SUFFIX,llamameta.net
 - DOMAIN-SUFFIX,metaaivm.com
@@ -162,6 +177,7 @@
 - DOMAIN-SUFFIX,px-cloud.net
 - DOMAIN-SUFFIX,runway.com
 - DOMAIN-SUFFIX,simular.ai
+- DOMAIN-SUFFIX,slack.com
 - DOMAIN-SUFFIX,slashy.com
 - DOMAIN-SUFFIX,stytch.com
 - DOMAIN-SUFFIX,syntx.ai

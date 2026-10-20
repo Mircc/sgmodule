@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
 # UPDATED: 2026-10-20
-# COUNT: 498
+# COUNT: 515
 
 payload:
   # >> OpenAI / ChatGPT
@@ -201,6 +201,7 @@ payload:
   - DOMAIN-SUFFIX,duck.ai
   - DOMAIN-SUFFIX,gamma.app
   - DOMAIN-SUFFIX,grammarly.com
+  - DOMAIN-SUFFIX,grammarly.io
   - DOMAIN-SUFFIX,notegpt.io
   - DOMAIN-SUFFIX,plusai.com
   - DOMAIN-SUFFIX,quillbot.com
@@ -270,10 +271,12 @@ payload:
   - DOMAIN-SUFFIX,api.microsoftapp.net
   - DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
   - DOMAIN-SUFFIX,bingapis.com
+  - DOMAIN-SUFFIX,copilot-proxy.githubusercontent.com
   - DOMAIN-SUFFIX,copilot-stg.com
   - DOMAIN-SUFFIX,copilot.cloud.microsoft
   - DOMAIN-SUFFIX,copilot.com
   - DOMAIN-SUFFIX,copilot.microsoft.com
+  - DOMAIN-SUFFIX,copilotstudio.microsoft.com
   - DOMAIN-SUFFIX,edgeservices.bing.com
   # >> xAI / Grok
   - DOMAIN,grok.x.com
@@ -506,24 +509,37 @@ payload:
   - DOMAIN,connect.facebook.net
   - DOMAIN,cookieEl.style.display
   - DOMAIN,cookieel.style.display
+  - DOMAIN,firefly.adobe.com
   - DOMAIN,meta-ohttp-config-prod.fastly-edge.com
   - DOMAIN,meta-ohttp-relay-prod.fastly-edge.com
   - DOMAIN,production.museai.com
   - DOMAIN,us-central1-xi-labs.cloudfunctions.net
   - DOMAIN-SUFFIX,abacus.ai
+  - DOMAIN-SUFFIX,adobe.io
   - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+  - DOMAIN-SUFFIX,atlassian.com
   - DOMAIN-SUFFIX,atmeta.com
   - DOMAIN-SUFFIX,awswaf.com
   - DOMAIN-SUFFIX,base44.app
   - DOMAIN-SUFFIX,base44.com
+  - DOMAIN-SUFFIX,blackbox.ai
+  - DOMAIN-SUFFIX,claicode.com
+  - DOMAIN-SUFFIX,commandcode.ai
   - DOMAIN-SUFFIX,composio.dev
   - DOMAIN-SUFFIX,cue.im
+  - DOMAIN-SUFFIX,deepl.com
+  - DOMAIN-SUFFIX,deeplusercontent.com
   - DOMAIN-SUFFIX,eigent.ai
   - DOMAIN-SUFFIX,facebook.com
   - DOMAIN-SUFFIX,fbcdn.net
+  - DOMAIN-SUFFIX,freepik.com
   - DOMAIN-SUFFIX,genspark.ai
   - DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
   - DOMAIN-SUFFIX,interaction.co
+  - DOMAIN-SUFFIX,jina.ai
+  - DOMAIN-SUFFIX,komo.ai
+  - DOMAIN-SUFFIX,lepton.ai
+  - DOMAIN-SUFFIX,linear.app
   - DOMAIN-SUFFIX,link.com
   - DOMAIN-SUFFIX,llamameta.net
   - DOMAIN-SUFFIX,metaaivm.com
@@ -537,6 +553,7 @@ payload:
   - DOMAIN-SUFFIX,px-cloud.net
   - DOMAIN-SUFFIX,runway.com
   - DOMAIN-SUFFIX,simular.ai
+  - DOMAIN-SUFFIX,slack.com
   - DOMAIN-SUFFIX,slashy.com
   - DOMAIN-SUFFIX,stytch.com
   - DOMAIN-SUFFIX,syntx.ai

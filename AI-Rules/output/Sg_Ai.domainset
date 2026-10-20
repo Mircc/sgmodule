@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
 # UPDATED: 2026-10-20
-# COUNT: 476 (裸行=精确域名, .前缀行=域名及全部子域)
+# COUNT: 493 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -187,6 +187,7 @@ http-inputs-notion.splunkcloud.com
 .duck.ai
 .gamma.app
 .grammarly.com
+.grammarly.io
 .notegpt.io
 .plusai.com
 .quillbot.com
@@ -251,10 +252,12 @@ www.bing.com
 .api.microsoftapp.net
 .bing-shopping.microsoft-falcon.io
 .bingapis.com
+.copilot-proxy.githubusercontent.com
 .copilot-stg.com
 .copilot.cloud.microsoft
 .copilot.com
 .copilot.microsoft.com
+.copilotstudio.microsoft.com
 .edgeservices.bing.com
 # >> xAI / Grok
 grok.x.com
@@ -484,24 +487,37 @@ ai-gateway.vercel.sh
 connect.facebook.net
 cookieEl.style.display
 cookieel.style.display
+firefly.adobe.com
 meta-ohttp-config-prod.fastly-edge.com
 meta-ohttp-relay-prod.fastly-edge.com
 production.museai.com
 us-central1-xi-labs.cloudfunctions.net
 .abacus.ai
+.adobe.io
 .apple-relay.fastly-edge.com
+.atlassian.com
 .atmeta.com
 .awswaf.com
 .base44.app
 .base44.com
+.blackbox.ai
+.claicode.com
+.commandcode.ai
 .composio.dev
 .cue.im
+.deepl.com
+.deeplusercontent.com
 .eigent.ai
 .facebook.com
 .fbcdn.net
+.freepik.com
 .genspark.ai
 .gspe1-ssl.ls.apple.com
 .interaction.co
+.jina.ai
+.komo.ai
+.lepton.ai
+.linear.app
 .link.com
 .llamameta.net
 .metaaivm.com
@@ -515,6 +531,7 @@ us-central1-xi-labs.cloudfunctions.net
 .px-cloud.net
 .runway.com
 .simular.ai
+.slack.com
 .slashy.com
 .stytch.com
 .syntx.ai

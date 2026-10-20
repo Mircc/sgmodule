@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
 # UPDATED: 2026-10-20
-# COUNT: 498 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# COUNT: 515 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -199,6 +199,7 @@ HOST-SUFFIX,copy.ai
 HOST-SUFFIX,duck.ai
 HOST-SUFFIX,gamma.app
 HOST-SUFFIX,grammarly.com
+HOST-SUFFIX,grammarly.io
 HOST-SUFFIX,notegpt.io
 HOST-SUFFIX,plusai.com
 HOST-SUFFIX,quillbot.com
@@ -268,10 +269,12 @@ HOST,www.bing.com
 HOST-SUFFIX,api.microsoftapp.net
 HOST-SUFFIX,bing-shopping.microsoft-falcon.io
 HOST-SUFFIX,bingapis.com
+HOST-SUFFIX,copilot-proxy.githubusercontent.com
 HOST-SUFFIX,copilot-stg.com
 HOST-SUFFIX,copilot.cloud.microsoft
 HOST-SUFFIX,copilot.com
 HOST-SUFFIX,copilot.microsoft.com
+HOST-SUFFIX,copilotstudio.microsoft.com
 HOST-SUFFIX,edgeservices.bing.com
 # >> xAI / Grok
 HOST,grok.x.com
@@ -504,24 +507,37 @@ HOST,ai-gateway.vercel.sh
 HOST,connect.facebook.net
 HOST,cookieEl.style.display
 HOST,cookieel.style.display
+HOST,firefly.adobe.com
 HOST,meta-ohttp-config-prod.fastly-edge.com
 HOST,meta-ohttp-relay-prod.fastly-edge.com
 HOST,production.museai.com
 HOST,us-central1-xi-labs.cloudfunctions.net
 HOST-SUFFIX,abacus.ai
+HOST-SUFFIX,adobe.io
 HOST-SUFFIX,apple-relay.fastly-edge.com
+HOST-SUFFIX,atlassian.com
 HOST-SUFFIX,atmeta.com
 HOST-SUFFIX,awswaf.com
 HOST-SUFFIX,base44.app
 HOST-SUFFIX,base44.com
+HOST-SUFFIX,blackbox.ai
+HOST-SUFFIX,claicode.com
+HOST-SUFFIX,commandcode.ai
 HOST-SUFFIX,composio.dev
 HOST-SUFFIX,cue.im
+HOST-SUFFIX,deepl.com
+HOST-SUFFIX,deeplusercontent.com
 HOST-SUFFIX,eigent.ai
 HOST-SUFFIX,facebook.com
 HOST-SUFFIX,fbcdn.net
+HOST-SUFFIX,freepik.com
 HOST-SUFFIX,genspark.ai
 HOST-SUFFIX,gspe1-ssl.ls.apple.com
 HOST-SUFFIX,interaction.co
+HOST-SUFFIX,jina.ai
+HOST-SUFFIX,komo.ai
+HOST-SUFFIX,lepton.ai
+HOST-SUFFIX,linear.app
 HOST-SUFFIX,link.com
 HOST-SUFFIX,llamameta.net
 HOST-SUFFIX,metaaivm.com
@@ -535,6 +551,7 @@ HOST-SUFFIX,prelude.dev
 HOST-SUFFIX,px-cloud.net
 HOST-SUFFIX,runway.com
 HOST-SUFFIX,simular.ai
+HOST-SUFFIX,slack.com
 HOST-SUFFIX,slashy.com
 HOST-SUFFIX,stytch.com
 HOST-SUFFIX,syntx.ai
