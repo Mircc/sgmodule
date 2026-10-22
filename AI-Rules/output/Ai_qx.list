@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-10-20
-# COUNT: 515 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-10-22
+# COUNT: 524 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -35,13 +35,19 @@ HOST,servd-anthropic-website.b-cdn.net
 HOST-KEYWORD,anthropic
 HOST-KEYWORD,claude
 HOST-SUFFIX,anthropic.com
+HOST-SUFFIX,anthropic.team
 HOST-SUFFIX,clau.de
 HOST-SUFFIX,claude.ai
+HOST-SUFFIX,claude.app
 HOST-SUFFIX,claude.com
 HOST-SUFFIX,claude.dev
+HOST-SUFFIX,claude.new
 HOST-SUFFIX,claude.site
+HOST-SUFFIX,claudeacademy.com
 HOST-SUFFIX,claudemcpclient.com
 HOST-SUFFIX,claudemcpcontent.com
+HOST-SUFFIX,claudepages.dev
+HOST-SUFFIX,claudestudio.com
 HOST-SUFFIX,claudeusercontent.com
 HOST-SUFFIX,grazie.ai
 HOST-SUFFIX,grazie.aws.intellij.net
@@ -514,6 +520,8 @@ HOST,production.museai.com
 HOST,us-central1-xi-labs.cloudfunctions.net
 HOST-SUFFIX,abacus.ai
 HOST-SUFFIX,adobe.io
+HOST-SUFFIX,ant.dev
+HOST-SUFFIX,antspace.dev
 HOST-SUFFIX,apple-relay.fastly-edge.com
 HOST-SUFFIX,atlassian.com
 HOST-SUFFIX,atmeta.com
@@ -521,6 +529,7 @@ HOST-SUFFIX,awswaf.com
 HOST-SUFFIX,base44.app
 HOST-SUFFIX,base44.com
 HOST-SUFFIX,blackbox.ai
+HOST-SUFFIX,chatbotclaude.com
 HOST-SUFFIX,claicode.com
 HOST-SUFFIX,commandcode.ai
 HOST-SUFFIX,composio.dev

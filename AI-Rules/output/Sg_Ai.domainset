@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
-# UPDATED: 2026-10-20
-# COUNT: 493 (裸行=精确域名, .前缀行=域名及全部子域)
+# UPDATED: 2026-10-22
+# COUNT: 502 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -27,13 +27,19 @@ clau.de
 grazie.aws.intellij.net
 servd-anthropic-website.b-cdn.net
 .anthropic.com
+.anthropic.team
 .clau.de
 .claude.ai
+.claude.app
 .claude.com
 .claude.dev
+.claude.new
 .claude.site
+.claudeacademy.com
 .claudemcpclient.com
 .claudemcpcontent.com
+.claudepages.dev
+.claudestudio.com
 .claudeusercontent.com
 .grazie.ai
 .grazie.aws.intellij.net
@@ -494,6 +500,8 @@ production.museai.com
 us-central1-xi-labs.cloudfunctions.net
 .abacus.ai
 .adobe.io
+.ant.dev
+.antspace.dev
 .apple-relay.fastly-edge.com
 .atlassian.com
 .atmeta.com
@@ -501,6 +509,7 @@ us-central1-xi-labs.cloudfunctions.net
 .base44.app
 .base44.com
 .blackbox.ai
+.chatbotclaude.com
 .claicode.com
 .commandcode.ai
 .composio.dev

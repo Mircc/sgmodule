@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-20
-# COUNT: 515
+# UPDATED: 2026-10-22
+# COUNT: 524
 
 payload:
   # >> OpenAI / ChatGPT
@@ -37,13 +37,19 @@ payload:
   - DOMAIN-KEYWORD,anthropic
   - DOMAIN-KEYWORD,claude
   - DOMAIN-SUFFIX,anthropic.com
+  - DOMAIN-SUFFIX,anthropic.team
   - DOMAIN-SUFFIX,clau.de
   - DOMAIN-SUFFIX,claude.ai
+  - DOMAIN-SUFFIX,claude.app
   - DOMAIN-SUFFIX,claude.com
   - DOMAIN-SUFFIX,claude.dev
+  - DOMAIN-SUFFIX,claude.new
   - DOMAIN-SUFFIX,claude.site
+  - DOMAIN-SUFFIX,claudeacademy.com
   - DOMAIN-SUFFIX,claudemcpclient.com
   - DOMAIN-SUFFIX,claudemcpcontent.com
+  - DOMAIN-SUFFIX,claudepages.dev
+  - DOMAIN-SUFFIX,claudestudio.com
   - DOMAIN-SUFFIX,claudeusercontent.com
   - DOMAIN-SUFFIX,grazie.ai
   - DOMAIN-SUFFIX,grazie.aws.intellij.net
@@ -516,6 +522,8 @@ payload:
   - DOMAIN,us-central1-xi-labs.cloudfunctions.net
   - DOMAIN-SUFFIX,abacus.ai
   - DOMAIN-SUFFIX,adobe.io
+  - DOMAIN-SUFFIX,ant.dev
+  - DOMAIN-SUFFIX,antspace.dev
   - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
   - DOMAIN-SUFFIX,atlassian.com
   - DOMAIN-SUFFIX,atmeta.com
@@ -523,6 +531,7 @@ payload:
   - DOMAIN-SUFFIX,base44.app
   - DOMAIN-SUFFIX,base44.com
   - DOMAIN-SUFFIX,blackbox.ai
+  - DOMAIN-SUFFIX,chatbotclaude.com
   - DOMAIN-SUFFIX,claicode.com
   - DOMAIN-SUFFIX,commandcode.ai
   - DOMAIN-SUFFIX,composio.dev
