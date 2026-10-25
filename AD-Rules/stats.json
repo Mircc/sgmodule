@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22 08:41:51",
+  "generated_at": "2026-10-25 08:30:53",
   "sources": [
     {
       "name": "AWAvenue Ads Rule",
@@ -19,32 +19,32 @@
     }
   ],
   "rules": {
-    "raw": 1608,
-    "kept_after_region_filter": 1596,
+    "raw": 1619,
+    "kept_after_region_filter": 1607,
     "dropped_foreign": 12,
-    "after_dedupe": 1490,
-    "no_mitm_required": 1452,
+    "after_dedupe": 1501,
+    "no_mitm_required": 1463,
     "mitm_required": 38
   },
   "domainset": {
-    "raw_entries": 339981,
-    "after_region_filter_and_dedupe": 25951
+    "raw_entries": 346650,
+    "after_region_filter_and_dedupe": 26195
   },
   "mitm_hostnames": 23,
   "cagent": {
-    "domains": 25951,
+    "domains": 26195,
     "rules": 89,
     "skipped_regex_comma": 0,
     "skipped_unsupported": 53,
     "mrs": "ok"
   },
   "singbox": {
-    "domain_suffixes": 25951,
+    "domain_suffixes": 26195,
     "keywords": 18,
     "ip_cidrs": 71,
-    "json_bytes": 884105,
+    "json_bytes": 893613,
     "srs": "ok",
-    "srs_bytes": 214945
+    "srs_bytes": 216678
   },
   "fetch_status": {
     "AWAvenue Ads Rule": "fresh",
@@ -53,26 +53,26 @@
     "AdBlock Surge (217heidai)": "fresh"
   },
   "source_entries": {
-    "AWAvenue Ads Rule": 965,
+    "AWAvenue Ads Rule": 976,
     "Blockads 软件去广告合集": 643,
-    "anti-AD": 103677,
-    "AdBlock Surge (217heidai)": 236304
+    "anti-AD": 104447,
+    "AdBlock Surge (217heidai)": 242203
   },
   "upstream": {
     "AWAvenue Ads Rule": {
-      "declared_time": "2026-09-21 21:56:59",
-      "days_since_update": 30
+      "declared_time": "2026-10-22 21:27:09",
+      "days_since_update": 2
     },
     "Blockads 软件去广告合集": {
       "declared_time": "2026-10-20 16:23:49",
-      "days_since_update": 1
+      "days_since_update": 4
     },
     "anti-AD": {
-      "declared_time": "2026-10-20 06:31:07",
-      "days_since_update": 2
+      "declared_time": "2026-10-24 21:34:34",
+      "days_since_update": 0
     },
     "AdBlock Surge (217heidai)": {
-      "declared_time": "2026-10-22 12:08:03",
+      "declared_time": "2026-10-25 12:05:18",
       "days_since_update": 0
     }
   }

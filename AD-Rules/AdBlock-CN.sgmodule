@@ -4,13 +4,13 @@
 #!author=AdBlock-CN Builder
 #!icon=https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad.png
 #!homepage=https://github.com/privacy-protection-tools/anti-AD
-#!date=2026-10-22 08:41:51
+#!date=2026-10-25 08:30:53
 #
 # 规则源：AWAvenue Ads Rule, Blockads 软件去广告合集, anti-AD, AdBlock Surge (217heidai)
 #
 # 生成方式：scripts/build.py（配置见 config/，新增规则源编辑 config/sources.json）
-# 规则总数：1490 条（其中需要 MITM 的 38 条）
-# 域名集：25951 个
+# 规则总数：1501 条（其中需要 MITM 的 38 条）
+# 域名集：26195 个
 #
 
 [Rule]
@@ -26,6 +26,8 @@ DOMAIN,aaid.umeng.com,REJECT,pre-matching,extended-matching
 DOMAIN,abtest-ch.snssdk.com,REJECT,pre-matching,extended-matching
 DOMAIN,ad-api.4pyun.com,REJECT,pre-matching,extended-matching
 DOMAIN,ad-cdn.qingting.fm,REJECT,pre-matching,extended-matching
+DOMAIN,ad-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
+DOMAIN,ad-download.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,ad-files.4pyun.com,REJECT,pre-matching,extended-matching
 DOMAIN,ad-scope.com,REJECT,pre-matching,extended-matching
 DOMAIN,ad-scope.com.cn,REJECT,pre-matching,extended-matching
@@ -303,6 +305,7 @@ DOMAIN,biz.weibo.com,REJECT,pre-matching,extended-matching
 DOMAIN,bj-td-menta-01-callback.advlion.com,REJECT,pre-matching,extended-matching
 DOMAIN,bj.ad.track.66mobi.com,REJECT,pre-matching,extended-matching
 DOMAIN,books-analytics-events.apple.com,REJECT,pre-matching,extended-matching
+DOMAIN,boost-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,bootpreload.uve.weibo.com,REJECT,pre-matching,extended-matching
 DOMAIN,brandadsstatic.vivo.com.cn,REJECT,pre-matching,extended-matching
 DOMAIN,browser.events.data.msn.cn,REJECT,pre-matching,extended-matching
@@ -407,6 +410,7 @@ DOMAIN,frontend-perf-service.e.kuaishou.com,REJECT,pre-matching,extended-matchin
 DOMAIN,fxgate.baidu.com,REJECT,pre-matching,extended-matching
 DOMAIN,g-adnet.hiaiabc.com,REJECT,pre-matching,extended-matching
 DOMAIN,g-staic.ganjingworld.com,REJECT,pre-matching,extended-matching
+DOMAIN,g.cn.miaozhen.com,REJECT,pre-matching,extended-matching
 DOMAIN,g.dtv.cn.miaozhen.com,REJECT,pre-matching,extended-matching
 DOMAIN,g.fancyapi.com,REJECT,pre-matching,extended-matching
 DOMAIN,g2.ganjing.world,REJECT,pre-matching,extended-matching
@@ -482,6 +486,7 @@ DOMAIN,img-c.heytapimage.com,REJECT,pre-matching,extended-matching
 DOMAIN,img-x.jd.com,REJECT,pre-matching,extended-matching
 DOMAIN,img.adnyg.com.w.kunlungr.com,REJECT,pre-matching,extended-matching
 DOMAIN,img2.360buyimg.com,REJECT,pre-matching,extended-matching
+DOMAIN,imp-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,impression-asia.chinaliftoff.io,REJECT,pre-matching,extended-matching
 DOMAIN,impression-asia.liftoff.io,REJECT,pre-matching,extended-matching
 DOMAIN,impression.appsflyer.com,REJECT,pre-matching,extended-matching
@@ -528,6 +533,7 @@ DOMAIN,lives.l.aiseet.atianqi.com,REJECT,pre-matching,extended-matching
 DOMAIN,lives.l.ott.video.qq.com,REJECT,pre-matching,extended-matching
 DOMAIN,livewebbs2pcdn.msstatic.com,REJECT,pre-matching,extended-matching
 DOMAIN,lm10111.jtrincc.cn,REJECT,pre-matching,extended-matching
+DOMAIN,loading-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,log-api-mn.huxiu.com,REJECT,pre-matching,extended-matching
 DOMAIN,log-api.huxiu.com,REJECT,pre-matching,extended-matching
 DOMAIN,log-api.pangolin-sdk-toutiao-b.com,REJECT,pre-matching,extended-matching
@@ -616,6 +622,7 @@ DOMAIN,ms.applvn.com,REJECT,pre-matching,extended-matching
 DOMAIN,ms4.applovin.com,REJECT,pre-matching,extended-matching
 DOMAIN,ms4.applvn.com,REJECT,pre-matching,extended-matching
 DOMAIN,msdk.voiceads.cn,REJECT,pre-matching,extended-matching
+DOMAIN,msg-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,mssdk.volces.com,REJECT,pre-matching,extended-matching
 DOMAIN,mssdk.zijieapi.com,REJECT,pre-matching,extended-matching
 DOMAIN,mtj.baidu.com,REJECT,pre-matching,extended-matching
@@ -664,6 +671,7 @@ DOMAIN,p66-ad.adkwai.com,REJECT,pre-matching,extended-matching
 DOMAIN,pagead2.googleadservices.com,REJECT,pre-matching,extended-matching
 DOMAIN,pagead2.googlesyndication.com,REJECT,pre-matching,extended-matching
 DOMAIN,pangolin-sdk-toutiao-b.com,REJECT,pre-matching,extended-matching
+DOMAIN,paster-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,pay.sboot.cn,REJECT,pre-matching,extended-matching
 DOMAIN,pcdn.xmcdn.com,REJECT,pre-matching,extended-matching
 DOMAIN,pcdn.yximgs.com,REJECT,pre-matching,extended-matching
@@ -693,6 +701,7 @@ DOMAIN,qmlog.baertt.com,REJECT,pre-matching,extended-matching
 DOMAIN,qn-cdnfile1pcdn.msstatic.com,REJECT,pre-matching,extended-matching
 DOMAIN,qqdata.ab.qq.com,REJECT,pre-matching,extended-matching
 DOMAIN,qzs.gdtimg.com,REJECT,pre-matching,extended-matching
+DOMAIN,recmd-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,recommend-drcn.hms.dbankcloud.cn,REJECT,pre-matching,extended-matching
 DOMAIN,report.dxunion.cn,REJECT,pre-matching,extended-matching
 DOMAIN,report.tencentmusic.com,REJECT,pre-matching,extended-matching
@@ -703,6 +712,7 @@ DOMAIN,res1.hubcloud.com.cn,REJECT,pre-matching,extended-matching
 DOMAIN,res2.hubcloud.com.cn,REJECT,pre-matching,extended-matching
 DOMAIN,res3.hubcloud.com.cn,REJECT,pre-matching,extended-matching
 DOMAIN,resolve.umeng.com,REJECT,pre-matching,extended-matching
+DOMAIN,resource-cmp.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,review.gdtimg.com,REJECT,pre-matching,extended-matching
 DOMAIN,rlog.popin.cc,REJECT,pre-matching,extended-matching
 DOMAIN,rms-drcn.platform.dbankcloud.cn,REJECT,pre-matching,extended-matching
@@ -896,6 +906,7 @@ DOMAIN,v1-ad.video.yximgs.com,REJECT,pre-matching,extended-matching
 DOMAIN,v2-ad.video.yximgs.com,REJECT,pre-matching,extended-matching
 DOMAIN,v2-api-channel-launcher.hismarttv.com,REJECT,pre-matching,extended-matching
 DOMAIN,v2.gdt.qq.com,REJECT,pre-matching,extended-matching
+DOMAIN,v2.reachmax.cn,REJECT,pre-matching,extended-matching
 DOMAIN,v2mi.gdt.qq.com,REJECT,pre-matching,extended-matching
 DOMAIN,v3-ad.video.yximgs.com,REJECT,pre-matching,extended-matching
 DOMAIN,v3.gdt.qq.com,REJECT,pre-matching,extended-matching
