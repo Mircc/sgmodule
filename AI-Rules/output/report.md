@@ -1,7 +1,7 @@
-# AIGC 规则合并报告 - 2026-10-25
+# AIGC 规则合并报告 - 2026-10-27
 
 - 保留规则: **524** 条
-- 去重删除: **106** 条
+- 去重删除: **109** 条
 - 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 502 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
 - mrs: `Cl_Ai_domain.mrs` (502 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 - sing-box: `Sb_Ai.srs` (521 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
@@ -31,6 +31,9 @@
 | DOMAIN,api.jetbrains.ai | 被 DOMAIN-SUFFIX,jetbrains.ai 覆盖 |
 | DOMAIN,api.statsig.com | 被 DOMAIN-SUFFIX,statsig.com 覆盖 |
 | DOMAIN,api.together.xyz | 被 DOMAIN-SUFFIX,together.xyz 覆盖 |
+| DOMAIN,appsgenaiserver-pa.clients.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
+| DOMAIN,appsgenaiserver-pa.clients6.google.com | 被 DOMAIN-SUFFIX,clients6.google.com 覆盖 |
+| DOMAIN,appsgenaiserver-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,auth.grazie.ai | 被 DOMAIN-SUFFIX,grazie.ai 覆盖 |
 | DOMAIN,auth.meta.com | 被 DOMAIN-SUFFIX,meta.com 覆盖 |
 | DOMAIN,aws-language-servers.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
