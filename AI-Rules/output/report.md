@@ -1,16 +1,17 @@
-# AIGC 规则合并报告 - 2026-10-27
+# AIGC 规则合并报告 - 2026-10-28
 
-- 保留规则: **524** 条
+- 保留规则: **526** 条
 - 去重删除: **109** 条
-- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 502 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
-- mrs: `Cl_Ai_domain.mrs` (502 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
-- sing-box: `Sb_Ai.srs` (521 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
+- 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 504 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
+- mrs: `Cl_Ai_domain.mrs` (504 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
+- sing-box: `Sb_Ai.srs` (523 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
 
 ## 来源文件统计
 
 | 来源 | 贡献规则数 |
 | --- | --- |
 | Cl_Ai.yaml | 523 |
+| 14_AI_Rules.lsr | 2 |
 | Sg_Ai.domainset | 1 |
 
 ## 去重明细
@@ -144,6 +145,7 @@
 - DOMAIN-SUFFIX,ant.dev
 - DOMAIN-SUFFIX,antspace.dev
 - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+- DOMAIN-SUFFIX,artificialanalysis.ai
 - DOMAIN-SUFFIX,atlassian.com
 - DOMAIN-SUFFIX,atmeta.com
 - DOMAIN-SUFFIX,awswaf.com
@@ -170,6 +172,7 @@
 - DOMAIN-SUFFIX,linear.app
 - DOMAIN-SUFFIX,link.com
 - DOMAIN-SUFFIX,llamameta.net
+- DOMAIN-SUFFIX,metaaiusercontent.com
 - DOMAIN-SUFFIX,metaaivm.com
 - DOMAIN-SUFFIX,mindstudio.ai
 - DOMAIN-SUFFIX,muse.ai

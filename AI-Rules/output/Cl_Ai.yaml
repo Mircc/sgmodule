@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-10-27
-# COUNT: 524
+# UPDATED: 2026-10-28
+# COUNT: 526
 
 payload:
   # >> OpenAI / ChatGPT
@@ -525,6 +525,7 @@ payload:
   - DOMAIN-SUFFIX,ant.dev
   - DOMAIN-SUFFIX,antspace.dev
   - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+  - DOMAIN-SUFFIX,artificialanalysis.ai
   - DOMAIN-SUFFIX,atlassian.com
   - DOMAIN-SUFFIX,atmeta.com
   - DOMAIN-SUFFIX,awswaf.com
@@ -551,6 +552,7 @@ payload:
   - DOMAIN-SUFFIX,linear.app
   - DOMAIN-SUFFIX,link.com
   - DOMAIN-SUFFIX,llamameta.net
+  - DOMAIN-SUFFIX,metaaiusercontent.com
   - DOMAIN-SUFFIX,metaaivm.com
   - DOMAIN-SUFFIX,mindstudio.ai
   - DOMAIN-SUFFIX,muse.ai
