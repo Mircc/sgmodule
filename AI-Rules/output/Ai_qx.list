@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-11-07
-# COUNT: 526 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-11-08
+# COUNT: 529 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -269,6 +269,7 @@ HOST,copilotprodattachments.blob.core.windows.net
 HOST,gateway.bingviz.microsoft.net
 HOST,gateway.bingviz.microsoftapp.net
 HOST,odc.officeapps.live.com
+HOST,production-copilot-host-westus.webpubsub.azure.com
 HOST,r.bing.com
 HOST,sydney.bing.com
 HOST,www.bing.com
@@ -287,6 +288,7 @@ HOST,grok.x.com
 HOST-SUFFIX,grok-sandbox.com
 HOST-SUFFIX,grok.com
 HOST-SUFFIX,grok.x.com
+HOST-SUFFIX,grokbot.com
 HOST-SUFFIX,grokipedia.com
 HOST-SUFFIX,groksupport.com
 HOST-SUFFIX,groktpcontent.com
@@ -475,6 +477,7 @@ HOST-SUFFIX,characterai.io
 HOST,browser-intake-datadoghq.com
 HOST,browser-intake-us5-datadoghq.com
 HOST,cdn.usefathom.com
+HOST,http-intake.logs.us5.datadoghq.com
 HOST,in.appcenter.ms
 HOST,location.microsoft.com
 HOST,self.events.data.microsoft.com

@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-11-07
-# COUNT: 526
+# UPDATED: 2026-11-08
+# COUNT: 529
 
 payload:
   # >> OpenAI / ChatGPT
@@ -271,6 +271,7 @@ payload:
   - DOMAIN,gateway.bingviz.microsoft.net
   - DOMAIN,gateway.bingviz.microsoftapp.net
   - DOMAIN,odc.officeapps.live.com
+  - DOMAIN,production-copilot-host-westus.webpubsub.azure.com
   - DOMAIN,r.bing.com
   - DOMAIN,sydney.bing.com
   - DOMAIN,www.bing.com
@@ -289,6 +290,7 @@ payload:
   - DOMAIN-SUFFIX,grok-sandbox.com
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,grok.x.com
+  - DOMAIN-SUFFIX,grokbot.com
   - DOMAIN-SUFFIX,grokipedia.com
   - DOMAIN-SUFFIX,groksupport.com
   - DOMAIN-SUFFIX,groktpcontent.com
@@ -477,6 +479,7 @@ payload:
   - DOMAIN,browser-intake-datadoghq.com
   - DOMAIN,browser-intake-us5-datadoghq.com
   - DOMAIN,cdn.usefathom.com
+  - DOMAIN,http-intake.logs.us5.datadoghq.com
   - DOMAIN,in.appcenter.ms
   - DOMAIN,location.microsoft.com
   - DOMAIN,self.events.data.microsoft.com

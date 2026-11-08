@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
-# UPDATED: 2026-11-07
-# COUNT: 504 (裸行=精确域名, .前缀行=域名及全部子域)
+# UPDATED: 2026-11-08
+# COUNT: 507 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -252,6 +252,7 @@ copilotprodattachments.blob.core.windows.net
 gateway.bingviz.microsoft.net
 gateway.bingviz.microsoftapp.net
 odc.officeapps.live.com
+production-copilot-host-westus.webpubsub.azure.com
 r.bing.com
 sydney.bing.com
 www.bing.com
@@ -270,6 +271,7 @@ grok.x.com
 .grok-sandbox.com
 .grok.com
 .grok.x.com
+.grokbot.com
 .grokipedia.com
 .groksupport.com
 .groktpcontent.com
@@ -456,6 +458,7 @@ idetoolkits.amazonwebservices.com
 browser-intake-datadoghq.com
 browser-intake-us5-datadoghq.com
 cdn.usefathom.com
+http-intake.logs.us5.datadoghq.com
 in.appcenter.ms
 location.microsoft.com
 self.events.data.microsoft.com
