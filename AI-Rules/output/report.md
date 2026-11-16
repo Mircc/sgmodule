@@ -1,7 +1,7 @@
-# AIGC 规则合并报告 - 2026-11-15
+# AIGC 规则合并报告 - 2026-11-16
 
 - 保留规则: **529** 条
-- 去重删除: **110** 条
+- 去重删除: **112** 条
 - 输出: `Cl_Ai.yaml` (Clash) / `Sg_Ai.domainset` (Surge DOMAIN-SET 高性能域名集, 507 条) + `Sg_Ai.list` (Surge RULE-SET classical 补充, 22 条) / `Ai_qx.list` (QuantumultX 原生, 其中跳过 1 条 QX 不支持的规则类型)
 - mrs: `Cl_Ai_domain.mrs` (507 条域名规则) + `Cl_Ai_ipcidr.mrs` (5 条 IP 规则); 另有 17 条 (DOMAIN-KEYWORD/REGEX/IP-ASN/GEOIP) mrs 不支持, 仅在 yaml/list 中生效
 - sing-box: `Sb_Ai.srs` (526 条规则, 二进制格式, 已生成) + `Sb_Ai.json` (JSON 源码格式); 另有 3 条 (IP-ASN/GEOIP) sing-box 规则集不支持, 仅在 yaml/list 中生效
@@ -41,12 +41,14 @@
 | DOMAIN,bard.google.com | 被 DOMAIN-SUFFIX,google.com 覆盖 |
 | DOMAIN,chat.openai.com.cdn.cloudflare.net | 被 DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net 覆盖 |
 | DOMAIN,client-telemetry.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
+| DOMAIN,cloud.zed.dev | 被 DOMAIN-SUFFIX,zed.dev 覆盖 |
 | DOMAIN,cloudaicompanion.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,cloudcode-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,codewhisperer.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,console.groq.com | 被 DOMAIN-SUFFIX,groq.com 覆盖 |
 | DOMAIN,content-firebaseappcheck.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,daily-cloudcode-pa.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
+| DOMAIN,daily-cloudcode-pa.sandbox.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,desktop-release.codewhisperer.us-east-1.amazonaws.com | 被 DOMAIN-SUFFIX,amazonaws.com 覆盖 |
 | DOMAIN,firebaseappcheck.googleapis.com | 被 DOMAIN-SUFFIX,googleapis.com 覆盖 |
 | DOMAIN,gateway.ai.cloudflare.com | 被 DOMAIN-SUFFIX,cloudflare.com 覆盖 |
