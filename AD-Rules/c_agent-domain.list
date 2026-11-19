@@ -1,7 +1,7 @@
 # c_agent 域名清单（rule-provider behavior: domain）
-# 生成时间: 2026-11-16 11:29:19
+# 生成时间: 2026-11-19 11:46:59
 # 语法: example.com = 精确匹配(DOMAIN) / +.example.com = 后缀匹配(DOMAIN-SUFFIX)
-# 域名数量: 26411
+# 域名数量: 26413
 #
 +.0.net.easyjet.com
 +.0001-metrics1-drcn-dt-dbankcloud-cn.geac.dbankedge.cn
@@ -106,6 +106,7 @@
 +.1500020991.vodplayer.wxamedia.com
 +.1500022744.vodplayer.wxamedia.com
 +.1500026601.vodplayer.wxamedia.com
++.167-148-195-171.sslip.io
 +.16aq.cn
 +.17.huanqiu.com
 +.17admob.com
@@ -2348,6 +2349,7 @@
 +.adtarget.biz
 +.adtarget.com.tr
 +.adtdp.com
++.adtec.ru
 +.adtech-events.bookmyshow.com
 +.adtech.coingecko.com
 +.adtech.yahooinc.com
@@ -3037,6 +3039,7 @@
 +.analytics.ajax.systems
 +.analytics.amarea.cn
 +.analytics.ameli.fr
++.analytics.angelone.in
 +.analytics.api.mitel.io
 +.analytics.api.myqnapcloud.cn
 +.analytics.api.myqnapcloud.com
@@ -3819,7 +3822,6 @@
 +.app.cph.uh.edu
 +.app.customerservice.royalmail.com
 +.app.dickssportinggoods.com
-+.app.domclick.ru
 +.app.dreambox.ru.com
 +.app.e.gettyimages.com
 +.app.email.forrester.com
@@ -3993,6 +3995,7 @@
 +.applovin.com.edgekey.net
 +.applovinres.edgekey.net
 +.applvn.com
++.applytics.icpsuawn1zy5amys.com
 +.applytics.nordvpn.com
 +.applytics.zwyr157wwiu6eior.com
 +.appmetrica.sovcombank.ru
@@ -4012,7 +4015,6 @@
 +.apps.nhk.jp
 +.apps.nielsen.com
 +.apps.sascdn.com
-+.apps.wholefoodsmarket.com
 +.appsad.cn
 +.appsec-whatsapp.com
 +.appsflyer.club
@@ -4567,7 +4569,6 @@
 +.beizi.info
 +.beizi.online
 +.belgium.wolterskluwer.com
-+.belt-hiking-round-skirt.trycloudflare.com
 +.benelux2.secureforms.mcafee.com
 +.benniuluntai.cn
 +.bento.agoda.com
@@ -4752,6 +4753,7 @@
 +.bmr-whatsapp.com
 +.bms-whatsapp.com
 +.bmt-whatsapp.com
++.bmtrcs.com
 +.bmu-whatsapp.com
 +.bmv-whatsapp.com
 +.bmw-whatsapp.com
@@ -5151,7 +5153,6 @@
 +.bumerangshowsites.hurriyet.com.tr
 +.bumlam.com
 +.bun1.dayi.org.cn
-+.bunaisd.screenconnect.com
 +.bup.bankofamerica.com
 +.burnercombustion.org.cn
 +.business-api.tiktok.com
@@ -5367,6 +5368,7 @@
 +.campaigns-fr.opentext.com
 +.campaigns-it.opentext.com
 +.campaigns.opentext.com
++.campaigns.williamhill.com
 +.camsoda.com
 +.canada.deloitte-digital-engage.adobesandbox.com
 +.canadiantire.data.adobedc.net
@@ -5448,6 +5450,7 @@
 +.cd.supersonic-parts.de
 +.cdgfa.ifeng.com
 +.cdhoc.piyaji.cn
++.cdid.trip.com
 +.cdj-dap.s3-ap-northeast-1.amazonaws.com
 +.cdk-cli-telemetry.us-east-1.api.aws
 +.cdl-1.pddpic.com
@@ -5742,7 +5745,6 @@
 +.clck.yandex.net
 +.clck.yandex.ru
 +.clck.yango.com
-+.clckdm.domclick.ru
 +.cldata-ads-fr.heytapmobile.com
 +.cldata-ads-ru.heytapmobile.com
 +.clean.gg
@@ -6558,10 +6560,10 @@
 +.content.eaton.com
 +.content.livesportmedia.eu
 +.content.mql5.com
-+.content.nxp.com
 +.content.wire.telstra.com
 +.content.yieldmanager.edgesuite.net
 +.content.zeronaught.com
++.content2.nrc.nl
 +.content22.online.citi.com
 +.contents-search-windows.com
 +.contents.pwc.com
@@ -6874,7 +6876,6 @@
 +.cu-cn-north00002.gala.convection.cn
 +.cub7ktzma4.data.adobedc.net
 +.cui.m.1688.com
-+.cujo-collector.flux.flixbus.com
 +.cupfox.hl.cn
 +.cupid.iqiyi.com
 +.cupid.ptqy.gitv.tv
@@ -8322,6 +8323,7 @@
 +.data-1a8175bc05.presseportal.de
 +.data-1ce9bdc9f1.krone.at
 +.data-1df8532686.t-online.de
++.data-1eea95e868.a1.net
 +.data-26e104754d.hgtv.com
 +.data-2b76ef50e8.zdf.de
 +.data-2cfc77297e.tagesspiegel.de
@@ -8336,6 +8338,7 @@
 +.data-4ccf76e1ad.tagesspiegel.de
 +.data-501446ac98.t-online.de
 +.data-50de2f2b04.focus.de
++.data-525bd81403.a1.net
 +.data-54f7652a27.spiegel.de
 +.data-583ff8cf8b.energate-messenger.de
 +.data-59d0914c04.wetter.com
@@ -8504,6 +8507,7 @@
 +.data.capgemini.adobesandbox.com
 +.data.carnival-uk-dev.test.ajo.adobe.com
 +.data.carts.t-mobile.com
++.data.cdnbasket.net
 +.data.certificate.test.ajo.adobe.com
 +.data.channelsprodnld1.test.ajo.adobe.com
 +.data.channelsprodor2.test.ajo.adobe.com
@@ -8890,7 +8894,6 @@
 +.dazu57wmpm14b.cloudfront.net
 +.db.cjtcc.cn
 +.db033pq6bj64g.cloudfront.net
-+.db2017417b23.zapto.org
 +.db4zl9wffwnmb.cloudfront.net
 +.db5.settings.data.microsoft.com.akadns.net
 +.db5.vortex.data.microsoft.com.akadns.net
@@ -9518,7 +9521,6 @@
 +.downloadxml.changhong.upgrade2.huan.tv
 +.downmini.kugou.com
 +.downmobile.kugou.com
-+.dozen-touched-but-flyer.trycloudflare.com
 +.dp-uploader-vehicle-telemetry-prod-us-west-2.s3.amazonaws.com
 +.dp.casa.it
 +.dp.idealista.com
@@ -11050,6 +11052,7 @@
 +.fpa-events.rollingstone.com
 +.fpa-events.slate.com
 +.fpa-events.thedailybeast.com
++.fpa-events.theintercept.com
 +.fpa-events.today.com
 +.fpa2uzenvs.data.adobedc.net
 +.fpag.w48ge.cn
@@ -11230,7 +11233,6 @@
 +.gb.corp.163.com
 +.gbitcoin.cn
 +.gbmfid.1mg.com
-+.gc.gastronom.ru
 +.gc.newsweek.com
 +.gcapi.sy.kugou.com
 +.gcbflvx.cn
@@ -11395,7 +11397,6 @@
 +.gnar.grammarly.com
 +.gnczi.cn
 +.gndrzx.cn
-+.gnezdo.ru
 +.go-elqau.oracle.com
 +.go-mpulse.net
 +.go-response.thermofisher.com
@@ -11668,6 +11669,7 @@
 +.gtr1.yes24.com
 +.gtreus.aliexpress.com
 +.gtrk.s3.amazonaws.com
++.guanfangxiazai-oss-cn-singapore-aliyuncs.top
 +.guang1.zhakao.cn
 +.guanggao369.cn
 +.guanggaoad.youku.com
@@ -11839,6 +11841,7 @@
 +.hechaocheng.cn
 +.hectorstatic.baidu.com
 +.hehuren.cn
++.heimdall.hearstapps.com
 +.helios.g2a.com
 +.hellogalaxy.cn
 +.helsanaversicherungenag.data.adobedc.net
@@ -12661,6 +12664,7 @@
 +.impservice2.youdao.com
 +.imrworldwide.com
 +.imtmp.net
++.imtwjwoasak.com
 +.imyqb.cn
 +.imzhide.net.cn
 +.in-ad-lgsmartad-com.aws-prd.net
@@ -12934,6 +12938,7 @@
 +.iqmetrics.sueddeutsche.de
 +.iqmetrics.tagesspiegel.de
 +.iqmetrics.zeit.de
++.iqwblsfvqcopxrijnzwx.supabase.co
 +.iqyewu.cn
 +.ir-ad-lgsmartad-com.aws-prd.net
 +.ir-info-lgsmartad-com.aws-prd.net
@@ -13343,6 +13348,7 @@
 +.kl.67it.com
 +.klabo.main.jp
 +.klgzzs.cn
++.klik.nrc.nl
 +.klipmart.forbes.com
 +.klk.jdflower.cn
 +.km-gke-sentry.onkm.co.kr
@@ -13468,7 +13474,6 @@
 +.l.ovhcloud.com
 +.l.premium.naver.com
 +.l.qq.com
-+.l.science-et-vie.com
 +.l.support.canva.com
 +.l.t.domain.com.au
 +.l.thumbtack.com
@@ -13614,6 +13619,7 @@
 +.lieqitianxia.cn
 +.lieying.cn
 +.life.html5.qq.com
++.lifeisabouthavingfun448.duckdns.org
 +.liftoff-creatives.io
 +.liftoff.io
 +.lig.liberation.fr
@@ -13698,6 +13704,7 @@
 +.links.zoopla.co.uk
 +.linksbntest.branchcustom.xyz
 +.linksjg.cn
++.linkssp.ru
 +.linksync-whatsapp.com
 +.linksynergy.com
 +.linktech.cn
@@ -13744,7 +13751,6 @@
 +.liveats-vod.video.ptqy.gitv.tv
 +.liveintent.com
 +.livejasmin.co.com
-+.livejasmin.com
 +.lively-sand-01cfcfe10.3.azurestaticapps.net
 +.livemonitor.huan.tv
 +.lives.l.cp81.ott.cibntv.net
@@ -13975,7 +13981,6 @@
 +.log.ezvizlife.com
 +.log.findmykids.org
 +.log.flight.qunar.com
-+.log.fuximain.com
 +.log.getadblock.com
 +.log.getdropbox.com
 +.log.go.com
@@ -14871,7 +14876,6 @@
 +.macromill.com
 +.macys.data.adobedc.net
 +.mad.m.maxthon.cn
-+.madeiracityschools.screenconnect.com
 +.madhouse.cn
 +.madhuv3.test.ajo.adobe.com
 +.mads-eu.amazon.com
@@ -15036,7 +15040,6 @@
 +.matomo.hetzner.com
 +.matomo.index.hu
 +.matomo.irancell.ir
-+.matomo.it-services.ruhr-uni-bochum.de
 +.matomo.it.helsinki.fi
 +.matomo.ithome.ir
 +.matomo.live.drdanielzeiss.gmbh
@@ -15058,6 +15061,7 @@
 +.matomo.tutu.ru
 +.matomo.uni-hamburg.de
 +.matomo.warnung.bund.de
++.matomo.wri.org
 +.matomo.xdr.trendmicro.com
 +.matomo.youtubepisnicky.eu
 +.matomo.zmml.uni-bremen.de
@@ -15450,6 +15454,7 @@
 +.metrics.atlascopco.com.cdn.cloudflare.net
 +.metrics.att.com
 +.metrics.au.com
++.metrics.auth.altium.com
 +.metrics.autoclubmo.aaa.com
 +.metrics.autodesk.com
 +.metrics.autotrader.com
@@ -15603,7 +15608,6 @@
 +.metrics.infiniti.com.hk
 +.metrics.infiniti.com.tw
 +.metrics.instacart.com
-+.metrics.instyle.com
 +.metrics.ionos.com
 +.metrics.ionos.de
 +.metrics.irdeto.com
@@ -15826,6 +15830,7 @@
 +.metrics.webex.com
 +.metrics.westernunion.com
 +.metrics.whitepages.com
++.metrics.williamhill.com
 +.metrics.wolterskluwer.com
 +.metrics.worldbank.org
 +.metrics.wwd.com
@@ -15844,6 +15849,7 @@
 +.metrics2.bybanking.com
 +.metrics2.izzi1m3i.bybanking.com
 +.metrics2.unity.cn
++.metrics2.williamhill.com
 +.metricscollector.lp.xcal.tv
 +.metricsishare.rediff.com
 +.metricstest.pfizer.com
@@ -16236,6 +16242,7 @@
 +.mr.homedepot.com
 +.mr.olympics.com
 +.mradx.net
++.mrktmtrcs.net
 +.ms-ads-image.t-static.ru
 +.ms.actingidekex.cn
 +.ms.awqsaged.cn
@@ -16497,7 +16504,6 @@
 +.ndapus.cn
 +.ndct-data.video.iqiyi.com
 +.ndi.nuance.com
-+.ndjvmuvkoahnopfqn2jpva.on.drv.tw
 +.ndrf.757g7g.cn
 +.nedbank.data.adobedc.net
 +.neirong.baidu.com
@@ -17107,6 +17113,7 @@
 +.opgirl-tmp.adbxb.cn
 +.ophan.theguardian.com
 +.oplinking.com
++.oply.hearstapps.com
 +.opsbox-whatsapp.com
 +.opshub-whatsapp.com
 +.opskit-whatsapp.com
@@ -17191,6 +17198,7 @@
 +.otel-collector.island.io
 +.otel-collector.kakaopaysec.com
 +.otel-collector.taylorfrancis.com
++.otel-gw.booking.com
 +.otel-mobile.doordash.com
 +.otel.kaizen.nvidia.com
 +.otel.observability.app.launchdarkly.com
@@ -17329,6 +17337,7 @@
 +.pad.zhywyl.cn
 +.pafvertizing.crazygames.com
 +.page-events-ustats.udemy.com
++.page.cdnbasket.net
 +.page.sangfor.com.cn
 +.page.santc.cn
 +.page.thalesgroup.com
@@ -17449,6 +17458,7 @@
 +.pbcs.pagesix.com
 +.pbcs.realtor.com
 +.pbd.sogou.com
++.pbjs-stream.bydata.com
 +.pbstats.jpmorgan.com
 +.pbstck.com
 +.pbxai.com
@@ -17527,7 +17537,6 @@
 +.personalization.bloomberg.com
 +.personalization.centech.glulive.com
 +.personalize.livemint.com
-+.peterson-legislation-civilization-assistance.trycloudflare.com
 +.petrolprices-advertising.s3.eu-west-2.amazonaws.com
 +.pevftg.shopee.sg
 +.pexnjio.cn
@@ -18374,7 +18383,6 @@
 +.quantserve.com
 +.quantummetric.com
 +.quark-pc.com
-+.questionnaire-buzz-row-trainer.trycloudflare.com
 +.questions-adv.ozon.ru
 +.questrominfo.bu.edu
 +.quiddity.goguardian.com
@@ -18466,7 +18474,6 @@
 +.rcqmvmq.cn
 +.rcsdigital.data.adobedc.net
 +.rcynoe.cn
-+.rd.alice.it
 +.rd.autohome.com.cn
 +.rd596n.jomodns.com
 +.rdlrbm.studying.jp
@@ -18576,7 +18583,6 @@
 +.repdata.azcentral.com
 +.repdata.usatoday.com
 +.reply.infineon.com
-+.repo.huaweicloud.com
 +.repoapi-whatsapp.com
 +.repocdn-whatsapp.com
 +.reponode-whatsapp.com
@@ -18651,7 +18657,6 @@
 +.resources.thestar.com
 +.resources2.secureforms.mcafee.com
 +.responder.wt.heise.de
-+.response.nxp.com
 +.response2.buydomains.com
 +.rest.dynamicyield.com
 +.restart-whatsapp.com
@@ -18733,7 +18738,6 @@
 +.rockpoint.xhamster.desi
 +.rockpoint.xhamster2.com
 +.rockpoint.xhamster3.com
-+.rockymountainstoneart.screenconnect.com
 +.roeyecdn.com
 +.rogerscommunicationspartnership.data.adobedc.net
 +.roi.soulapp.cn
@@ -19228,7 +19232,6 @@
 +.sci.intuit.com
 +.scjlpq.navitime.co.jp
 +.scjpqut.cn
-+.scjwc.screenconnect.com
 +.sckexing.cn
 +.sclick.baidu.com
 +.scmetrics.exacttarget.com
@@ -19261,7 +19264,6 @@
 +.sdata.wiley.com
 +.sdc-agg.caissedesdepots.fr
 +.sdc.10086.cn
-+.sdc.allianz.de
 +.sdc.caranddriver.com
 +.sdc.cnn.com
 +.sdc.usps.com
@@ -21012,13 +21014,13 @@
 +.sentryfe.stroeermediabrands.de
 +.sentrymagic.com
 +.sentryv2.zumper.com
-+.seo-service.domclick.ru
 +.seondnsresolve.com
 +.seordl.cn
 +.sephora-qa.branchstaging.com
 +.serl.mooo.com
 +.serv.ds.kakao.com
 +.serve.ads.chaturbate.com
++.serve.williamhill.com
 +.servedby.cricketworld.com
 +.servedbyadbutler.com
 +.servenobid.com
@@ -21138,6 +21140,7 @@
 +.sgtm.cmoa.jp
 +.sgtm.dhgate.com
 +.sgtm.dhnet.be
++.sgtm.elofizetek.canalplus.com
 +.sgtm.eset.com
 +.sgtm.evri.com
 +.sgtm.factory.jcrew.com.edgekey.net
@@ -21167,6 +21170,7 @@
 +.sgtm.muslima.com
 +.sgtm.nature.com
 +.sgtm.nordicbranch.com
++.sgtm.open.ac.uk
 +.sgtm.pmi.org
 +.sgtm.powerpacks.gamestop.com
 +.sgtm.procore.com
@@ -21310,6 +21314,7 @@
 +.singular-cy.com
 +.singular.net
 +.singulardisappointmentdisqualify.com
++.sink.gw.booking.com
 +.sioa.chewy.com
 +.siqc.cn
 +.sisalspa.data.adobedc.net
@@ -21849,6 +21854,7 @@
 +.smetrics.webex.com
 +.smetrics.westernunion.com
 +.smetrics.whatsappsim.de
++.smetrics.williamhill.com
 +.smetrics.wolterskluwer.com
 +.smetrics.worldbank.org
 +.smetrics.wyndhamhotels.com
@@ -21856,6 +21862,7 @@
 +.smetrics1.experian.com
 +.smetrics2.kaiserpermanente.org
 +.smetrics2.nokia.com
++.smetrics2.williamhill.com
 +.smetricsinstoreappra.carmax.com
 +.smetricsmaxoffer.carmax.com
 +.smetricsmobile.carmax.com
@@ -21933,6 +21940,7 @@
 +.snowplow.apps.clarivate.com
 +.snowplowanhpxzk.dgzdjs0055.s3.amazonaws.com
 +.snowplowprdnlb-1490493263.us-east-2.elb.amazonaws.com
++.snr4.canalplus.com
 +.sns-paopao.iqiyi.com
 +.sns2.secureforms.mcafee.com
 +.snssdk.gatedata.org
@@ -22035,7 +22043,6 @@
 +.sonobi.com
 +.sony.tcliveus.com
 +.soorbka.cn
-+.sooyun-yun.com.cn
 +.sopho.kozow.com
 +.sopr-api.cian.ru
 +.soptimize.southwest.com
@@ -22047,7 +22054,6 @@
 +.sourcepoint-mms.history.com
 +.sourcepoint.theonion.com
 +.sourcepoint.vice.com
-+.sources.nxp.com
 +.sourcescdn.xiaobingw.cn
 +.southernalarm.screenconnect.com
 +.southernco.data.adobedc.net
@@ -22088,6 +22094,7 @@
 +.spearmint4334.gb.net
 +.specialoffers.aol.com
 +.spectrum.gettyimages.com
++.speedcurve.com
 +.speeddials.opera.com
 +.speee-ad.akamaized.net
 +.spenvp.gate.shop
@@ -22260,6 +22267,7 @@
 +.sssvd.china.com
 +.sst-nordic.greenpeace.org
 +.sst.20min.ch
++.sst.a1.net
 +.sst.action.com
 +.sst.actu.fr
 +.sst.alz.org
@@ -22280,6 +22288,7 @@
 +.sst.french.hk
 +.sst.german.com.hk
 +.sst.godaddy.com
++.sst.homegate.ch
 +.sst.hostnet.nl
 +.sst.hrw.org
 +.sst.ippooffice.co.jp
@@ -22373,6 +22382,7 @@
 +.stape.allpfithome.com.br
 +.stape.alura.com.br
 +.stape.ergooffice.eu
++.stape.exame.com
 +.stape.hjh-office.dk
 +.stape.hjh-office.fi
 +.stape.hjh-office.fr
@@ -22424,6 +22434,7 @@
 +.stat.3g.music.qq.com
 +.stat.aastocks.com
 +.stat.api.2gis.ru
++.stat.api.altium.com
 +.stat.azbyka.ru
 +.stat.bankier.pl
 +.stat.boosty.to
@@ -22473,7 +22484,6 @@
 +.stat.tabelog.com
 +.stat.td.com
 +.stat.tech.euronews.com
-+.stat.teleport.media
 +.stat.tiara.tistory.com
 +.stat.tildacdn.com
 +.stat.tips.tencent.com
@@ -22559,7 +22569,6 @@
 +.statistic.csdn.net
 +.statistic.live.126.net
 +.statistic.qzone.qq.com
-+.statistic.ruhr-uni-bochum.de
 +.statistic.xiaoxiezi886.cn
 +.statistics-bt.wildberries.ru
 +.statistics.591.com.tw
@@ -22613,7 +22622,6 @@
 +.stats.flippingbook.com
 +.stats.ft.com
 +.stats.g.doubleclick.net.iberostar.com
-+.stats.gastronom.ru
 +.stats.getty.edu
 +.stats.gslc.utah.edu
 +.stats.habr.com
@@ -22997,7 +23005,6 @@
 +.sxjkc.cn
 +.sxk9m8x.cn
 +.sxltfj.cn
-+.sxp.allianz.de
 +.sxqdun.neogence.com.tw
 +.sxyunyou.cn
 +.sy-ad-lgsmartad-com.aws-prd.net
@@ -23346,6 +23353,7 @@
 +.tbm.snssdk.com
 +.tbsone.imtt.qq.com
 +.tc-sentry.mattel163.com
++.tc.vbnmhjlp.com
 +.tcbox.baidu.com
 +.tcdata.fnac.com
 +.tce.alicdn.com
@@ -23441,6 +23449,7 @@
 +.telemetry-cii.api.playstation.com
 +.telemetry-config.playstation.com
 +.telemetry-eu.docusign.net.akadns.net
++.telemetry-events.bydata.com
 +.telemetry-events.gw.sfr.net
 +.telemetry-geo.docusign.net.akadns.net
 +.telemetry-in.battle.net
@@ -23470,6 +23479,7 @@
 +.telemetry.broadcom.com
 +.telemetry.business.githubcopilot.com
 +.telemetry.bybanking.com
++.telemetry.bydata.com
 +.telemetry.canva.cn
 +.telemetry.canva.com
 +.telemetry.canva.com.cdn.cloudflare.net
@@ -23491,7 +23501,6 @@
 +.telemetry.dataplatform.simple.life
 +.telemetry.dev.docusign.net
 +.telemetry.docusign.net
-+.telemetry.domclick.ru
 +.telemetry.dropbox.com
 +.telemetry.dynadot.com
 +.telemetry.dzen.ru
@@ -23643,7 +23652,6 @@
 +.thetradedesk-ads-html5.afd.azureedge.net
 +.thetradedesk-ads-html5.azureedge.net
 +.theweathercompany.data.adobedc.net
-+.thewildandfreecafe.screenconnect.com
 +.thind-gke-euw.prd.data.corp.unity3d.com
 +.thinkingdata.cn
 +.thisisclicksecured.page.link
@@ -23996,6 +24004,7 @@
 +.track.dictionary.com
 +.track.docusign.com
 +.track.eurogirlsescort.com
++.track.exame.com
 +.track.f1store.formula1.com
 +.track.ft.com
 +.track.homestead.com
@@ -24156,7 +24165,6 @@
 +.tracking.houzz.com
 +.tracking.hubspot.com
 +.tracking.huntington.com
-+.tracking.iii.com
 +.tracking.immobilienscout24.de
 +.tracking.info.ivanti.com
 +.tracking.info.servicenow.com
@@ -24923,7 +24931,6 @@
 +.utiq.purepeople.com
 +.utiq.rtl.de
 +.utiq.rtl.fr
-+.utiq.science-et-vie.com
 +.utiq.semana.es
 +.utiq.sevilla.abc.es
 +.utiq.spiegel.de
@@ -24940,6 +24947,7 @@
 +.utiq.tim.it
 +.utiq.tvspielfilm.de
 +.utiq.welt.de
++.utiq.xataka.com
 +.utiq.xatakandroid.com
 +.utiq.xatakawindows.com
 +.utiq.zeit.de
@@ -25124,6 +25132,7 @@
 +.viega.data.adobedc.net
 +.vietnamairlines.data.adobedc.net
 +.view-api.fikfap.com
++.view.cdnbasket.net
 +.view.fujitv.co.jp
 +.view.zijieapi.com
 +.viewerstats.docstoc.com.s3.amazonaws.com
@@ -25182,7 +25191,6 @@
 +.vlgkotr.cn
 +.vlion.cn
 +.vlive.qqvideo.tc.qq.com
-+.vmax-ads.fancode.com
 +.vmindhls.tc.qq.com
 +.vmjjzk.cn
 +.vmkp.cn
@@ -25414,7 +25422,6 @@
 +.wa.kuwo.cn
 +.wa.mail.com
 +.wa.metro.co.uk
-+.wa.nxp.com
 +.wa.quarks.de
 +.wa.scribd.com
 +.wa.slideshare.net
@@ -25708,6 +25715,7 @@
 +.win1710.ipv6.microsoft.com
 +.win8.ipv6.microsoft.com
 +.winads.cn
++.windo.oss-cn-hongkong.aliyuncs.com
 +.windows-7.net
 +.windows-display-service.com
 +.windows-line.com
@@ -25718,6 +25726,7 @@
 +.windowsphishingalert158.s3.amazonaws.com
 +.windowstan.com
 +.windowsvow.com
++.windsurf-telemetry.codeium.com
 +.wintricksbanner.googlepages.com
 +.wip3.adobe.com
 +.wisepush.video.baidu.com
@@ -25748,7 +25757,6 @@
 +.wncs.7ez4.cn
 +.wnsmusic.qq.com
 +.wo.iuni.com.cn
-+.wocgranted.screenconnect.com
 +.wooboo.com.cn
 +.woocall.sina.com.cn
 +.woodpecker.uc.cn
@@ -25865,7 +25873,6 @@
 +.www9.enet.com.cn
 +.www91.intel.com
 +.www91.intel.com.tw
-+.www99.zapto.org
 +.www999999asgasg-1327129302.cos.ap-chengdu.myqcloud.com
 +.www999999safagqwhg-1327129302.cos.ap-chengdu.myqcloud.com
 +.wwwimg.roku.com
@@ -25998,8 +26005,6 @@
 +.xn--zw0autp42d.cn
 +.xndjh.hebiz.cn
 +.xolerkr.cn
-+.xoomer.alice.it
-+.xp.allianz.de
 +.xp.atlassian.com
 +.xp2023-pix.s3.amazonaws.com
 +.xp308.cn
@@ -26015,7 +26020,6 @@
 +.xscmzs.tenki.jp
 +.xsentry.italki.com
 +.xsolid.baidu.com
-+.xss-1253555722.cos.ap-singapore.myqcloud.com
 +.xss-whatsapp.com
 +.xsyhy.cn
 +.xt.eh6q.cn
@@ -26056,7 +26060,6 @@
 +.y6rqjbto8p.data.adobedc.net
 +.yab-adimages.s3.amazonaws.com
 +.yacafrr.bailingcloud.cn
-+.yadro.ru
 +.yads.c.yimg.jp
 +.yads.yahoo.co.jp
 +.yahekby.cn
@@ -26093,7 +26096,6 @@
 +.ydjs.zol.com.cn
 +.ydlz.k859n.cn
 +.ydpushserver.youdao.com
-+.ydtzzw.tuttomercatoweb.com
 +.ye-ad-lgsmartad-com.aws-prd.net
 +.yeahmobi.com
 +.yeeok.com.cn
