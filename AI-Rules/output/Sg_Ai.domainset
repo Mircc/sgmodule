@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge DOMAIN-SET, 高性能域名集)
-# UPDATED: 2026-11-18
-# COUNT: 507 (裸行=精确域名, .前缀行=域名及全部子域)
+# UPDATED: 2026-11-19
+# COUNT: 508 (裸行=精确域名, .前缀行=域名及全部子域)
 # 用法: DOMAIN-SET,https://.../Sg_Ai.domainset,你的策略组
 
 # >> OpenAI / ChatGPT
@@ -311,6 +311,7 @@ pplx-res.cloudinary.com
 .deepgram.com
 .elevenlabs.com
 .elevenlabs.io
+.elevenlabsusercontent.com
 .fathom.video
 .fireflies.ai
 .hume.ai

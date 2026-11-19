@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-11-18
-# COUNT: 529 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-11-19
+# COUNT: 530 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -328,6 +328,7 @@ HOST-SUFFIX,cartesia.ai
 HOST-SUFFIX,deepgram.com
 HOST-SUFFIX,elevenlabs.com
 HOST-SUFFIX,elevenlabs.io
+HOST-SUFFIX,elevenlabsusercontent.com
 HOST-SUFFIX,fathom.video
 HOST-SUFFIX,fireflies.ai
 HOST-SUFFIX,hume.ai
