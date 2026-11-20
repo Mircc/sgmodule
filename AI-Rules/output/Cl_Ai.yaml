@@ -1,7 +1,7 @@
 # NAME: Ai AIGC Rules
 # DESC: 合并整理的 AIGC 分流规则 (Clash classical rule-provider; QX 亦可直接订阅)
-# UPDATED: 2026-11-19
-# COUNT: 530
+# UPDATED: 2026-11-20
+# COUNT: 531
 
 payload:
   # >> OpenAI / ChatGPT
@@ -32,6 +32,7 @@ payload:
   - DOMAIN,anthropic-com.ghost.io
   - DOMAIN,anthropic.com.cdn.cloudflare.net
   - DOMAIN,clau.de
+  - DOMAIN,claude.site
   - DOMAIN,grazie.aws.intellij.net
   - DOMAIN,servd-anthropic-website.b-cdn.net
   - DOMAIN-KEYWORD,anthropic

@@ -1,6 +1,6 @@
 # Ai AIGC Rules (QuantumultX 原生 filter)
-# UPDATED: 2026-11-19
-# COUNT: 530 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
+# UPDATED: 2026-11-20
+# COUNT: 531 (DOMAIN-REGEX 规则 QX 不支持, 已自动跳过)
 # 规则不含策略位, 订阅时用 force-policy=你的策略组 自由指定
 
 # >> OpenAI / ChatGPT
@@ -30,6 +30,7 @@ IP-CIDR,64.23.132.171/32
 HOST,anthropic-com.ghost.io
 HOST,anthropic.com.cdn.cloudflare.net
 HOST,clau.de
+HOST,claude.site
 HOST,grazie.aws.intellij.net
 HOST,servd-anthropic-website.b-cdn.net
 HOST-KEYWORD,anthropic
