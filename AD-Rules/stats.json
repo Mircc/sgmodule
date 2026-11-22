@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19 11:46:59",
+  "generated_at": "2026-11-22 11:31:20",
   "sources": [
     {
       "name": "AWAvenue Ads Rule",
@@ -19,32 +19,32 @@
     }
   ],
   "rules": {
-    "raw": 1641,
-    "kept_after_region_filter": 1629,
+    "raw": 1640,
+    "kept_after_region_filter": 1628,
     "dropped_foreign": 12,
-    "after_dedupe": 1523,
-    "no_mitm_required": 1485,
+    "after_dedupe": 1522,
+    "no_mitm_required": 1484,
     "mitm_required": 38
   },
   "domainset": {
-    "raw_entries": 343542,
-    "after_region_filter_and_dedupe": 26413
+    "raw_entries": 344451,
+    "after_region_filter_and_dedupe": 26522
   },
   "mitm_hostnames": 23,
   "cagent": {
-    "domains": 26413,
+    "domains": 26522,
     "rules": 102,
     "skipped_regex_comma": 0,
     "skipped_unsupported": 53,
-    "mrs": "no-binary"
+    "mrs": "ok"
   },
   "singbox": {
-    "domain_suffixes": 26413,
+    "domain_suffixes": 26522,
     "keywords": 18,
     "ip_cidrs": 84,
-    "json_bytes": 902557,
+    "json_bytes": 907264,
     "srs": "ok",
-    "srs_bytes": 219077
+    "srs_bytes": 219838
   },
   "fetch_status": {
     "AWAvenue Ads Rule": "fresh",
@@ -54,26 +54,26 @@
   },
   "source_entries": {
     "AWAvenue Ads Rule": 998,
-    "Blockads 软件去广告合集": 643,
-    "anti-AD": 101832,
+    "Blockads 软件去广告合集": 642,
+    "anti-AD": 102741,
     "AdBlock Surge (217heidai)": 241710
   },
   "upstream": {
     "AWAvenue Ads Rule": {
       "declared_time": "2026-11-16 17:36:05",
-      "days_since_update": 2
+      "days_since_update": 5
     },
     "Blockads 软件去广告合集": {
-      "declared_time": "2026-10-20 16:23:49",
-      "days_since_update": 29
+      "declared_time": "2026-11-21 19:25:33",
+      "days_since_update": 0
     },
     "anti-AD": {
-      "declared_time": "2026-11-17 09:55:33",
+      "declared_time": "2026-11-20 08:44:21",
       "days_since_update": 2
     },
     "AdBlock Surge (217heidai)": {
       "declared_time": "2026-10-29 04:53:18",
-      "days_since_update": 21
+      "days_since_update": 24
     }
   }
 }
