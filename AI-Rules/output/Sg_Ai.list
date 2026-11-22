@@ -1,6 +1,6 @@
 # Ai AIGC Rules (Surge RULE-SET, classical 补充集)
-# UPDATED: 2026-11-21
-# COUNT: 25 (仅 KEYWORD/REGEX/WILDCARD/IP 类, 域名规则在 Sg_Ai.domainset)
+# UPDATED: 2026-11-22
+# COUNT: 26 (仅 KEYWORD/REGEX/WILDCARD/IP 类, 域名规则在 Sg_Ai.domainset)
 # 建议与 DOMAIN-SET 配合使用, 两条规则各写一行
 
 # >> OpenAI / ChatGPT
@@ -21,6 +21,7 @@ IP-CIDR6,2607:6bc0::/32,no-resolve
 DOMAIN-KEYWORD,apple-wit
 # >> Google AI / Gemini
 DOMAIN-KEYWORD,alkalimakersuite-pa.clients6.google.com
+DOMAIN-KEYWORD,antigravity
 DOMAIN-KEYWORD,colab
 DOMAIN-KEYWORD,developerprofiles
 DOMAIN-KEYWORD,generativeai
