@@ -4,7 +4,7 @@
 #!author=AdBlock-CN Builder
 #!icon=https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad.png
 #!homepage=https://github.com/privacy-protection-tools/anti-AD
-#!date=2026-11-22 11:31:20
+#!date=2026-11-25 13:02:17
 #
 # 规则源：AWAvenue Ads Rule, Blockads 软件去广告合集, anti-AD, AdBlock Surge (217heidai)
 #
@@ -16,19 +16,19 @@
 [Rule]
 
 # ============ 来源：AWAvenue Ads Rule ============
-IP-CIDR,111.20.26.186/32,REJECT,pre-matching
-IP-CIDR,112.84.130.73/32,REJECT,pre-matching
-IP-CIDR,116.142.251.100/32,REJECT,pre-matching
-IP-CIDR,116.177.251.215/32,REJECT,pre-matching
-IP-CIDR,120.77.173.114/32,REJECT,pre-matching
-IP-CIDR,123.56.23.22/32,REJECT,pre-matching
-IP-CIDR,14.29.101.160/32,REJECT,pre-matching
-IP-CIDR,14.29.101.168/32,REJECT,pre-matching
-IP-CIDR,14.29.101.169/32,REJECT,pre-matching
-IP-CIDR,182.254.116.116/32,REJECT,pre-matching
-IP-CIDR,203.205.137.89/32,REJECT,pre-matching
-IP-CIDR,218.77.192.51/32,REJECT,pre-matching
-IP-CIDR,38.190.225.166/32,REJECT,pre-matching
+IP-CIDR,111.20.26.186/32,REJECT,pre-matching,no-resolve
+IP-CIDR,112.84.130.73/32,REJECT,pre-matching,no-resolve
+IP-CIDR,116.142.251.100/32,REJECT,pre-matching,no-resolve
+IP-CIDR,116.177.251.215/32,REJECT,pre-matching,no-resolve
+IP-CIDR,120.77.173.114/32,REJECT,pre-matching,no-resolve
+IP-CIDR,123.56.23.22/32,REJECT,pre-matching,no-resolve
+IP-CIDR,14.29.101.160/32,REJECT,pre-matching,no-resolve
+IP-CIDR,14.29.101.168/32,REJECT,pre-matching,no-resolve
+IP-CIDR,14.29.101.169/32,REJECT,pre-matching,no-resolve
+IP-CIDR,182.254.116.116/32,REJECT,pre-matching,no-resolve
+IP-CIDR,203.205.137.89/32,REJECT,pre-matching,no-resolve
+IP-CIDR,218.77.192.51/32,REJECT,pre-matching,no-resolve
+IP-CIDR,38.190.225.166/32,REJECT,pre-matching,no-resolve
 DOMAIN,1500020991.vodplayer.wxamedia.com,REJECT,pre-matching,extended-matching
 DOMAIN,1500022744.vodplayer.wxamedia.com,REJECT,pre-matching,extended-matching
 DOMAIN,1500026601.vodplayer.wxamedia.com,REJECT,pre-matching,extended-matching
