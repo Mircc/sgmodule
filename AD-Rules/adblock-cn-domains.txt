@@ -1,8 +1,8 @@
 # AdBlock-CN 合并去重域名集
-# 生成时间: 2026-11-25 13:02:17
+# 生成时间: 2026-11-28 11:54:52
 # 规则源: AWAvenue Ads Rule, Blockads 软件去广告合集, anti-AD, AdBlock Surge (217heidai)
 # 用途: DOMAIN-SET,https://raw.githubusercontent.com/Mircc/sgmodule/main/AD-Rules/adblock-cn-domains.txt,REJECT
-# 域名数量: 26522
+# 域名数量: 26552
 #
 .0.net.easyjet.com
 .0001-metrics1-drcn-dt-dbankcloud-cn.geac.dbankedge.cn
@@ -177,7 +177,6 @@
 .360yield.com
 .37bvsblobprodcus311.blob.core.windows.net
 .380.tw
-.3byy0j.oss-cn-beijing.aliyuncs.com
 .3d3hflhsqf.data.adobedc.net
 .3dns-2.adobe.com
 .3dns-3.adobe.com
@@ -897,7 +896,6 @@
 .aas.bellemaison.jp
 .aaspp-matomo-ingress-alb-1741779242.us-east-1.elb.amazonaws.com
 .aassp.wgzty.cn
-.aasss111222222.tos-cn-beijing.volces.com
 .aaucna.casasbahia.com.br
 .aax-eu-dub.amazon.com
 .aax-us-east-retail-direct.amazon.com
@@ -983,6 +981,7 @@
 .acds-events.adobe.io
 .ace.naver.com
 .acemetrics.aaa.com
+.aceovercomers.screenconnect.com
 .acgshenshicha.cn
 .acint.net
 .acjs.aliyun.com
@@ -1225,7 +1224,6 @@
 .ad.kakaobank.com
 .ad.kakaocorp.com
 .ad.kingnetsmart.com.tw
-.ad.kissanime.org.ru
 .ad.lgappstv.com
 .ad.lhyghh.cn
 .ad.life.360.cn
@@ -2740,6 +2738,7 @@
 .allergy.thermofisher.com
 .alliance-adreq-asia.vivoglobal.com
 .alloy-rap.reclameaqui.com.br
+.alloy-web.zvuk.com
 .alltbcsp2p.baidu.com
 .ally.data.adobedc.net
 .allyes.cn
@@ -3077,6 +3076,7 @@
 .analytics.bundesmessenger.de
 .analytics.bungie.net
 .analytics.businessinsider.com
+.analytics.bybanking.com
 .analytics.carfax.com
 .analytics.ccs.mcafee.com
 .analytics.ceneo.pl
@@ -3166,6 +3166,7 @@
 .analytics.ionos.de
 .analytics.irancell.ir
 .analytics.irp2.ovp.kaltura.com
+.analytics.izzi1m3i.bybanking.com
 .analytics.jagoredesign.eu.org
 .analytics.k8s.bluedot.org
 .analytics.kaltura.com
@@ -3374,6 +3375,8 @@
 .analytics02.aptoide.com
 .analytics03.techsmith.com
 .analytics09.techsmith.com
+.analytics1.bybanking.com
+.analytics1.izzi1m3i.bybanking.com
 .analytics12-euf.alma.exlibrisgroup.com
 .analytics12-euf.primo.exlibrisgroup.com
 .analytics13.techsmith.com
@@ -3389,10 +3392,13 @@
 .analytics16-normal-useastred.tiktokw.eu.edgesuite.net
 .analytics2-3-meride-tv.akamaized.net
 .analytics2-meride-tv.akamaized.net
+.analytics2.bybanking.com
 .analytics2.successfactors.eu
 .analytics2.us.archive.org
 .analytics21.techsmith.com
 .analytics27.techsmith.com
+.analytics3.bybanking.com
+.analytics3.izzi1m3i.bybanking.com
 .analytics33.techsmith.com
 .analytics36.techsmith.com
 .analytics37.techsmith.com
@@ -4646,7 +4652,6 @@
 .biowebb-data.s3.amazonaws.com
 .birdgesdk.com
 .bismetrics.experian.com
-.bitbrowse.oss-cn-hongkong.aliyuncs.com
 .biv.gazeta.pl
 .bixia.fymm.cn
 .biz-cdn.varzesh3.com
@@ -5055,6 +5060,7 @@
 .brick.xhamster2.com
 .brick.xhamster3.com
 .bricks-co.com
+.bridge.vidiq.com
 .bridgeoos.com
 .bridgeportisd.instructure.com
 .bridgestone.data.adobedc.net
@@ -6665,7 +6671,6 @@
 .content.eaton.com
 .content.livesportmedia.eu
 .content.mql5.com
-.content.nxp.com
 .content.wire.telstra.com
 .content.yieldmanager.edgesuite.net
 .content.zeronaught.com
@@ -7311,6 +7316,7 @@
 .d1jcj9gy98l90g.cloudfront.net
 .d1jd9usa22o1l7.cloudfront.net
 .d1jikhx1ssl81z.cloudfront.net
+.d1jnah55gjr3f2.cloudfront.net
 .d1jnvfp2m6fzvq.cloudfront.net
 .d1jq9nooxeft24.cloudfront.net
 .d1juimniehopp3.cloudfront.net
@@ -8481,11 +8487,13 @@
 .data-bb21a2f11b.bild.de
 .data-bd2c894b2a.derstandard.at
 .data-beff88632b.derstandard.at
+.data-c53e1346fa.gamestar.de
 .data-c642a98bf9.presseportal.de
 .data-collector.soulapp.cn
 .data-d4cb803d00.uni-bremen.de
 .data-d4dfa4bc2c.focus.de
 .data-d4dfa4bc2c.weather.com
+.data-d543661da8.oe24.at
 .data-d6e13c60e8.orf.at
 .data-d7486a3850.nordkurier.de
 .data-dda7d24eb2.derstandard.at
@@ -8644,8 +8652,10 @@
 .data.delivers.gmenergy.gm.com
 .data.delivers.rewards.gm.com
 .data.dev.news.research.db.com
+.data.devemails.subway.com
 .data.devinvestmentbank.db.com
 .data.devmail.northeast.aaa.com
+.data.devmktg.subway.com
 .data.dg.test.ajo.adobe.com
 .data.diagnostics.office.com
 .data.digital.adobe.com
@@ -8729,6 +8739,7 @@
 .data.email1.wiley.com
 .data.emaillpb.adobe.com
 .data.emails.ringcentral.com
+.data.emails.subway.com
 .data.emails.tesco.com
 .data.emailservice.vattenfall.nl.data.adobedc.net
 .data.emb-api.com
@@ -8837,6 +8848,7 @@
 .data.mkt.qb.intuit.com
 .data.mkt.walgreens.com
 .data.mktg.nfl.com
+.data.mktg.subway.com
 .data.mktuat.aia.com.hk
 .data.mktx.walgreens.com
 .data.mmail.northeast.aaa.com
@@ -8921,7 +8933,9 @@
 .data.srf.ch
 .data.ssb.test.ajo.adobe.com
 .data.stage-message.aircanada.com
+.data.stageemails.subway.com
 .data.stagemailing.mcafee.com
+.data.stagemktg.subway.com
 .data.starbucks.test.ajo.adobe.com
 .data.summit-l336.adobe.com
 .data.survey.starbucks.com
@@ -9206,6 +9220,7 @@
 .devicelog.samsungcloudsolution.net
 .devimg-whatsapp.com
 .devisprox-media.s3-website-eu-west-1.amazonaws.com
+.devlanding.devmktg.subway.com
 .devlog-upload-os.hoyoverse.com
 .devnet-whatsapp.com
 .devnode-whatsapp.com
@@ -9258,6 +9273,7 @@
 .dg7k1tpeaxzcq.cloudfront.net
 .dg9sw33hxt5i7.cloudfront.net
 .dgaf2ncy4dtan.cloudfront.net
+.dgenergycorp.screenconnect.com
 .dggaenaawxe8z.cloudfront.net
 .dgm-prd-euw1-log.s3.eu-west-1.amazonaws.com
 .dgpp7fq3iorb.cloudfront.net
@@ -9552,6 +9568,7 @@
 .doc830ytc7pyp.cloudfront.net
 .docerad.wps.cn
 .docj27ko03fnu.cloudfront.net
+.docuf.sfo3.digitaloceanspaces.com
 .dodi.86zhnc.cn
 .dodi.meng-an.cn
 .dodk8rb03jif9.cloudfront.net
@@ -10537,7 +10554,6 @@
 .errors-prd01-alb01-181037707.eu-west-1.elb.amazonaws.com
 .errors-stg01-alb01-1702455688.eu-west-1.elb.amazonaws.com
 .errors.165.22.204.200.sslip.io
-.errors.coub.com
 .errors.figma.com
 .errors.service.verkkokauppa.com.cdn.cloudflare.net
 .errors.stripe.com
@@ -10629,6 +10645,7 @@
 .ev-analytics-js.s3.eu-west-1.amazonaws.com
 .evbeacon.networksolutions.com
 .event-analytics.inditex.com
+.event-api.reverb.com
 .event-collector-lb-478759435.us-east-1.elb.amazonaws.com
 .event-collector-prod-use1-1328100352.us-east-1.elb.amazonaws.com
 .event-collector.prd.data.s.joyn.de
@@ -12485,7 +12502,6 @@
 .idce7nfume.data.adobedc.net
 .iddu1vvb7sk8-a.akamaihd.net
 .ide-telemetry.cloudformation.aws.dev
-.idealmedia.io
 .ideascentre.hk
 .identification.hotmart.com
 .identity.nel.measure.office.net
@@ -13969,7 +13985,6 @@
 .loader-cdn.azureedge.net
 .loader.fmkorea.com
 .loading-cmp.hismarttv.com
-.loansales.cbre.com
 .local-analytics.uberinternal.com
 .localytics.com
 .location-services-measurements.s3-external-1.amazonaws.com
@@ -14321,6 +14336,7 @@
 .logs.av380.net
 .logs.balena-cloud.com
 .logs.bloomberg.com
+.logs.browserstack.com
 .logs.cgstatic.info
 .logs.chelaile.net.cn
 .logs.classdojo.com
@@ -14341,7 +14357,6 @@
 .logs.ovh.com
 .logs.profi.ru
 .logs.roku.com
-.logs.testnav.com
 .logs.vg.ac.pvp.net
 .logs.vietnam.vn
 .logs.walkme.com
@@ -14978,7 +14993,6 @@
 .ma-adx.ctrip.com
 .ma.baidu.cn
 .ma.baidu.com
-.ma.cbre.com
 .ma.news.naver.com
 .ma.redhat.com
 .ma.register.it
@@ -15136,6 +15150,7 @@
 .matomo.bestgood.pp.ua
 .matomo.bunny.net
 .matomo.businesstoday.com.tw
+.matomo.bybanking.com
 .matomo.cloud
 .matomo.cloudfront.similarweb.io
 .matomo.collaboraoffice.com
@@ -15165,7 +15180,6 @@
 .matomo.nic.cz
 .matomo.niedersachsen.de
 .matomo.openstreetmap.org
-.matomo.pappers.fr
 .matomo.projektantrieb.ddnss.de
 .matomo.ripe.net
 .matomo.rrz.uni-koeln.de
@@ -15463,7 +15477,6 @@
 .metric-nonssl.nomura.co.jp
 .metric.asos.com
 .metric.astrumu.io
-.metric.atg.se
 .metric.bizjournals.com
 .metric.carview.co.jp
 .metric.guess.hk
@@ -15593,6 +15606,7 @@
 .metrics.bt.com
 .metrics.business.comcast.com
 .metrics.but.fr
+.metrics.bybanking.com
 .metrics.caesars.com
 .metrics.cafepress.com
 .metrics.calif.aaa.com
@@ -15605,7 +15619,6 @@
 .metrics.carmax.com
 .metrics.carnival.com
 .metrics.casio.com.tw
-.metrics.cathaypacific.com
 .metrics.cbc.ca
 .metrics.cbc.youtube.mercedes-benz.com
 .metrics.cdiscount.com
@@ -15726,6 +15739,7 @@
 .metrics.ionos.com
 .metrics.ionos.de
 .metrics.irdeto.com
+.metrics.izzi1m3i.bybanking.com
 .metrics.jcpenney.com
 .metrics.jpmorgan.com
 .metrics.judgemathistv.warnerbros.com
@@ -15957,9 +15971,12 @@
 .metrics1-drcn-dt-dbankcloud-cn.gere.dbankedge.cn
 .metrics1-drcn.dt.dbankcloud.cn
 .metrics1-drcn.dt.dbankcloud.com
+.metrics1.bybanking.com
 .metrics1.citi.com
 .metrics1.data.dbankcloud.cn
 .metrics1.experian.com
+.metrics2.bybanking.com
+.metrics2.izzi1m3i.bybanking.com
 .metrics2.unity.cn
 .metrics2.williamhill.com
 .metricscollector.lp.xcal.tv
@@ -16356,6 +16373,7 @@
 .mr.olympics.com
 .mradx.net
 .mrktmtrcs.net
+.ms-ads-image.t-static.ru
 .ms.actingidekex.cn
 .ms.awqsaged.cn
 .ms.bdimg.com
@@ -16577,6 +16595,7 @@
 .nadvideo.baidu.com
 .nadvideo2.baidu.com
 .nalzahqp.page.link
+.naomiwellness.screenconnect.com
 .napta-sentry-api-alb-367959763.eu-central-1.elb.amazonaws.com
 .napxutiktok.net
 .nat-whatsapp.com
@@ -17039,6 +17058,7 @@
 .om.truecar.com
 .om.usnews.com
 .om.vrbo.com
+.omappapi.com
 .omes-sec.heytapmobi.com
 .omes-sec.heytapmobile.com
 .ometrics.warnerbros.com
@@ -17189,7 +17209,9 @@
 .openoffice.de
 .openrcv.baidu.com
 .opentelemetry-collector.shared-services.us-east-1.general.prod.wildlife.io
+.opentelemetry.bybanking.com
 .opentelemetry.divar.ir
+.opentelemetry.izzi1m3i.bybanking.com
 .opentelemetry.zpc.zebra.com
 .openwebmp.com
 .openx.4shared.com
@@ -17295,7 +17317,6 @@
 .osrrltw.cn
 .oss-asq-static.11222.cn
 .oss.weread.qq.com
-.ossapp.suning.com
 .ossgw.alicdn.com
 .ostorage-ocloud-in.allawnos.com
 .ostorage-ocloud-sg.allawnos.com
@@ -17316,6 +17337,7 @@
 .otel.otter.ai
 .otel.paychex.com
 .otel.rdsec.trendmicro.com
+.otel.scribehow.com
 .otel.wallapop.com
 .otf.msn.com
 .other.upqzfile.com
@@ -17643,7 +17665,6 @@
 .periscope73.com
 .periscope80.com
 .permutive.app
-.permutive.com
 .perr.hola.org
 .perso.aws.arc.pub
 .personalization.bloomberg.com
@@ -17855,6 +17876,7 @@
 .pixel.smartnews.com
 .pixel.spotify.com
 .pixel.sprinklr.com
+.pixel.suspilne.media
 .pixel.truecaller.com
 .pixel.web.roku.com
 .pixel.wp.com
@@ -17892,13 +17914,16 @@
 .platformsolutions.shutterstock.com
 .plausible-544917143.us-east-1.elb.amazonaws.com
 .plausible-gcp-p01-public.prd.it.unity3d.com
+.plausible-izzi1m3i.bybanking.com
 .plausible-l4oo40oocs04gk800o8k08gc.89.58.58.136.sslip.io
 .plausible-stormstrik-alb-855668599.us-east-2.elb.amazonaws.com
 .plausible.aws.gocase.com.br
+.plausible.bybanking.com
 .plausible.classdojo.com
 .plausible.eitaa.com
 .plausible.io
 .plausible.it.unity3d.com
+.plausible.izzi1m3i.bybanking.com
 .plausible.lobehub-inc.cn
 .plausible.neal.fun
 .plausible.screener.in
@@ -18002,13 +18027,16 @@
 .postbox.mos.ru
 .poster.weather.com.cn
 .posthog-aki.uaenorth.cloudapp.azure.com
+.posthog-izzi1m3i.bybanking.com
 .posthog-lb-1912848078.eu-west-1.elb.amazonaws.com
 .posthog-prod-1794118647.us-east-1.elb.amazonaws.com
 .posthog.basalam.com
+.posthog.bybanking.com
 .posthog.casinoplus.top.eo.dnse3.com
 .posthog.eagleeyenetworks.com
 .posthog.element.io
 .posthog.inmusic-cloud.prod.aws.inmusic.dev
+.posthog.izzi1m3i.bybanking.com
 .posthog.modrinth.com
 .posthog.slack.com
 .postrelease.com
@@ -18762,7 +18790,6 @@
 .resources.thestar.com
 .resources2.secureforms.mcafee.com
 .responder.wt.heise.de
-.response.nxp.com
 .response2.buydomains.com
 .rest.dynamicyield.com
 .restart-whatsapp.com
@@ -18829,7 +18856,6 @@
 .ro-ad-lgsmartad-com.aws-prd.net
 .ro-go.experian.com
 .ro-info-lgsmartad-com.aws-prd.net
-.roblox-executr.com
 .roblox.com.am
 .roblox.com.bo
 .roblox.com.bz
@@ -19020,6 +19046,7 @@
 .rum.ap-northeast-1.amazonaws.com
 .rum.ap-southeast-1.amazonaws.com
 .rum.api.intuit.com
+.rum.azioncdn.net
 .rum.battle.net
 .rum.ca-central-1.amazonaws.com
 .rum.eu-central-1.amazonaws.com
@@ -21234,7 +21261,6 @@
 .sgtm.activitymessenger.com
 .sgtm.adyen.com
 .sgtm.arduino.cc
-.sgtm.atg.se
 .sgtm.avid.com
 .sgtm.avon.uk.com
 .sgtm.baycrews.jp
@@ -21521,13 +21547,11 @@
 .smartnews-ads.com
 .smarttrade.cn
 .smartytech.io
-.smartytouch.co
 .smatrix.hbo.com
 .smb.info.shutterstock.com
 .smbranch.nc.mails.sssports.com
 .smbweb-whatsapp.com
 .sme.proximus.be
-.smetric.atg.se
 .smetric.carview.co.jp
 .smetric.hilton.com
 .smetric.schwab.com
@@ -21614,6 +21638,7 @@
 .smetrics.cdiscount.com
 .smetrics.cdw.com.akadns.net
 .smetrics.census.gov
+.smetrics.centene.com
 .smetrics.chase.com
 .smetrics.christies.com
 .smetrics.chron.com
@@ -22153,6 +22178,7 @@
 .sonobi.com
 .sony.tcliveus.com
 .soorbka.cn
+.sooyun-yun.com.cn
 .sopho.kozow.com
 .sopr-api.cian.ru
 .soptimize.southwest.com
@@ -22164,7 +22190,6 @@
 .sourcepoint-mms.history.com
 .sourcepoint.theonion.com
 .sourcepoint.vice.com
-.sources.nxp.com
 .sourcescdn.xiaobingw.cn
 .southernalarm.screenconnect.com
 .southernco.data.adobedc.net
@@ -23275,6 +23300,7 @@
 .t17.market.xiaomi.com
 .t188.dazhonghua.cn
 .t1n.cn
+.t2.click.subway.com
 .t2.hulu.com
 .t2.xiaohongshu.com
 .t28goe.cn
@@ -23330,7 +23356,6 @@
 .tags.aljazeera.net
 .tags.barrons.com
 .tags.carecredit.com.greylabeldelivery.com
-.tags.cathaypacific.com
 .tags.cathaypacific.com.greylabeldelivery.com
 .tags.chip.de
 .tags.chip.de.greylabeldelivery.com
@@ -23589,6 +23614,7 @@
 .telemetry.battle.net
 .telemetry.broadcom.com
 .telemetry.business.githubcopilot.com
+.telemetry.bybanking.com
 .telemetry.bydata.com
 .telemetry.canva.cn
 .telemetry.canva.com
@@ -23629,6 +23655,7 @@
 .telemetry.iadzpr.snowflakecomputing.com
 .telemetry.individual.githubcopilot.com
 .telemetry.inmusic-cloud.prod.aws.inmusic.dev
+.telemetry.izzi1m3i.bybanking.com
 .telemetry.jivo.ru
 .telemetry.kde.org
 .telemetry.loxonecloud.com
@@ -23979,7 +24006,6 @@
 .topstat.cn
 .torimochi.line-apps.com
 .toruk.tanx.com
-.totalav.com
 .totalmedia2.ynet.co.il
 .totalwine.data.adobedc.net
 .touch-moblie.com
@@ -24157,6 +24183,7 @@
 .trackbar.navigator-lxa.mail.com
 .tracker-00.qvb.qcloud.com
 .tracker-api.my.com
+.tracker-beam.aktuality.sk
 .tracker-load-balancer-910132794.us-east-1.elb.amazonaws.com
 .tracker-prd.aldi.com.cn
 .tracker-static.gazetadopovo.com.br
@@ -24221,6 +24248,7 @@
 .tracking.burriswindows.com
 .tracking.business.comcast.com
 .tracking.businessdirect.bt.com
+.tracking.buyhatke.com
 .tracking.c.mercedes-benz.com.cn
 .tracking.cairn.info
 .tracking.canvayo.com
@@ -24306,6 +24334,7 @@
 .tracking.nextdoor.com
 .tracking.np.c.linuxfoundation.org
 .tracking.nyhetstjansterna.di.se
+.tracking.oe24.at
 .tracking.omniture.nt.se
 .tracking.onetel.com.hk
 .tracking.online.nl.adp.com
@@ -24900,6 +24929,7 @@
 .us-central1-metrics-prd.cloudfunctions.net
 .us-central1-r2u-analytics.cloudfunctions.net
 .us-central1-supersolid-analytics-data.cloudfunctions.net
+.us-east-1-analytics.edgeprod.cldlb.jpmchase.com
 .us-east-1.prod.telemetry.toolbox.builder-tools.aws.dev
 .us-events.api.iheart.com
 .us-go.experian.com
@@ -24908,6 +24938,7 @@
 .us-rdx2-lgtvsdp-com.aws-prd.net
 .us-report.gras.samsungdm.com
 .us-tracking.nextdoor.com
+.us-west-2-analytics.edgeprod.cldlb.jpmchase.com
 .us.a1.yimg.com
 .us.api.micloud.xiaomi.net
 .us.appbackupapi.micloud.xiaomi.net.iberostar.com
@@ -24999,6 +25030,7 @@
 .utiq.handelsblatt.com
 .utiq.hola.com
 .utiq.jeuxvideo.com
+.utiq.journaldesfemmes.fr
 .utiq.lachainemeteo.com
 .utiq.ladepeche.fr
 .utiq.lamontagne.fr.cdn.cloudflare.net
@@ -25065,7 +25097,6 @@
 .utsgw.gmarket.co.kr
 .utsssl.gmarket.co.kr
 .uu.qq.com
-.uu.v2raynapps.com.cn
 .uucm.cn
 .uuidksinc.net
 .uunak.cn
@@ -25184,6 +25215,7 @@
 .vdvdjf.remotepc.com
 .vdxu.cn
 .ve-ad-lgsmartad-com.aws-prd.net
+.vedznh.cumhuriyet.com.tr
 .veepai-device-log.eye4.cn
 .vegaschina.cn
 .venezia-measurements.s3-external-1.amazonaws.com
@@ -25524,7 +25556,6 @@
 .wa.kuwo.cn
 .wa.mail.com
 .wa.metro.co.uk
-.wa.nxp.com
 .wa.quarks.de
 .wa.scribd.com
 .wa.slideshare.net
@@ -25717,7 +25748,6 @@
 .webstatistik.finanzamt.nrw.de
 .webstatistik.uni-regensburg.de
 .webstats.americanbar.org
-.webstats.cbre.com
 .webstats.channel4.com
 .webstats.gnome.org
 .webstats.goneo.de
